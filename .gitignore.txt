@@ -1,1 +1,1 @@
-.vs/
+MainProject/.vs/
