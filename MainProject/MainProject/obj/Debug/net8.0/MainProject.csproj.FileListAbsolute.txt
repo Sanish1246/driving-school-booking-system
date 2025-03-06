@@ -1,0 +1,15 @@
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\bin\Debug\net8.0\MainProject.exe
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\bin\Debug\net8.0\MainProject.deps.json
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\bin\Debug\net8.0\MainProject.runtimeconfig.json
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\bin\Debug\net8.0\MainProject.dll
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\bin\Debug\net8.0\MainProject.pdb
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\obj\Debug\net8.0\MainProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\obj\Debug\net8.0\MainProject.AssemblyInfoInputs.cache
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\obj\Debug\net8.0\MainProject.AssemblyInfo.cs
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\obj\Debug\net8.0\MainProject.csproj.CoreCompileInputs.cache
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\obj\Debug\net8.0\MainProject.sourcelink.json
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\obj\Debug\net8.0\MainProject.dll
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\obj\Debug\net8.0\refint\MainProject.dll
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\obj\Debug\net8.0\MainProject.pdb
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\obj\Debug\net8.0\MainProject.genruntimeconfig.cache
+C:\Users\361\Documents\GitHub\driving-school-booking-system\MainProject\MainProject\obj\Debug\net8.0\ref\MainProject.dll
