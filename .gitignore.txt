@@ -6,7 +6,10 @@
 /MainProject/.vs
 MainProject/MainProject/obj/Debug/net8.0/MainProject.AssemblyInfo.cs
 MainProject/MainProject/obj/Debug/net8.0/MainProject.AssemblyInfoInputs.cache
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 # dotenv files
 .env
