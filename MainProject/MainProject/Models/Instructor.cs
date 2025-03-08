@@ -17,6 +17,6 @@ public class Instructor
     public override string ToString()
     {
         return
-            $"First name of the instructor is: {FirstName}, last name is: {LastName} and phone numbers is: {PhoneNumber}";
+            $"First name: {FirstName}, Last name: {LastName}, Phone number: {PhoneNumber}";
     }
 }

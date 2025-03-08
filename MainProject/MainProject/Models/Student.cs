@@ -19,6 +19,6 @@ public class Student
 
     public override string ToString()
     {
-        return $"First name of the student is: {FirstName}, last name is: {LastName}, email is: {Email}, date of birth is: {DateOfBirth}, phone number is: {PhoneNumber} and address is: {Address}";
+        return $"First name: {FirstName}, Last name: {LastName}, Email: {Email}, Date of birth: {DateOfBirth}, Phone number: {PhoneNumber}, address: {Address}";
     }
 }

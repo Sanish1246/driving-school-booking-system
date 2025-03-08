@@ -150,12 +150,10 @@ public class HashMap<K, V>
         {
             if (buckets[i] != null)
             {
-                Console.Write($"Bucket {i}: ");
                 foreach (var pair in buckets[i])
                 {
-                    Console.Write($"[{pair.Key}: {pair.Value}] ");
+                    Console.WriteLine($"{pair.Value}");
                 }
-                Console.WriteLine();
             }
         }
     }

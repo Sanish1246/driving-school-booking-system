@@ -13,6 +13,6 @@ public class Car
 
     public override string ToString()
     {
-        return $"Make of car is: {Make}, model of car is {Model} and registration number is {RegistrationNumber}";
+        return $"Make: {Make}, model of car is {Model} and registration number is {RegistrationNumber}";
     }
 }
