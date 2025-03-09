@@ -2,8 +2,8 @@
 using MainProject.Models;
 
 
-// Menu
-Console.WriteLine(new String('-',50));
+// Menu for Student
+Console.WriteLine(new string('-',50));
 Console.WriteLine("Here is a list of operations that you can perform: \n1. Add Student, \n2. Delete Student, \n3. Search Student, \n4. List all Students");
 Console.WriteLine("Choose one of the above options: ");
 
@@ -16,7 +16,7 @@ while (true)
     }
     else
     {
-        if (!(options is >= 1 and <= 4))
+        if (options is < 1 or > 4)
         {
             Console.WriteLine("Invalid option, you should choose between options 1 and 4.");
         }

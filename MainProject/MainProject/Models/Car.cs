@@ -1,11 +1,20 @@
-﻿namespace MainProject.Models;
+﻿using System.ComponentModel.DataAnnotations;
+namespace MainProject.Models;
 
 public class Car
 {
+    // Primary key
+    [Key]
     public int CarId { get; set; }
-    public string Make { get; set; } = null!;
-    public string Model { get; set; } = null!;
-    public string RegistrationNumber { get; set; } = null!;
+    
+    [MaxLength(20)]
+    public required string Make { get; set; }
+    
+    [MaxLength(20)]
+    public required string Model { get; set; }
+    
+    [MaxLength(20)]
+    public required string RegistrationNumber { get; set; }
     
     // Navigation Properties
     // A car can be used for many lessons
