@@ -1,13 +1,19 @@
-﻿namespace MainProject.Models;
+﻿using System.ComponentModel.DataAnnotations;
+namespace MainProject.Models;
 
 public class Instructor
 {
     // Primary Key
+    [Key]
     public int InstructorId { get; set; }
     
-    public string FirstName { get; set; } = null!;
-    public string LastName { get; set; } = null!;
-    public string PhoneNumber { get; set; } = null!;
+    [MaxLength(50)]
+    public required string FirstName { get; set; }
+    
+    public required string LastName { get; set; }
+    
+    [MaxLength(15)]
+    public required string PhoneNumber { get; set; }
     
     // Navigation properties
     // An instructor can teach many lessons
