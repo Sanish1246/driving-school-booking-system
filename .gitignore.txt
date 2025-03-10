@@ -4,6 +4,8 @@
 ##
 ## Get latest from `dotnet new gitignore`
 /MainProject/.vs
+MainProject/MainProject/obj/Debug/net8.0/MainProject.AssemblyInfo.cs
+MainProject/MainProject/obj/Debug/net8.0/MainProject.AssemblyInfoInputs.cache
 
 # dotenv files
 .env
