@@ -1,17 +1,31 @@
-﻿namespace MainProject.Models;
+﻿using System.ComponentModel.DataAnnotations;
+namespace MainProject.Models;
 
 public class Student
 {
     // Primary Key
+    [Key]
     public int StudentId { get; set; }
     
-    public string FirstName { get; set; } = null!;
-    public string LastName { get; set; } = null!;
-    public string Email { get; set; } = null!;
-    public string Password { get; set; } = null!;
-    public DateOnly DateOfBirth { get; set; }
-    public string PhoneNumber { get; set; } = null!;
-    public string Address { get; set; } = null!;
+    [MaxLength(50)]
+    public required string FirstName { get; set; }
+    
+    [MaxLength(50)]
+    public required string LastName { get; set; }
+    
+    [MaxLength(254)]
+    public required string Email { get; set; }
+    
+    [MaxLength(60)]
+    public required string Password { get; set; }
+    
+    public required DateOnly DateOfBirth { get; set; }
+    
+    [MaxLength(15)]
+    public required string PhoneNumber { get; set; }
+    
+    [MaxLength(100)]
+    public required string Address { get; set; }
     
     // Navigation Properties
     // A Student can have many lessons
