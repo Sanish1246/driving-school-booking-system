@@ -1,16 +1,17 @@
 ﻿using MainProject;
-using MainProject.Models;
+
 
 
 // Menu for Student
 Console.WriteLine(new string('-',50));
 Console.WriteLine("Here is a list of operations that you can perform: \n1. Add Student, \n2. Delete Student, \n3. Search Student, \n4. List all Students");
 Console.WriteLine("Choose one of the above options: ");
+int options;
 
 while (true)
 {
-    var success = int.TryParse(Console.ReadLine(), out var options);
-    if (!success)
+    var validOptions = int.TryParse(Console.ReadLine(), out options);
+    if (!validOptions)
     {
         Console.WriteLine("Your choice should contain only numbers, please re-input.");
     }
@@ -30,10 +31,16 @@ while (true)
 // Load Tables
 var tables = new OfflineDatabase();
 tables.LoadTables();
-
-void AddStudent()
+switch (options)
 {
-    Console.WriteLine("A student consist of the following properties: ");
-    Console.Write("");
+    case 1:
+        var studentOperation = new StudentOperations();
+        studentOperation.AddStudent();
+        break;
+    default:
+        Console.WriteLine("Wrong options");
+        break;
 }
+
+
 

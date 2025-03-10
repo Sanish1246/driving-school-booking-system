@@ -25,7 +25,7 @@ public class Student
     public required string PhoneNumber { get; set; }
     
     [MaxLength(100)]
-    public string Address { get; set; }
+    public required string Address { get; set; }
     
     // Navigation Properties
     // A Student can have many lessons

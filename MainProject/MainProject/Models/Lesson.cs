@@ -4,8 +4,8 @@ public class Lesson
 {
     // Primary Key
     public int LessonId { get; set; }
-    
-    public required DateTime DateTime { get; set; }
+
+    public required DateOnly Date { get; set; }
     
     // Foreign keys
     public int InstructorId { get; set; }
@@ -25,6 +25,6 @@ public class Lesson
 
     public override string ToString()
     {
-        return $"This lesson is associated with student {Student} along with instructor {Instructor} and car {Car} on the following date: {DateTime}";
+        return $"This lesson is associated with student {Student} along with instructor {Instructor} and car {Car} on the following date: {Date}";
     }
 }
