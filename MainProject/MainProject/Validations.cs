@@ -7,6 +7,20 @@ public class Validations
 {
     public static bool ValidateString(string text) => !string.IsNullOrEmpty(text);
 
+    public static bool ValidateLettersOnly(string text)
+    {
+        var textRegex = new Regex(@"^[a-zA-Z]+$");
+        return textRegex.IsMatch(text);
+    }
+    
+    // Remove all white space characters
+    public static string RemoveWhiteSpaces(string text)
+    {
+        var spaceRegex = new Regex(@"\s+");
+        text = spaceRegex.Replace(text, "");
+        return text;
+    }
+
     public static  bool ValidateEmail(string email)
     {
         var emailRegex = new Regex(@"\w+@[a-zA-Z\.]+\.\w+");
