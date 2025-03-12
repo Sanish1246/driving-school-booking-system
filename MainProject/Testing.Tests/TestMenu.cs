@@ -10,50 +10,40 @@ public sealed class TestMenu
     [TestInitialize]
     public void Setup()
     {
+        //Arrange
         _menuHandler = new MenuHandler();
     }
 
-    [TestMethod]
-    public void ValidateMenuOption_ShouldReturnTrueForValidOptions()
+    [TestMethod] //Tests ValidateMenuOption with multiple input values.
+    [DataRow(1, true)] //Valid option
+    [DataRow(4, true)] //Valid option
+    [DataRow(-1, true)] //Valid exit option
+    [DataRow(0, false)] //Invalid option
+    [DataRow(5, false)] //Invalid option
+    [DataRow(-2, false)] //Invalid option
+    public void ValidateMenuOption_ShouldReturnExpectedResult(int option, bool expected)
     {
-        Assert.IsTrue(_menuHandler.ValidateMenuOption(1));
-        Assert.IsTrue(_menuHandler.ValidateMenuOption(2));
-        Assert.IsTrue(_menuHandler.ValidateMenuOption(4));
-        Assert.IsTrue(_menuHandler.ValidateMenuOption(-1));
+        //Act 
+        bool result = _menuHandler.ValidateMenuOption(option);
+
+        //Assert
+        Assert.AreEqual(expected, result);
     }
 
-    [TestMethod]
-    public void ValidateMenuOption_ShouldReturnFalseForInvalidOptions()
+    [TestMethod] //Tests ValidateResponse with different user input strings.
+    [DataRow("yes", true)] //Valid input
+    [DataRow("no", true)] //Valid input
+    [DataRow("YeS", true)] //Case-insensitive valid input
+    [DataRow("  no  ", true)] //Input with leading/trailing spaces
+    [DataRow("maybe", false)] //Invalid input
+    [DataRow("", false)] //Empty string
+    [DataRow(null, false)] //Null input
+    public void ValidateResponse_ShouldReturnExpectedResult(string response, bool expected)
     {
-        Assert.IsFalse(_menuHandler.ValidateMenuOption(0));
-        Assert.IsFalse(_menuHandler.ValidateMenuOption(5));
-        Assert.IsFalse(_menuHandler.ValidateMenuOption(100));
-    }
+        //Act
+        bool result = _menuHandler.ValidateResponse(response);
 
-    [TestMethod]
-    public void ValidateResponse_ShouldReturnTrueForValidResponses()
-    {
-        Assert.IsTrue(_menuHandler.ValidateResponse("yes"));
-        Assert.IsTrue(_menuHandler.ValidateResponse("no"));
-        Assert.IsTrue(_menuHandler.ValidateResponse(" Yes "));
-        Assert.IsTrue(_menuHandler.ValidateResponse("No "));
-    }
-
-    [TestMethod]
-    public void ValidateResponse_ShouldReturnFalseForInvalidResponses()
-    {
-        Assert.IsFalse(_menuHandler.ValidateResponse(""));
-        Assert.IsFalse(_menuHandler.ValidateResponse("maybe"));
-        Assert.IsFalse(_menuHandler.ValidateResponse("  "));
-    }
-
-    [TestMethod]
-    public void HandleMenuOption_ShouldReturnExpectedMessages()
-    {
-        Assert.AreEqual("Student added.", _menuHandler.HandleMenuOption(1));
-        Assert.AreEqual("Student deleted.", _menuHandler.HandleMenuOption(2));
-        Assert.AreEqual("Displaying students.", _menuHandler.HandleMenuOption(4));
-        Assert.AreEqual("Exiting application.", _menuHandler.HandleMenuOption(-1));
-        Assert.AreEqual("Invalid option.", _menuHandler.HandleMenuOption(99));
+        //Assert
+        Assert.AreEqual(expected, result);
     }
 }

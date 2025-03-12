@@ -55,6 +55,7 @@ public class Menu
 
         while (true)
         {
+            Console.Clear();
             Console.WriteLine("Here is a list of operations that you can perform: \n1. Add Student, \n2. Delete Student, \n3. Search Student, \n4. List all Students\n5. Enter -1 to exit the application");
             Console.Write("Choose one of the above options: ");
             int option;
