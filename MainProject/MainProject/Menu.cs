@@ -1,5 +1,4 @@
 ﻿using MainProject;
-using MainProject.Models;
 
 public class MenuHandler
 {
@@ -11,7 +10,6 @@ public class MenuHandler
     {
         _tables = new OfflineDatabase();
         _studentOperation = new StudentOperations();
-        
     }
 
     public string HandleMenuOption(int option)

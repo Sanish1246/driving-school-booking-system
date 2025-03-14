@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,7 @@ public sealed class TestStudent
     private Mock<DbSet<Student>>? _mockStudentSet;
     private StudentOperations? _studentOperations;
 
-    [TestInitialize] // Runs before each test to initialize dependencies
+    [TestInitialize]
     public void Setup()
     {
         _mockContext = new Mock<DrivingLessonBookingSystemContext>();
@@ -25,65 +26,81 @@ public sealed class TestStudent
         _studentOperations = new StudentOperations();
     }
 
-    [TestMethod] // Ensures a student is added successfully
+    [TestMethod]
     public void AddStudent_ShouldAddStudentToDatabase()
     {
         // Arrange
-        var student = new Student
+        var inputSequence = new List<string>
         {
-            FirstName = "John",
-            LastName = "Doe",
-            Email = "john.doe@example.com",
-            DateOfBirth = new DateOnly(2000, 1, 1),
-            Address = "123 Main St",
-            PhoneNumber = "+23058226843",
-            Password = "SecurePass123"
+            "John", // First Name
+            "Doe", // Last Name
+            "john.doe@example.com", // Email
+            "SecurePass123!", // Password
+            "2000/01/01", // Date of Birth
+            "+23058226843", // Phone Number
+            "123 Main St" // Address
         };
+
         
-        // Act
-        _studentOperations.AddStudent(student);
-        
+        // Simulate user input using StringReader
+        using (var input = new StringReader(string.Join(Environment.NewLine, inputSequence)))
+        {
+            Console.SetIn(input);
+            // Act
+            _studentOperations!.AddStudent();
+        }
+
         // Assert
-        _mockStudentSet.Verify(s => s.Add(It.IsAny<Student>()), Times.Once);
-        _mockContext.Verify(c => c.SaveChanges(), Times.Once);
+        _mockStudentSet!.Verify(s => s.Add(It.IsAny<Student>()), Times.Once);
+        _mockContext!.Verify(c => c.SaveChanges(), Times.Once);
     }
 
-    [TestMethod] // Ensures a student is deleted correctly
+    [TestMethod]
     public void DeleteStudent_ShouldRemoveStudentFromDatabase()
     {
         // Arrange
-        var studentEmail = "john.doe@example.com";
-        var studentList = new List<Student>
+        var inputSequence = new List<string>
         {
-            new Student
+            "john.doe@example.com" // Email
+        };
+
+        // Simulate user input using StringReader
+        using (var input = new StringReader(string.Join(Environment.NewLine, inputSequence)))
+        {
+            Console.SetIn(input);
+
+            var studentList = new List<Student>
             {
-                FirstName = "John",
-                LastName = "Doe",
-                Email = studentEmail,
-                DateOfBirth = new DateOnly(2000, 1, 1),
-                Address = "123 Main St",
-                PhoneNumber = "+23058226843",
-                Password = "SecurePass123"
-            }
-        }.AsQueryable();
+                new Student
+                {
+                    FirstName = "John",
+                    LastName = "Doe",
+                    Email = "john.doe@example.com",
+                    DateOfBirth = new DateOnly(2000, 1, 1),
+                    Address = "123 Main St",
+                    PhoneNumber = "+23058226843",
+                    Password = "SecurePass123!"
+                }
+            }.AsQueryable();
 
-        var mockSet = new Mock<DbSet<Student>>();
-        mockSet.As<IQueryable<Student>>().Setup(m => m.Provider).Returns(studentList.Provider);
-        mockSet.As<IQueryable<Student>>().Setup(m => m.Expression).Returns(studentList.Expression);
-        mockSet.As<IQueryable<Student>>().Setup(m => m.ElementType).Returns(studentList.ElementType);
-        mockSet.As<IQueryable<Student>>().Setup(m => m.GetEnumerator()).Returns(studentList.GetEnumerator());
+            var mockSet = new Mock<DbSet<Student>>();
+            mockSet.As<IQueryable<Student>>().Setup(m => m.Provider).Returns(studentList.Provider);
+            mockSet.As<IQueryable<Student>>().Setup(m => m.Expression).Returns(studentList.Expression);
+            mockSet.As<IQueryable<Student>>().Setup(m => m.ElementType).Returns(studentList.ElementType);
+            mockSet.As<IQueryable<Student>>().Setup(m => m.GetEnumerator()).Returns(studentList.GetEnumerator());
 
-        _mockContext.Setup(c => c.Students).Returns(mockSet.Object);
+            _mockContext!.Setup(c => c.Students).Returns(mockSet.Object);
 
-        // Act
-        _studentOperations.DeleteStudent(studentEmail);
+            // Act
+            _studentOperations!.DeleteStudent();
+        }
 
         // Assert
-        mockSet.Verify(s => s.Remove(It.IsAny<Student>()), Times.Once);
-        _mockContext.Verify(c => c.SaveChanges(), Times.Once);
+        _mockStudentSet!.Verify(s => s.Remove(It.IsAny<Student>()), Times.Once);
+        _mockContext!.Verify(c => c.SaveChanges(), Times.Once);
     }
 
-    [TestMethod] // Ensures student list is retrieved correctly
+    [TestMethod]
     public void DisplayStudent_ShouldReturnAllStudents()
     {
         // Arrange
@@ -117,13 +134,12 @@ public sealed class TestStudent
         mockSet.As<IQueryable<Student>>().Setup(m => m.ElementType).Returns(students.ElementType);
         mockSet.As<IQueryable<Student>>().Setup(m => m.GetEnumerator()).Returns(students.GetEnumerator());
 
-        _mockContext.Setup(c => c.Students).Returns(mockSet.Object);
+        _mockContext!.Setup(c => c.Students).Returns(mockSet.Object);
 
         // Act
-        var result = _studentOperations.DisplayStudent();
+        _studentOperations!.DisplayStudent();
 
         // Assert
-        Assert.AreEqual(2, result.Count);
+        Assert.AreEqual(2, students.Count());
     }
-
 }

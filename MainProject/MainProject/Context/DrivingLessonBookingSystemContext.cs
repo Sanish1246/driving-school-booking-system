@@ -8,7 +8,7 @@ public class DrivingLessonBookingSystemContext : DbContext
 {
     public DbSet<Instructor> Instructors { get; set; }
     public DbSet<Lesson> Lessons { get; set; }
-    public DbSet<Student> Students { get; set; }
+    public virtual DbSet<Student> Students { get; set; }
     public DbSet<Car> Cars { get; set; }
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

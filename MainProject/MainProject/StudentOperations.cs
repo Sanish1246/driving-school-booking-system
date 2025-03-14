@@ -68,13 +68,20 @@ public class StudentOperations
         {
             Console.Write("Password: ");
             password = Console.ReadLine() ?? "";
+
+            
             if (Validations.ValidateString(password))
             {
+                
                 if (Validations.ValidatePassword(password))
                 {
                     // TODO: Hash password then store in database.
                     // TODO: Double entry-check for password.
-                    break;
+                    break; // Exit the loop if the password is valid
+                }
+                else
+                {
+                    Console.WriteLine("Password does not meet the required criteria, please re-input.");
                 }
             }
             else
