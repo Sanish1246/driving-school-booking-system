@@ -12,9 +12,9 @@ using Microsoft.EntityFrameworkCore;
 [TestClass]
 public sealed class TestStudent
 {
-    private Mock<DrivingLessonBookingSystemContext> _mockContext;
-    private Mock<DbSet<Student>> _mockStudentSet;
-    private StudentOperations _studentOperations;
+    private Mock<DrivingLessonBookingSystemContext>? _mockContext;
+    private Mock<DbSet<Student>>? _mockStudentSet;
+    private StudentOperations? _studentOperations;
 
     [TestInitialize] // Runs before each test to initialize dependencies
     public void Setup()
@@ -22,7 +22,7 @@ public sealed class TestStudent
         _mockContext = new Mock<DrivingLessonBookingSystemContext>();
         _mockStudentSet = new Mock<DbSet<Student>>();
         _mockContext.Setup(c => c.Students).Returns(_mockStudentSet.Object);
-        _studentOperations = new StudentOperations(_mockContext.Object);
+        _studentOperations = new StudentOperations();
     }
 
     [TestMethod] // Ensures a student is added successfully
@@ -91,23 +91,23 @@ public sealed class TestStudent
         {
             new Student
             {
-                FirstName = "John",
-                LastName = "Doe",
-                Email = "john.doe@example.com",
-                DateOfBirth = new DateOnly(2000, 1, 1),
-                Address = "123 Main St",
-                PhoneNumber = "+23058226843",
-                Password = "SecurePass123"
+                FirstName = "Jojolo",
+                LastName = "Dodo",
+                Email = "jojolo.dodoe@gmail.com",
+                DateOfBirth = new DateOnly(2011, 1, 9),
+                Address = "la rue rouge",
+                PhoneNumber = "+23058224543",
+                Password = "SecurityPass123!"
             },
             new Student
             {
-                FirstName = "Jane",
-                LastName = "Smith",
-                Email = "jane.smith@example.com",
-                DateOfBirth = new DateOnly(2001, 2, 2),
-                Address = "456 Side St",
-                PhoneNumber = "+23058226844",
-                Password = "AnotherPass456"
+                FirstName = "Janette",
+                LastName = "Ginger",
+                Email = "janettesginger@gmail.com",
+                DateOfBirth = new DateOnly(2014, 12, 2),
+                Address = "soobajee lane",
+                PhoneNumber = "+23054536844",
+                Password = "tihisWrtr456!"
             }
         }.AsQueryable();
 
@@ -125,4 +125,5 @@ public sealed class TestStudent
         // Assert
         Assert.AreEqual(2, result.Count);
     }
+
 }

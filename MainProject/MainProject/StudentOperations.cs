@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace MainProject;
 public class StudentOperations
 {
+   
     // CRUD Operations for students
     public void AddStudent()
     {

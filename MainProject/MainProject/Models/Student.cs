@@ -2,7 +2,7 @@
 namespace MainProject.Models;
 
 public class Student
-{
+{   
     // Primary Key
     [Key]
     public int StudentId { get; set; }

@@ -1,14 +1,17 @@
 ﻿using MainProject;
+using MainProject.Models;
 
 public class MenuHandler
 {
     private readonly OfflineDatabase _tables;
     private readonly StudentOperations _studentOperation;
-
+ 
+    
     public MenuHandler()
     {
         _tables = new OfflineDatabase();
         _studentOperation = new StudentOperations();
+        
     }
 
     public string HandleMenuOption(int option)
