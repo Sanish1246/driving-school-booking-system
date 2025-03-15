@@ -98,4 +98,24 @@ public sealed class TestStudent
         Assert.AreEqual(0, _students.Count);
     }
 
+    [TestMethod]
+    public void DisplayStudent_ShouldReturnAllStudents()
+    {
+        //arrange: Add mock students to the list
+        _students.AddRange(new List<Student>
+        {
+            new Student { FirstName = "Jojolo", LastName = "Dodo", Email = "jojolo.dodoe@gmail.com",
+                DateOfBirth = new DateOnly(2011, 1, 9), Address = "la rue rouge",
+                PhoneNumber = "+23058224543", Password = "SecurityPass123!" },
+            new Student { FirstName = "Janette", LastName = "Ginger", Email = "janettesginger@gmail.com",
+                DateOfBirth = new DateOnly(2014, 12, 2), Address = "soobajee lane",
+                PhoneNumber = "+23054536844", Password = "tihisWrtr456!" }
+        });
+        
+        //act
+        _studentOperations!.DisplayStudent();
+
+        //assert
+        Assert.AreEqual(2, _students.Count);
+    }
 }
