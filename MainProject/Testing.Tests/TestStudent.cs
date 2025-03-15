@@ -46,4 +46,31 @@ public sealed class TestStudent
         _studentOperations = new StudentOperations(_mockContext.Object);
     }
 
+    [TestCleanup]
+    public void Cleanup()
+    {
+        Console.SetIn(new StreamReader(Stream.Null)); //reset console input to prevent memory issues
+    }
+
+    [TestMethod]
+    public void AddStudent_ShouldAddStudentToDatabase()
+    {
+        //arrange: Simulate user input for a new student
+        var inputSequence = new List<string>
+        {
+            "zouzou", "mounou", "zoumounou@gmail.com", "ZouzouMounou123!",
+            "2003/04/18", "+23058226843", "2 lalaland Main St"
+        };
+        var input = new StringReader(string.Join(Environment.NewLine, inputSequence));
+        Console.SetIn(input);
+        
+        //act
+        _studentOperations!.AddStudent();
+
+        //assert: Verify Add was called and SaveChanges was triggered
+        _mockStudentSet!.Verify(s => s.Add(It.IsAny<Student>()), Times.Once);
+        _mockContext!.Verify(c => c.SaveChanges(), Times.Once);
+        Assert.AreEqual(1, _students.Count);
+    }
+
 }
