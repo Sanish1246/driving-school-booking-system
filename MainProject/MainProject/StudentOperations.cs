@@ -1,11 +1,18 @@
-﻿using MainProject.Context;
+﻿using System.Diagnostics;
+using MainProject.Context;
 using MainProject.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MainProject;
 public class StudentOperations
 {
-   
+    private readonly DrivingLessonBookingSystemContext _context;
+
+    public StudentOperations(DrivingLessonBookingSystemContext context)
+    {
+        _context = context;
+    }
+
     // CRUD Operations for students
     public void AddStudent()
     {
@@ -41,12 +48,11 @@ public class StudentOperations
             email = Console.ReadLine() ?? "";
             if (Validations.ValidateString(email))
             {
-                
                 // Validate the email
                 if (Validations.ValidateEmail(email))
                 {
                     // Check if email is already present in database; emails should be unique
-                    if (!Validations.CheckEmailExistence(email))
+                    if (!_context.Students.Any(s => s.Email == email))
                     {
                         break;
                     }
@@ -68,15 +74,11 @@ public class StudentOperations
         {
             Console.Write("Password: ");
             password = Console.ReadLine() ?? "";
-
             
             if (Validations.ValidateString(password))
             {
-                
                 if (Validations.ValidatePassword(password))
                 {
-                    // TODO: Hash password then store in database.
-                    // TODO: Double entry-check for password.
                     break; // Exit the loop if the password is valid
                 }
                 else
@@ -107,7 +109,6 @@ public class StudentOperations
             {
                 Console.WriteLine("Date can't be empty, please re-input.");
             }
-            
         }
 
         while (true)
@@ -133,26 +134,22 @@ public class StudentOperations
             Console.WriteLine("Address can't be empty, please re-input.");
         }
 
-
         try
         {
-            using (var context = new DrivingLessonBookingSystemContext())
+            // Add new student
+            var student = new Student
             {
-                // Add new student
-                var student = new Student
-                {
-                    FirstName = firstName,
-                    LastName = lastName,
-                    Address = address,
-                    Email = email,
-                    DateOfBirth = dateOfBirth,
-                    Password = password,
-                    PhoneNumber = phoneNumber
-                };
-                context.Students.Add(student);
-                context.SaveChanges();
-                Console.WriteLine("Student added successfully.");
-            }
+                FirstName = firstName,
+                LastName = lastName,
+                Address = address,
+                Email = email,
+                DateOfBirth = dateOfBirth,
+                Password = password,
+                PhoneNumber = phoneNumber
+            };
+            _context.Students.Add(student);
+            _context.SaveChanges();
+            Console.WriteLine("Student added successfully.");
         }
         catch (Exception e)
         {
@@ -172,10 +169,19 @@ public class StudentOperations
             {
                 if (Validations.ValidateEmail(email))
                 {
-                    //TODO: Check if email is present in database
-                    if (Validations.CheckEmailExistence(email))
+                    // Check if email exists in database
+                    var student = _context.Students.FirstOrDefault(s => s.Email == email);
+                    if (student != null)
                     {
-                        break;
+                        _context.Students.Remove(student);
+                        _context.SaveChanges();
+                        Console.WriteLine("Student deleted successfully.");
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Student with this email does not exist.");
+                        return;
                     }
                 }
                 else
@@ -188,31 +194,16 @@ public class StudentOperations
                 Console.WriteLine("Email can't be empty, please re-input.");
             }
         }
-        try
-        {
-            using (var context = new DrivingLessonBookingSystemContext())
-            {
-                context.Students.Where(s => s.Email == email).ExecuteDelete();
-                Console.WriteLine("Student deleted successfully.");
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Processing failed: {e.Message}");
-        }
     }
 
     public void DisplayStudent()
     {
         try
         {
-            using (var context = new DrivingLessonBookingSystemContext())
+            var students = _context.Students.AsNoTracking().ToList();
+            foreach (var student in students)
             {
-                var students = context.Students.AsNoTracking().ToList();
-                foreach (var student in students)
-                {
-                    Console.WriteLine(student);
-                }
+                Console.WriteLine(student);
             }
         }
         catch (Exception e)
@@ -221,4 +212,3 @@ public class StudentOperations
         }
     }
 }
-

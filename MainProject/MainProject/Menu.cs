@@ -1,15 +1,17 @@
 ﻿using MainProject;
+using MainProject.Context;
+using MainProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 public class MenuHandler
 {
     private readonly OfflineDatabase _tables;
     private readonly StudentOperations _studentOperation;
- 
-    
-    public MenuHandler()
+
+    public MenuHandler(DrivingLessonBookingSystemContext context)
     {
         _tables = new OfflineDatabase();
-        _studentOperation = new StudentOperations();
+        _studentOperation = new StudentOperations(context);
     }
 
     public string HandleMenuOption(int option)
@@ -51,8 +53,10 @@ public class Menu
     public static void Main()
     {
         Console.WriteLine(new string('-', 50));
-
-        var menuHandler = new MenuHandler();
+        
+        var dbContext = new DrivingLessonBookingSystemContext();
+        
+        var menuHandler = new MenuHandler(dbContext);
 
         while (true)
         {
