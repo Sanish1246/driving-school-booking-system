@@ -73,4 +73,29 @@ public sealed class TestStudent
         Assert.AreEqual(1, _students.Count);
     }
 
+    [TestMethod]
+    public void DeleteStudent_ShouldRemoveStudentFromDatabase()
+    {
+        //arrange: Add a student to simulate existing data
+        var student = new Student
+        {
+            FirstName = "zouzou", LastName = "mounou", Email = "zoumounou@gmail.com",
+            DateOfBirth = new DateOnly(2003, 04, 18), Address = "2 lalaland Main St",
+            PhoneNumber = "+23058226843", Password = "ZouzouMounou123!"
+        };
+        _students.Add(student);
+
+        //simulate user input for email of student to delete
+        var input = new StringReader("zoumounou@gmail.com");
+        Console.SetIn(input);
+        
+        //act
+        _studentOperations!.DeleteStudent();
+
+        //assert: Verify Remove was called and SaveChanges was triggered
+        _mockStudentSet!.Verify(s => s.Remove(It.IsAny<Student>()), Times.Once);
+        _mockContext!.Verify(c => c.SaveChanges(), Times.Once);
+        Assert.AreEqual(0, _students.Count);
+    }
+
 }
