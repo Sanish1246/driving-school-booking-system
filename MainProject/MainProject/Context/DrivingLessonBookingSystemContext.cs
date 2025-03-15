@@ -6,10 +6,10 @@ namespace MainProject.Context;
 
 public class DrivingLessonBookingSystemContext : DbContext
 {
-    public DbSet<Instructor> Instructors { get; set; }
-    public DbSet<Lesson> Lessons { get; set; }
+    public virtual DbSet<Instructor> Instructors { get; set; }
+    public virtual DbSet<Lesson> Lessons { get; set; }
     public virtual DbSet<Student> Students { get; set; }
-    public DbSet<Car> Cars { get; set; }
+    public virtual DbSet<Car> Cars { get; set; }
 
     // Constructor for dependency injection
     public DrivingLessonBookingSystemContext(DbContextOptions<DrivingLessonBookingSystemContext> options) : base(options)

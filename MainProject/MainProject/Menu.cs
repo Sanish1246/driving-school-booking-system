@@ -1,7 +1,5 @@
 ﻿using MainProject;
 using MainProject.Context;
-using MainProject.Models;
-using Microsoft.EntityFrameworkCore;
 
 public class MenuHandler
 {
