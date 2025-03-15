@@ -16,6 +16,16 @@ public class DrivingLessonBookingSystemContext : DbContext
         var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true);
         var root = builder.Build();
 
-        optionsBuilder.UseSqlServer(root.GetConnectionString("DefaultConnection"));
+        optionsBuilder.UseSqlServer(root.GetConnectionString("DefaultConnection"), options => options.EnableRetryOnFailure(
+                                                                                                        maxRetryCount: 10,
+                                                                                                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                                                                                                        errorNumbersToAdd: null));
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Student>().Property(s => s.Email)
+            .UseCollation("SQL_Latin1_General_CP1_CI_AI");
+        modelBuilder.Entity<Instructor>().Property(i => i.Email)
+            .UseCollation("SQL_Latin1_General_CP1_CI_AI");
     }
 }
