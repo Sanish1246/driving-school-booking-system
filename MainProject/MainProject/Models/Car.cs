@@ -11,7 +11,7 @@ public class Car
     public required string Make { get; set; }
     
     [MaxLength(20)]
-    public required string Model { get; set; }
+    public required string Transmission { get; set; }
     
     [MaxLength(20)]
     public required string RegistrationNumber { get; set; }
@@ -22,6 +22,6 @@ public class Car
 
     public override string ToString()
     {
-        return $"Make: {Make}, model of car is {Model} and registration number is {RegistrationNumber}";
+        return $"Make: {Make}, Transmission of car: {Transmission} and Registration number: {RegistrationNumber}";
     }
 }
