@@ -62,23 +62,5 @@ public class Validations
         var phoneNumberRegex = new Regex(@"(\(\+\d+\))?((\s+)?\d{8})");
         return phoneNumberRegex.IsMatch(phoneNumber.Trim());
     }
-
-    public static bool CheckEmailExistence(string email)
-    {
-        // Connect with Database
-        var success = false;
-        try
-        {
-            using (var context = new DrivingLessonBookingSystemContext())
-            {
-                success = context.Students.Any(s => s.Email == email);
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Processing failed: {e.Message}");
-        }
-
-        return success;
-    }
+    
 }
