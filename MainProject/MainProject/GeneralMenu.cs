@@ -5,8 +5,12 @@
 // studentMenu.DisplayStudentMenu();
 
 // Instructor Menu
-var instructorMenu = new InstructorMenu();
-instructorMenu.DisplayInstructorMenu();
+// var instructorMenu = new InstructorMenu();
+// instructorMenu.DisplayInstructorMenu();
+
+// Car Menu
+var carMenu = new CarMenu();
+carMenu.DisplayCarMenu();
 
 
 

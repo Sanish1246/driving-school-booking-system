@@ -52,7 +52,6 @@ public class StudentMenu : StudentOperations
                     studentOperations.UpdateUser();
                     break;
                 case 4:
-                    //TODO: To search for a particular student
                     studentOperations.SearchUser();
                     break;
                 case 5:

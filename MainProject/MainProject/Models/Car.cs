@@ -1,6 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
 namespace MainProject.Models;
 
+[Index(nameof(RegistrationNumber), IsUnique = true)]
 public class Car
 {
     // Primary key

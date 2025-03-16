@@ -53,7 +53,6 @@ public class InstructorMenu : InstructorOperations
                     instructorOperations.UpdateUser();
                     break;
                 case 4:
-                    //TODO: To search for a particular instructor
                     instructorOperations.SearchUser();
                     break;
                 case 5:

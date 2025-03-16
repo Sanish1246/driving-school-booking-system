@@ -554,7 +554,6 @@ public class InstructorOperations
 
     public void SearchUser()
     {
-        //TODO: Implement searching from database
         string email;
         while (true)
         {

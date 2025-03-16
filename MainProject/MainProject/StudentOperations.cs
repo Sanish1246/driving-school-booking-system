@@ -553,7 +553,6 @@ public class StudentOperations
 
     public void SearchUser()
     {
-        //TODO: Implement searching from database
         string email;
         while (true)
         {

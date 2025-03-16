@@ -51,6 +51,7 @@ public class CarMenu : CarOperations
                     break;
                 case 3:
                     //TODO: Update car details
+                    carOperations.UpdateCar();
                     break;
                 case 4:
                     //TODO: Search car

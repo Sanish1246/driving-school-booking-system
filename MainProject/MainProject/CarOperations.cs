@@ -51,10 +51,16 @@ public class CarOperations
             {
                 if (CarRegistrationChecker(registrationNumber))
                 {
-                    break;
+                    if (IsUnique(registrationNumber))
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Registration number is already taken, please re-input.");
                 }
-
-                Console.WriteLine("Invalid format, please re-input.");
+                else
+                {
+                    Console.WriteLine("Invalid format, please re-input.");
+                }
             }
             else
             {
@@ -83,6 +89,215 @@ public class CarOperations
         }
     }
 
+    public void UpdateCar()
+    {
+        string? registrationNumber;
+        while (true)
+        {
+            Console.Write("Enter the car registration number: ");
+            registrationNumber = Console.ReadLine();
+            if (Validations.ValidateString(registrationNumber))
+            {
+                if (CarRegistrationChecker(registrationNumber))
+                {
+                    break;
+                }
+
+                Console.WriteLine("Invalid registration number format, ensure the format is as: AB99 CDE");
+            }
+
+            Console.WriteLine("Registration number can't be empty");
+        }
+        
+        while (true)
+        {
+            // Choose what information to update (first name, last name, email, password, date of birth, address, phone number)
+            Console.WriteLine("The following fields can be updated: \n1. Make, \n2. Transmission, \n3. Registration number");
+            string? field;
+            var validField = false;
+            while (true)
+            {
+                Console.WriteLine("Enter the field you want to update: ");
+                field = Console.ReadLine().Trim().ToLower();
+                
+                // Remove all space characters
+                field = Validations.RemoveWhiteSpaces(field);
+                if (Validations.ValidateString(field))
+                {
+                    if (Validations.ValidateLettersOnly(field))
+                    {
+                        break;
+                    }
+
+                    Console.WriteLine("Field should only contain letters.");
+                }
+                else
+                {
+                    Console.WriteLine("Field can't be empty, please re-input.");
+                }
+            }
+            
+            switch (field)
+            {
+                case "make":
+                    //TODO: Update make
+                    validField = true;
+                    UpdateMake(registrationNumber);
+                    break;
+                case "transmission":
+                    //TODO: Update transmission
+                    validField = true;
+                    UpdateTransmission(registrationNumber);
+                    break;
+                case "registrationnumber":
+                    //TODO: Update registration number
+                    validField = true;
+                    UpdateRegistrationNumber(registrationNumber);
+                    break;
+                default:
+                    Console.WriteLine("Invalid field chosen, please re-input.");
+                    break;
+            }
+
+            if (!validField) continue;
+            
+            // Continue updating or exit
+            string? response;
+            while (true)
+            {
+                Console.WriteLine("Do you wish to continue updating car details? (Yes/No)");
+                response = Console.ReadLine();
+                if (Validations.ValidateString(response))
+                {
+                    if (response.Trim().Equals("yes", StringComparison.InvariantCultureIgnoreCase) || response.Trim().Equals("no", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        break;
+                    }
+            
+                    Console.WriteLine("Response should either be yes or no, please re-input.");
+                }
+                else
+                {
+                    Console.WriteLine("Response can't be empty, please re-input.");
+                }
+            }
+
+            if (response.Trim().Equals("no", StringComparison.InvariantCultureIgnoreCase))
+            {
+                break;
+            }
+        }
+    }
+
+    private static void UpdateRegistrationNumber(string registrationNumber)
+    {
+        //TODO: Implement update registration number
+
+        string? newRegistrationNumber;
+        while (true)
+        {
+            Console.Write("Enter the car registration number: ");
+            newRegistrationNumber = Console.ReadLine();
+            if (Validations.ValidateString(newRegistrationNumber))
+            {
+                if (CarRegistrationChecker(newRegistrationNumber))
+                {
+                    if (IsUnique(newRegistrationNumber))
+                    {
+                        break;
+                    }
+
+                    Console.WriteLine("Registration number is already taken, please re-input.");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid registration number format, ensure the format is as: AB99 CDE");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Registration number can't be empty");
+            }
+        }
+
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                context.Cars.Where(c => c.RegistrationNumber == registrationNumber).ExecuteUpdate(
+                    setters => setters.SetProperty(c => c.RegistrationNumber, newRegistrationNumber.ToUpper()));
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+    }
+
+    private static void UpdateTransmission(string registrationNumber)
+    {
+        string? transmission;
+        while (true)
+        {
+            Console.Write("Enter new transmission of the car: ");
+            transmission = Console.ReadLine();
+            if (Validations.ValidateString(transmission))
+            {
+                if (TransmissionChecker(transmission))
+                {
+                    break;
+                }
+
+                Console.WriteLine("Transmission can either be automatic or manuel. Please re-input.");
+            }
+            else
+            {
+                Console.WriteLine("Transmission can't be empty please re-input.");
+            }
+        }
+
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                context.Cars.Where(c => c.RegistrationNumber == registrationNumber)
+                    .ExecuteUpdate(setters => setters.SetProperty(c => c.Transmission, transmission));
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+    }
+
+    private static void UpdateMake(string registrationNumber)
+    {
+        string? make;
+        while (true)
+        {
+            Console.Write("Enter new make of the car: ");
+            make = Console.ReadLine();
+            if (Validations.ValidateString(make))
+            {
+                break;
+            }
+            Console.WriteLine("Make can't be empty please re-input.");
+        }
+
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                context.Cars.Where(c => c.RegistrationNumber == registrationNumber)
+                    .ExecuteUpdate(setters => setters.SetProperty(c => c.Make, make));
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+    }
+
     public void DisplayCar()
     {
         try
@@ -102,21 +317,34 @@ public class CarOperations
         }
     }
 
-    static bool TransmissionChecker(string transmission)
+    private static bool TransmissionChecker(string transmission)
     {
-        if (transmission.Equals("Automatic", StringComparison.InvariantCultureIgnoreCase) ||
-            transmission.Equals("Manuel", StringComparison.InvariantCultureIgnoreCase))
-        {
-            return true;
-        }
-
-        return false;
+        return transmission.Equals("Automatic", StringComparison.InvariantCultureIgnoreCase) ||
+               transmission.Equals("Manuel", StringComparison.InvariantCultureIgnoreCase);
     }
 
-    static bool CarRegistrationChecker(string registrationNumber)
+    private static bool CarRegistrationChecker(string registrationNumber)
     {
         var registrationNumberRegex = new Regex(@"^[a-zA-Z]{2}[\d]{2}[\s]?[a-zA-Z]{3}$");
         var m = registrationNumberRegex.Match(registrationNumber);
         return m.Success;
+    }
+
+    private static bool IsUnique(string registrationNumber)
+    {
+        var success = false;
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                success = context.Cars.Any(c => c.RegistrationNumber == registrationNumber);
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+
+        return !success;
     }
 }
