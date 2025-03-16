@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace MainProject.Models;
+using Microsoft.EntityFrameworkCore;
 
+namespace MainProject.Models;
+[Index(nameof(Email), IsUnique = true)]
 public class Student
 {   
     // Primary Key

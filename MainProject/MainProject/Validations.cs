@@ -7,6 +7,20 @@ public class Validations
 {
     public static bool ValidateString(string text) => !string.IsNullOrEmpty(text);
 
+    public static bool ValidateLettersOnly(string text)
+    {
+        var textRegex = new Regex(@"^[a-zA-Z]+$");
+        return textRegex.IsMatch(text);
+    }
+    
+    // Remove all white space characters
+    public static string RemoveWhiteSpaces(string text)
+    {
+        var spaceRegex = new Regex(@"\s+");
+        text = spaceRegex.Replace(text, "");
+        return text;
+    }
+
     public static  bool ValidateEmail(string email)
     {
         var emailRegex = new Regex(@"\w+@[a-zA-Z\.]+\.\w+");
@@ -48,23 +62,5 @@ public class Validations
         var phoneNumberRegex = new Regex(@"(\(\+\d+\))?((\s+)?\d{8})");
         return phoneNumberRegex.IsMatch(phoneNumber.Trim());
     }
-
-    public static bool CheckEmailExistence(string email)
-    {
-        // Connect with Database
-        var success = false;
-        try
-        {
-            using (var context = new DrivingLessonBookingSystemContext())
-            {
-                success = context.Students.Any(s => s.Email == email);
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Processing failed: {e.Message}");
-        }
-
-        return success;
-    }
+    
 }

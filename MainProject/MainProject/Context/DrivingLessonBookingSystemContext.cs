@@ -6,28 +6,26 @@ namespace MainProject.Context;
 
 public class DrivingLessonBookingSystemContext : DbContext
 {
-    public virtual DbSet<Instructor> Instructors { get; set; }
-    public virtual DbSet<Lesson> Lessons { get; set; }
-    public virtual DbSet<Student> Students { get; set; }
-    public virtual DbSet<Car> Cars { get; set; }
-
-    // Constructor for dependency injection
-    public DrivingLessonBookingSystemContext(DbContextOptions<DrivingLessonBookingSystemContext> options) : base(options)
-    {
-    }
-
-    // Default constructor for normal database usage
-    public DrivingLessonBookingSystemContext()
-    {
-    }
-
+    public DbSet<Instructor> Instructors { get; set; }
+    public DbSet<Lesson> Lessons { get; set; }
+    public DbSet<Student> Students { get; set; }
+    public DbSet<Car> Cars { get; set; }
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        if (!optionsBuilder.IsConfigured) // Only configure if options are not already provided (for testing)
-        {
-            var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true);
-            var root = builder.Build();
-            optionsBuilder.UseSqlServer(root.GetConnectionString("DefaultConnection"));
-        }
+        var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true);
+        var root = builder.Build();
+
+        optionsBuilder.UseSqlServer(root.GetConnectionString("DefaultConnection"), options => options.EnableRetryOnFailure(
+                                                                                                        maxRetryCount: 10,
+                                                                                                        maxRetryDelay: TimeSpan.FromSeconds(30),
+                                                                                                        errorNumbersToAdd: null));
+    }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Student>().Property(s => s.Email)
+            .UseCollation("SQL_Latin1_General_CP1_CI_AI");
+        modelBuilder.Entity<Instructor>().Property(i => i.Email)
+            .UseCollation("SQL_Latin1_General_CP1_CI_AI");
     }
 }

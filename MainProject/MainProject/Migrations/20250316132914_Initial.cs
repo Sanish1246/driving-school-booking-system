@@ -34,7 +34,11 @@ namespace MainProject.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false)
+                    Email = table.Column<string>(type: "nvarchar(254)", maxLength: 254, nullable: false, collation: "SQL_Latin1_General_CP1_CI_AI"),
+                    Password = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
+                    DateOfBirth = table.Column<DateOnly>(type: "date", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,7 +53,7 @@ namespace MainProject.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(254)", maxLength: 254, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(254)", maxLength: 254, nullable: false, collation: "SQL_Latin1_General_CP1_CI_AI"),
                     Password = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     DateOfBirth = table.Column<DateOnly>(type: "date", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
@@ -66,7 +70,7 @@ namespace MainProject.Migrations
                 {
                     LessonId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Date = table.Column<DateOnly>(type: "date", nullable: false),
                     InstructorId = table.Column<int>(type: "int", nullable: false),
                     StudentId = table.Column<int>(type: "int", nullable: false),
                     CarId = table.Column<int>(type: "int", nullable: false)
@@ -95,6 +99,12 @@ namespace MainProject.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Instructors_Email",
+                table: "Instructors",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Lessons_CarId",
                 table: "Lessons",
                 column: "CarId");
@@ -108,6 +118,12 @@ namespace MainProject.Migrations
                 name: "IX_Lessons_StudentId",
                 table: "Lessons",
                 column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Students_Email",
+                table: "Students",
+                column: "Email",
+                unique: true);
         }
 
         /// <inheritdoc />
