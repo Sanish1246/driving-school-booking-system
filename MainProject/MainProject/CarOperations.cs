@@ -76,11 +76,96 @@ public class CarOperations
                 {
                     Make = make,
                     Transmission = transmission,
-                    RegistrationNumber = registrationNumber.ToUpper()
+                    RegistrationNumber = Validations.RemoveWhiteSpaces(registrationNumber.ToUpper())
                 };
                 context.Cars.Add(car);
                 context.SaveChanges();
                 Console.WriteLine("Car added successfully.");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+    }
+
+    public void DeleteCar()
+    {
+        string? registrationNumber;
+        while (true)
+        {
+            Console.Write("Enter the car registration number: ");
+            registrationNumber = Console.ReadLine();
+            if (Validations.ValidateString(registrationNumber))
+            {
+                if (CarRegistrationChecker(registrationNumber))
+                {
+                    if (!IsUnique(registrationNumber))
+                    {
+                        break;
+                    }
+
+                    Console.WriteLine("Car registration number doesn't exist, please re-input.");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid registration number format, ensure the format is as: AB99 CDE");
+                }
+            }
+
+            Console.WriteLine("Registration number can't be empty");
+        }
+
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                context.Cars.Where(c => c.RegistrationNumber == registrationNumber).ExecuteDelete();
+                Console.WriteLine("Car successfully deleted.");
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+    }
+
+    public void SearchCar()
+    {
+        string? registrationNumber;
+        while (true)
+        {
+            Console.Write("Enter the car registration number: ");
+            registrationNumber = Console.ReadLine();
+            if (Validations.ValidateString(registrationNumber))
+            {
+                if (CarRegistrationChecker(registrationNumber))
+                {
+                    if (!IsUnique(registrationNumber))
+                    {
+                        break;
+                    }
+
+                    Console.WriteLine("Car registration number doesn't exist, please re-input.");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid registration number format, ensure the format is as: AB99 CDE");
+                }
+            }
+
+            Console.WriteLine("Registration number can't be empty");
+        }
+
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                var cars = context.Cars.Where(c => c.RegistrationNumber == registrationNumber);
+                foreach (var car in cars)
+                {
+                    Console.WriteLine($"Car found with the following details:\n{car}"); 
+                }
             }
         }
         catch (Exception e)
@@ -140,17 +225,14 @@ public class CarOperations
             switch (field)
             {
                 case "make":
-                    //TODO: Update make
                     validField = true;
                     UpdateMake(registrationNumber);
                     break;
                 case "transmission":
-                    //TODO: Update transmission
                     validField = true;
                     UpdateTransmission(registrationNumber);
                     break;
                 case "registrationnumber":
-                    //TODO: Update registration number
                     validField = true;
                     UpdateRegistrationNumber(registrationNumber);
                     break;
@@ -191,7 +273,6 @@ public class CarOperations
 
     private static void UpdateRegistrationNumber(string registrationNumber)
     {
-        //TODO: Implement update registration number
 
         string? newRegistrationNumber;
         while (true)

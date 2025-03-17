@@ -43,18 +43,16 @@ public class CarMenu : CarOperations
             switch (options)
             {
                 case 1:
-                    //TODO: Add new car
                     carOperations.AddCar();
                     break;
                 case 2:
-                    //TODO: Delete car
+                    carOperations.DeleteCar();
                     break;
                 case 3:
-                    //TODO: Update car details
                     carOperations.UpdateCar();
                     break;
                 case 4:
-                    //TODO: Search car
+                    carOperations.SearchCar();
                     break;
                 case 5:
                     carOperations.DisplayCar();
