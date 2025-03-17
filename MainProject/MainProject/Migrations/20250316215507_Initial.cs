@@ -18,7 +18,7 @@ namespace MainProject.Migrations
                     CarId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Make = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Model = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Transmission = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     RegistrationNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
@@ -97,6 +97,12 @@ namespace MainProject.Migrations
                         principalColumn: "StudentId",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cars_RegistrationNumber",
+                table: "Cars",
+                column: "RegistrationNumber",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Instructors_Email",

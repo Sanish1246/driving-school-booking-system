@@ -1,14 +1,14 @@
 ﻿namespace MainProject;
 
-public class StudentMenu : StudentOperations
+public class CarMenu : CarOperations
 {
-    public void DisplayStudentMenu()
+    public void DisplayCarMenu()
     {
-        // Menu for Student
+        // Menu for Car
         Console.WriteLine(new string('-',50));
         while (true)
         {
-            Console.WriteLine("Here is a list of operations that you can perform: \n1. Add Student, \n2. Delete Student, \n3. Update Student details, \n4. Search student, \n5. List all Students\n6. Enter -1 to exit the application");
+            Console.WriteLine("Here is a list of operations that you can perform: \n1. Add Car, \n2. Delete Car, \n3. Update Car details, \n4. Search Car, \n5. List all Cars\n6. Enter -1 to exit the application");
             Console.Write("Choose one of the above options: ");
             int options;
 
@@ -39,23 +39,23 @@ public class StudentMenu : StudentOperations
             // Load Tables
             var tables = new OfflineDatabase();
             // tables.LoadTables();
-            var studentOperations = new StudentMenu();
+            var carOperations = new CarMenu();
             switch (options)
             {
                 case 1:
-                    studentOperations.AddUser();
+                    carOperations.AddCar();
                     break;
                 case 2:
-                    studentOperations.DeleteUser();
+                    carOperations.DeleteCar();
                     break;
                 case 3:
-                    studentOperations.UpdateUser();
+                    carOperations.UpdateCar();
                     break;
                 case 4:
-                    studentOperations.SearchUser();
+                    carOperations.SearchCar();
                     break;
                 case 5:
-                    studentOperations.DisplayUser();
+                    carOperations.DisplayCar();
                     break;
                 default:
                     Console.WriteLine("Wrong options");
