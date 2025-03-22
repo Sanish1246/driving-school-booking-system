@@ -404,14 +404,14 @@ public class CarOperations
                transmission.Equals("Manuel", StringComparison.InvariantCultureIgnoreCase);
     }
 
-    private static bool CarRegistrationChecker(string registrationNumber)
+    public static bool CarRegistrationChecker(string registrationNumber)
     {
         var registrationNumberRegex = new Regex(@"^[a-zA-Z]{2}[\d]{2}[\s]?[a-zA-Z]{3}$");
         var m = registrationNumberRegex.Match(registrationNumber);
         return m.Success;
     }
 
-    private static bool IsUnique(string registrationNumber)
+    public static bool IsUnique(string registrationNumber)
     {
         var success = false;
         try
