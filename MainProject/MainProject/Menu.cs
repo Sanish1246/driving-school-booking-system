@@ -1,6 +1,8 @@
 ﻿using MainProject;
 using MainProject.Context;
 
+
+//Class for the menu
 public class MenuHandler
 {
     private readonly OfflineDatabase _tables;
@@ -12,6 +14,7 @@ public class MenuHandler
         _studentOperation = new StudentOperations(context);
     }
 
+    //Menu actions
     public string HandleMenuOption(int option)
     {
         _tables.LoadTables();
@@ -46,6 +49,7 @@ public class MenuHandler
     }
 }
 
+//Admin menu
 public class Menu
 {
     public static void Main()

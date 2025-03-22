@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 
 namespace MainProject;
 
+//Class for the operations with the car table
 public class CarOperations
 {
     public void AddCar()
@@ -68,6 +69,7 @@ public class CarOperations
             }
         }
 
+        //Creating a car object and inserting it in the database
         try
         {
             using (var context = new DrivingLessonBookingSystemContext())

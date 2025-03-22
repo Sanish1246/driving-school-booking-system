@@ -1,5 +1,6 @@
 ﻿namespace MainProject;
 
+//Menu for the cars
 public class CarMenu : CarOperations
 {
     public void DisplayCarMenu()
@@ -12,6 +13,7 @@ public class CarMenu : CarOperations
             Console.Write("Choose one of the above options: ");
             int options;
 
+            //Validation
             while (true)
             {
                 var validOptions = int.TryParse(Console.ReadLine(), out options);
