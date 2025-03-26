@@ -43,11 +43,10 @@ public class LessonMenu : LessonOperations
             switch (options)
             {
                 case 1:
-                    //TODO: Add lesson
                     lessonOperations.AddLesson();
                     break;
                 case 2:
-                    //TODO: Delete lesson, by date
+                    lessonOperations.DeleteLesson();
                     break;
                 case 3:
                     //TODO: Update lesson, by date
@@ -56,7 +55,7 @@ public class LessonMenu : LessonOperations
                     //TODO: Search lesson, by date
                     break;
                 case 5:
-                    //TODO: Display all lessons
+                    lessonOperations.DisplayLessons();
                     break;
                 default:
                     Console.WriteLine("Wrong options");
