@@ -1,4 +1,5 @@
 ﻿using MainProject;
+using MainProject.Context;
 
 // Student Menu
 // var studentMenu = new StudentMenu();
@@ -15,6 +16,8 @@
 // Lesson Menu
 var lessonMenu = new LessonMenu();
 lessonMenu.DisplayStudentMenu();
+
+
 
 
 

@@ -58,9 +58,6 @@ public class InstructorMenu : InstructorOperations
                 case 5:
                     instructorOperations.DisplayUser();
                     break;
-                default:
-                    Console.WriteLine("Wrong options");
-                    break;
             }
 
             Console.WriteLine("Do you want to perform any other operations on the instructor table? (Yes/No)");

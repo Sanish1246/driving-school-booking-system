@@ -49,16 +49,13 @@ public class LessonMenu : LessonOperations
                     lessonOperations.DeleteLesson();
                     break;
                 case 3:
-                    //TODO: Update lesson, by date
+                    lessonOperations.UpdateLessons();
                     break;
                 case 4:
-                    //TODO: Search lesson, by date
+                    lessonOperations.SearchDate();
                     break;
                 case 5:
                     lessonOperations.DisplayLessons();
-                    break;
-                default:
-                    Console.WriteLine("Wrong options");
                     break;
             }
 

@@ -57,9 +57,6 @@ public class StudentMenu : StudentOperations
                 case 5:
                     studentOperations.DisplayUser();
                     break;
-                default:
-                    Console.WriteLine("Wrong options");
-                    break;
             }
 
             Console.WriteLine("Do you want to perform any other operations on the student table? (Yes/No)");
