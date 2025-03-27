@@ -62,5 +62,4 @@ public class Validations
         var phoneNumberRegex = new Regex(@"(\(\+\d+\))?((\s+)?\d{8})");
         return phoneNumberRegex.IsMatch(phoneNumber.Trim());
     }
-    
 }
