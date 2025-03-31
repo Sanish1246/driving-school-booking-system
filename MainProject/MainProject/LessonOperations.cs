@@ -113,6 +113,7 @@ public class LessonOperations
                 {
                     if (!CarOperations.IsUnique(registrationNumber))
                     {
+                        //Adding the car if the registration number is unique and in a valid format
                         try
                         {
                             using (var context = new DrivingLessonBookingSystemContext())

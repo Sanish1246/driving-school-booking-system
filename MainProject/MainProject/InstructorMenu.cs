@@ -67,6 +67,7 @@ public class InstructorMenu : InstructorOperations
                 response = Console.ReadLine();
                 if (Validations.ValidateString(response))
                 {
+                    //Checking for different formattings for the answer
                     if (response.Trim().Equals("yes", StringComparison.InvariantCultureIgnoreCase) || response.Trim().Equals("no", StringComparison.InvariantCultureIgnoreCase))
                     {
                         break;

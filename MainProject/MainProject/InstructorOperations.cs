@@ -252,6 +252,7 @@ public class InstructorOperations
             {
                 Console.WriteLine("Do you wish to continue updating instructor details? (Yes/No)");
                 response = Console.ReadLine();
+                //Accounting for different formattings for the answer
                 if (Validations.ValidateString(response))
                 {
                     if (response.Trim().Equals("yes", StringComparison.InvariantCultureIgnoreCase) || response.Trim().Equals("no", StringComparison.InvariantCultureIgnoreCase))
@@ -316,6 +317,7 @@ public class InstructorOperations
             Console.WriteLine("First name can't be empty, please re-input.");
         }
 
+        //Updating first name in the database
         try
         {
             using (var context = new DrivingLessonBookingSystemContext())
@@ -343,6 +345,7 @@ public class InstructorOperations
             Console.WriteLine("Last name can't be empty, please re-input.");
         }
 
+        //Updating last name in the database
         try
         {
             using (var context = new DrivingLessonBookingSystemContext())
@@ -385,6 +388,7 @@ public class InstructorOperations
             }
         }
 
+        //Updating email in the database
         try
         {
             using (var context = new DrivingLessonBookingSystemContext())
@@ -421,6 +425,7 @@ public class InstructorOperations
             }
         }
 
+        //Updating the password in the database
         try
         {
             using (var context = new DrivingLessonBookingSystemContext())
@@ -458,6 +463,7 @@ public class InstructorOperations
             }
         }
 
+        //Updating DOB in the database
         try
         {
             using (var context = new DrivingLessonBookingSystemContext())
@@ -532,6 +538,7 @@ public class InstructorOperations
         }
     }
 
+    //Function to seach an instructor in the database
     public void SearchUser()
     {
         string email;
@@ -596,6 +603,7 @@ public class InstructorOperations
         }
     }
     
+    //Checking if the email exists in the database
     public static bool CheckEmailExistence(string email)
     {
         // Connect with Database

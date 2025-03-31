@@ -38,7 +38,7 @@ public class LessonMenu : LessonOperations
             }
             // Load Tables
             var tables = new OfflineDatabase();
-            // tables.LoadTables();
+
             var lessonOperations = new LessonMenu();
             switch (options)
             {
@@ -66,6 +66,7 @@ public class LessonMenu : LessonOperations
                 response = Console.ReadLine();
                 if (Validations.ValidateString(response))
                 {
+                    //Accounting for the different formatting of the answer
                     if (response.Trim().Equals("yes", StringComparison.InvariantCultureIgnoreCase) || response.Trim().Equals("no", StringComparison.InvariantCultureIgnoreCase))
                     {
                         break;
