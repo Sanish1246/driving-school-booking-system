@@ -147,6 +147,10 @@ public class StudentOperations
                     Password = password,
                     PhoneNumber = phoneNumber
                 };
+                // Add student to hash table
+                var table = new OfflineDatabase();
+                table.StudentTable.Insert(email,student);
+                
                 context.Students.Add(student);
                 context.SaveChanges();
                 Console.WriteLine("Student added successfully.");
@@ -164,8 +168,13 @@ public class StudentOperations
         var email = EnterEmail();
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Delete user in hash table
+                table.StudentTable.Delete(email);
+                
                 context.Students.Where(s => s.Email == email).ExecuteDelete();
                 Console.WriteLine("Student deleted successfully.");
             }
@@ -178,9 +187,10 @@ public class StudentOperations
 
     public void UpdateUser()
     {
-        var email = EnterEmail();
+        
         while (true)
         {
+            var email = EnterEmail();
             // Choose what information to update (first name, last name, email, password, date of birth, address, phone number)
             Console.WriteLine("The following fields can be updated: \n1. First Name, \n2. Last Name, \n3. Email, \n4. Password, \n5. Date of birth, \n6. Address, \n7. Phone number");
             string? field;
@@ -317,8 +327,17 @@ public class StudentOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Update into HashTable
+                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.StudentTable.Delete(email);
+                result[0].FirstName = firstName;
+                table.StudentTable.Insert(email, result[0]);
+                
+                // Update into DB
                 context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.FirstName, firstName));
                 Console.WriteLine("First name updated successfully.");
             }
@@ -344,8 +363,17 @@ public class StudentOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Update into HashTable
+                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.StudentTable.Delete(email);
+                result[0].LastName = lastName;
+                table.StudentTable.Insert(email, result[0]);
+                
+                // Update into DB
                 context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.LastName, lastName));
                 Console.WriteLine("Last name updated successfully.");
             }
@@ -386,8 +414,17 @@ public class StudentOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Update into HashTable
+                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.StudentTable.Delete(email);
+                result[0].Email = email;
+                table.StudentTable.Insert(email, result[0]);
+                
+                // Update into DB
                 context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.Email, newEmail));
                 Console.WriteLine("Email updated successfully.");
             }
@@ -422,8 +459,17 @@ public class StudentOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Update into HashTable
+                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.StudentTable.Delete(email);
+                result[0].Password = password;
+                table.StudentTable.Insert(email, result[0]);
+                
+                // Update into DB
                 context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.Password, password));
                 Console.WriteLine("Password updated successfully.");
             }
@@ -459,8 +505,17 @@ public class StudentOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Update into HashTable
+                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.StudentTable.Delete(email);
+                result[0].DateOfBirth = dateOfBirth;
+                table.StudentTable.Insert(email, result[0]);
+                
+                // Update in DB
                 context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.DateOfBirth, dateOfBirth));
                 Console.WriteLine("Date of birth updated successfully.");
             }
@@ -487,8 +542,17 @@ public class StudentOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Update into HashTable
+                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.StudentTable.Delete(email);
+                result[0].Address = address;
+                table.StudentTable.Insert(email, result[0]);
+                
+                // Update in DB
                 context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.Address, address));
                 Console.WriteLine("Address updated successfully.");
             }
@@ -519,8 +583,17 @@ public class StudentOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Update into HashTable
+                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.StudentTable.Delete(email);
+                result[0].PhoneNumber = phoneNumber;
+                table.StudentTable.Insert(email, result[0]);
+                
+                // Update into DB
                 context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.PhoneNumber, phoneNumber));
                 Console.WriteLine("Phone number updated successfully.");
             }

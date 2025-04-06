@@ -36,9 +36,9 @@ public class StudentMenu : StudentOperations
                 Console.WriteLine("Exiting console application...");
                 break;
             }
-            // Load Tables
+            //TODO: Hash table operations
             var tables = new OfflineDatabase();
-            // tables.LoadTables();
+            tables.LoadTables();
             var studentOperations = new StudentMenu();
             switch (options)
             {
@@ -55,7 +55,8 @@ public class StudentMenu : StudentOperations
                     studentOperations.SearchUser();
                     break;
                 case 5:
-                    studentOperations.DisplayUser();
+                    tables.StudentTable.Display();
+                    // studentOperations.DisplayUser();
                     break;
             }
 

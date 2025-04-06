@@ -1,7 +1,8 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 
-public class HashMap<K, V>
+
+public class HashMap<K, V> : IEnumerable<V>
 {
     // Define the initial capacity as a prime number close to 1000 for better hashing distribution.
     private int capacity = 997;
@@ -156,6 +157,25 @@ public class HashMap<K, V>
                 }
             }
         }
+    }
+
+    public IEnumerator<V> GetEnumerator()
+    {
+        for (int i = 0; i < capacity; i++)
+        {
+            if (buckets[i] != null)
+            {
+                foreach (var pair in buckets[i])
+                {
+                    yield return pair.Value;
+                }
+            }
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
     }
 }
 
