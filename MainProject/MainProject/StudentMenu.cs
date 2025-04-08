@@ -23,7 +23,7 @@ public class StudentMenu : StudentOperations
                 {
                     if (options is < 1 or > 5 && options != -1)
                     {
-                        Console.WriteLine("Invalid option, you should choose between options 1 and 5 or -1 to exit.");
+                        Console.WriteLine("Invalid option, you should choose between options 1 and 4 or -1 to exit.");
                     }
                     else
                     {
@@ -56,6 +56,9 @@ public class StudentMenu : StudentOperations
                     break;
                 case 5:
                     studentOperations.DisplayUser();
+                    break;
+                default:
+                    Console.WriteLine("Wrong options");
                     break;
             }
 

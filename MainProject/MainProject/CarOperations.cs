@@ -134,7 +134,30 @@ public class CarOperations
 
     public void SearchCar()
     {
-        var registrationNumber = EnterCarReg();
+        string? registrationNumber;
+        while (true)
+        {
+            Console.Write("Enter the car registration number: ");
+            registrationNumber = Console.ReadLine();
+            if (Validations.ValidateString(registrationNumber))
+            {
+                if (CarRegistrationChecker(registrationNumber))
+                {
+                    if (!IsUnique(registrationNumber))
+                    {
+                        break;
+                    }
+
+                    Console.WriteLine("Car registration number doesn't exist, please re-input.");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid registration number format, ensure the format is as: AB99 CDE");
+                }
+            }
+
+            Console.WriteLine("Registration number can't be empty");
+        }
 
         try
         {
@@ -155,7 +178,23 @@ public class CarOperations
 
     public void UpdateCar()
     {
-        var registrationNumber = EnterCarReg();
+        string? registrationNumber;
+        while (true)
+        {
+            Console.Write("Enter the car registration number: ");
+            registrationNumber = Console.ReadLine();
+            if (Validations.ValidateString(registrationNumber))
+            {
+                if (CarRegistrationChecker(registrationNumber))
+                {
+                    break;
+                }
+
+                Console.WriteLine("Invalid registration number format, ensure the format is as: AB99 CDE");
+            }
+
+            Console.WriteLine("Registration number can't be empty");
+        }
         
         while (true)
         {
@@ -234,26 +273,6 @@ public class CarOperations
         }
     }
 
-    public static string EnterCarReg()
-    {
-        while (true)
-        {
-            Console.Write("Enter the car registration number: ");
-            var registrationNumber = Console.ReadLine();
-            if (Validations.ValidateString(registrationNumber))
-            {
-                if (CarRegistrationChecker(registrationNumber))
-                {
-                    return registrationNumber;
-                }
-
-                Console.WriteLine("Invalid registration number format, ensure the format is as: AB99 CDE");
-            }
-
-            Console.WriteLine("Registration number can't be empty");
-        }
-    }
-
     private static void UpdateRegistrationNumber(string registrationNumber)
     {
 
@@ -298,7 +317,7 @@ public class CarOperations
         }
     }
 
-    public static void UpdateTransmission(string registrationNumber)
+    private static void UpdateTransmission(string registrationNumber)
     {
         string? transmission;
         while (true)
@@ -387,14 +406,14 @@ public class CarOperations
                transmission.Equals("Manuel", StringComparison.InvariantCultureIgnoreCase);
     }
 
-    public static bool CarRegistrationChecker(string registrationNumber)
+    private static bool CarRegistrationChecker(string registrationNumber)
     {
         var registrationNumberRegex = new Regex(@"^[a-zA-Z]{2}[\d]{2}[\s]?[a-zA-Z]{3}$");
         var m = registrationNumberRegex.Match(registrationNumber);
         return m.Success;
     }
 
-    public static bool IsUnique(string registrationNumber)
+    private static bool IsUnique(string registrationNumber)
     {
         var success = false;
         try

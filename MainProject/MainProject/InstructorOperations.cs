@@ -162,7 +162,31 @@ public class InstructorOperations
     public void DeleteUser()
     {
         // Delete by email
-        var email = EnterEmail();
+        string? email;
+        while (true)
+        {
+            Console.Write("Please enter the email of the instructor you want to delete: ");
+            email = Console.ReadLine();
+            if (Validations.ValidateString(email))
+            {
+                if (Validations.ValidateEmail(email))
+                {
+                    if (CheckEmailExistence(email))
+                    {
+                        break;
+                    }
+                    Console.WriteLine("Email not found, please re-input.");
+                }
+                else
+                {
+                    Console.WriteLine("Wrong email format; format should be in the form John.Doe@example.com, please re-input.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Email can't be empty, please re-input.");
+            }
+        }
         try
         {
             using (var context = new DrivingLessonBookingSystemContext())
@@ -179,8 +203,32 @@ public class InstructorOperations
 
     public void UpdateUser()
     {
-        var email = EnterEmail();
-        
+        string? email;
+        while (true)
+        {
+            Console.Write("Enter the email address of the instructor: ");
+            email = Console.ReadLine();
+            if (Validations.ValidateString(email))
+            {
+                if (Validations.ValidateEmail(email))
+                {
+                    if (CheckEmailExistence(email))
+                    {
+                        break;
+                    }
+                    
+                    Console.WriteLine("Email doesn't exist, please re-input.");
+                }
+                else
+                {
+                    Console.WriteLine("Wrong email format; format should be in the form John.Doe@example.com, please re-input.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Email can't be empty, please re-input.");
+            }
+        }
         while (true)
         {
             // Choose what information to update (first name, last name, email, password, date of birth, address, phone number)
@@ -275,35 +323,7 @@ public class InstructorOperations
         }
     }
 
-    public static string EnterEmail()
-    {
-        while (true)
-        {
-            Console.Write("Enter the email address of the instructor: ");
-            var email = Console.ReadLine();
-            if (Validations.ValidateString(email))
-            {
-                if (Validations.ValidateEmail(email))
-                {
-                    if (CheckEmailExistence(email))
-                    {
-                        return email;
-                    }
-                    
-                    Console.WriteLine("Email doesn't exist, please re-input.");
-                }
-                else
-                {
-                    Console.WriteLine("Wrong email format; format should be in the form John.Doe@example.com, please re-input.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Email can't be empty, please re-input.");
-            }
-        }
-    }
-    public void UpdateFirstName(string email)
+    private void UpdateFirstName(string email)
     {
         string? firstName;
         while (true)
@@ -331,7 +351,7 @@ public class InstructorOperations
             Console.WriteLine($"Processing failed: {e.Message}");
         }
     }
-    public void UpdateLastName(string email)
+    private void UpdateLastName(string email)
     {
         string? lastName;
         while (true)
@@ -360,7 +380,7 @@ public class InstructorOperations
         }
     }
 
-    public void UpdateEmail(string email)
+    private void UpdateEmail(string email)
     {
         string? newEmail;
         while (true)

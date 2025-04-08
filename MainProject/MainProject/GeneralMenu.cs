@@ -1,5 +1,4 @@
 ﻿using MainProject;
-using MainProject.Context;
 
 // Student Menu
 // var studentMenu = new StudentMenu();
@@ -10,14 +9,8 @@ using MainProject.Context;
 // instructorMenu.DisplayInstructorMenu();
 
 // Car Menu
-// var carMenu = new CarMenu();
-// carMenu.DisplayCarMenu();
-
-// Lesson Menu
-var lessonMenu = new LessonMenu();
-lessonMenu.DisplayStudentMenu();
-
-
+var carMenu = new CarMenu();
+carMenu.DisplayCarMenu();
 
 
 
