@@ -134,6 +134,7 @@ public class StudentOperations
 
         try
         {
+            var table = new OfflineDatabase();
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 // Add new student
@@ -148,7 +149,6 @@ public class StudentOperations
                     PhoneNumber = phoneNumber
                 };
                 // Add student to hash table
-                var table = new OfflineDatabase();
                 table.StudentTable.Insert(email,student);
                 
                 context.Students.Add(student);
@@ -337,7 +337,6 @@ public class StudentOperations
                 result[0].FirstName = firstName;
                 table.StudentTable.Insert(email, result[0]);
                 
-                // Update into DB
                 context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.FirstName, firstName));
                 Console.WriteLine("First name updated successfully.");
             }

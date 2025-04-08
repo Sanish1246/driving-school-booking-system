@@ -36,7 +36,7 @@ public class InstructorMenu : InstructorOperations
                 Console.WriteLine("Exiting console application...");
                 break;
             }
-            // Load Tables
+            // Load Hash table
             var tables = new OfflineDatabase();
             tables.LoadTables();
 
@@ -56,7 +56,8 @@ public class InstructorMenu : InstructorOperations
                     instructorOperations.SearchUser();
                     break;
                 case 5:
-                    instructorOperations.DisplayUser();
+                    tables.InstructorTable.Display();
+                    // instructorOperations.DisplayUser();
                     break;
             }
 

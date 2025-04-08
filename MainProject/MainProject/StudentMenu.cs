@@ -36,7 +36,7 @@ public class StudentMenu : StudentOperations
                 Console.WriteLine("Exiting console application...");
                 break;
             }
-            //TODO: Hash table operations
+            // Load Hash table
             var tables = new OfflineDatabase();
             tables.LoadTables();
             var studentOperations = new StudentMenu();
