@@ -38,7 +38,7 @@ public class CarMenu : CarOperations
             }
             // Load Tables
             var tables = new OfflineDatabase();
-            // tables.LoadTables();
+            tables.LoadTables();
             var carOperations = new CarMenu();
             switch (options)
             {
@@ -55,7 +55,8 @@ public class CarMenu : CarOperations
                     carOperations.SearchCar();
                     break;
                 case 5:
-                    carOperations.DisplayCar();
+                    tables.CarTable.Display();
+                    // carOperations.DisplayCar();
                     break;
                 default:
                     Console.WriteLine("Wrong options");

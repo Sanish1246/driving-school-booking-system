@@ -70,6 +70,8 @@ public class CarOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 var car = new Car()
@@ -78,6 +80,9 @@ public class CarOperations
                     Transmission = transmission,
                     RegistrationNumber = Validations.RemoveWhiteSpaces(registrationNumber.ToUpper())
                 };
+                // Add car to hash table
+                table.CarTable.Insert(registrationNumber,car);
+                
                 context.Cars.Add(car);
                 context.SaveChanges();
                 Console.WriteLine("Car added successfully.");
@@ -118,8 +123,13 @@ public class CarOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Delete car in hash table
+                table.CarTable.Delete(registrationNumber);
+                
                 context.Cars.Where(c => c.RegistrationNumber == registrationNumber).ExecuteDelete();
                 Console.WriteLine("Car successfully deleted.");
             }
@@ -153,10 +163,10 @@ public class CarOperations
 
     public void UpdateCar()
     {
-        var registrationNumber = EnterCarReg();
         
         while (true)
         {
+            var registrationNumber = EnterCarReg();
             // Choose what information to update (first name, last name, email, password, date of birth, address, phone number)
             Console.WriteLine("The following fields can be updated: \n1. Make, \n2. Transmission, \n3. Registration number");
             string? field;
@@ -284,10 +294,19 @@ public class CarOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Update into HashTable
+                var result = table.CarTable.Where(c => c.RegistrationNumber.Equals(registrationNumber, StringComparison.InvariantCulture)).ToArray();
+                table.CarTable.Delete(registrationNumber);
+                result[0].RegistrationNumber = registrationNumber;
+                table.CarTable.Insert(registrationNumber, result[0]);
+                
                 context.Cars.Where(c => c.RegistrationNumber == registrationNumber).ExecuteUpdate(
                     setters => setters.SetProperty(c => c.RegistrationNumber, newRegistrationNumber.ToUpper()));
+                Console.WriteLine("Registration number updated successfully.");
             }
         }
         catch (Exception e)
@@ -320,10 +339,19 @@ public class CarOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Update into HashTable
+                var result = table.CarTable.Where(c => c.RegistrationNumber.Equals(registrationNumber, StringComparison.InvariantCulture)).ToArray();
+                table.CarTable.Delete(registrationNumber);
+                result[0].Transmission = transmission;
+                table.CarTable.Insert(registrationNumber, result[0]);
+                
                 context.Cars.Where(c => c.RegistrationNumber == registrationNumber)
                     .ExecuteUpdate(setters => setters.SetProperty(c => c.Transmission, transmission));
+                Console.WriteLine("Transmission updated successfully.");
             }
         }
         catch (Exception e)
@@ -348,10 +376,19 @@ public class CarOperations
 
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
+                // Update into HashTable
+                var result = table.CarTable.Where(c => c.RegistrationNumber.Equals(registrationNumber, StringComparison.InvariantCulture)).ToArray();
+                table.CarTable.Delete(registrationNumber);
+                result[0].Make = make;
+                table.CarTable.Insert(registrationNumber, result[0]);
+                
                 context.Cars.Where(c => c.RegistrationNumber == registrationNumber)
                     .ExecuteUpdate(setters => setters.SetProperty(c => c.Make, make));
+                Console.WriteLine("Make updated successfully.");
             }
         }
         catch (Exception e)
