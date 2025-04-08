@@ -1,14 +1,14 @@
 ﻿namespace MainProject;
 
-public class StudentMenu : StudentOperations
+public class InstructorMenu : InstructorOperations
 {
-    public void DisplayStudentMenu()
+    public void DisplayInstructorMenu()
     {
-        // Menu for Student
+        // Menu for Instructor
         Console.WriteLine(new string('-',50));
         while (true)
         {
-            Console.WriteLine("Here is a list of operations that you can perform: \n1. Add Student, \n2. Delete Student, \n3. Update Student details, \n4. Search student, \n5. List all Students\n6. Enter -1 to exit the application");
+            Console.WriteLine("Here is a list of operations that you can perform: \n1. Add Instructor, \n2. Delete Instructor, \n3. Update Instructor details, \n4. Search Instructor, \n5. List all Instructors\n6. Enter -1 to exit the application");
             Console.Write("Choose one of the above options: ");
             int options;
 
@@ -39,28 +39,29 @@ public class StudentMenu : StudentOperations
             // Load Hash table
             var tables = new OfflineDatabase();
             tables.LoadTables();
-            var studentOperations = new StudentMenu();
+
+            var instructorOperations = new InstructorMenu();
             switch (options)
             {
                 case 1:
-                    studentOperations.AddUser();
+                    instructorOperations.AddEntity();
                     break;
                 case 2:
-                    studentOperations.DeleteUser();
+                    instructorOperations.DeleteUser();
                     break;
                 case 3:
-                    studentOperations.UpdateUser();
+                    instructorOperations.UpdateUser();
                     break;
                 case 4:
-                    studentOperations.SearchUser();
+                    instructorOperations.SearchUser();
                     break;
                 case 5:
-                    tables.StudentTable.Display();
-                    // studentOperations.DisplayUser();
+                    tables.InstructorTable.Display();
+                    // instructorOperations.DisplayUser();
                     break;
             }
 
-            Console.WriteLine("Do you want to perform any other operations on the student table? (Yes/No)");
+            Console.WriteLine("Do you want to perform any other operations on the instructor table? (Yes/No)");
             string? response;
             while (true)
             {
