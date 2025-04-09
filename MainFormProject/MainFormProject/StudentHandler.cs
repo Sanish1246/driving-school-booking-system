@@ -10,20 +10,11 @@ using System.Windows.Forms;
 
 namespace MainFormProject
 {
-    public partial class AdminMenu : Form
+    public partial class StudentHandler : Form
     {
-        public AdminMenu()
+        public StudentHandler()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            StudentHandler studentHandlerMenu = new StudentHandler();
-
-            studentHandlerMenu.Show();
-
-            this.Hide();
         }
     }
 }
