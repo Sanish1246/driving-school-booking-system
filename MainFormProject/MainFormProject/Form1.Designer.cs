@@ -38,11 +38,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
-            label1.Location = new Point(29, 29);
+            label1.Location = new Point(52, 34);
             label1.Name = "label1";
-            label1.Size = new Size(759, 46);
+            label1.Size = new Size(695, 46);
             label1.TabIndex = 0;
-            label1.Text = "Welcome to the Driving lesson boking system!";
+            label1.Text = "Welcome to driving lesson boking system!";
             // 
             // label2
             // 
@@ -71,6 +71,7 @@
             button1.TabIndex = 3;
             button1.Text = "Submit";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Form1
             // 
@@ -83,7 +84,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Driving lesson booking system";
             ResumeLayout(false);
             PerformLayout();
         }
