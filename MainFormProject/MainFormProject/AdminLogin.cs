@@ -47,7 +47,7 @@ namespace MainFormProject
 
                 adminMenu.Show();
 
-                this.Hide();
+                this.Close();
             }
         }
     }

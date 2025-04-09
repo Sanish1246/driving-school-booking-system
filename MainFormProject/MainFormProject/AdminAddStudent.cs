@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace MainFormProject
 {
-    public partial class AdminMenu : Form
+    public partial class AdminAddStudent : Form
     {
-        public AdminMenu()
+        public AdminAddStudent()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
         {
             StudentHandler studentHandlerMenu = new StudentHandler();
 
@@ -26,9 +31,9 @@ namespace MainFormProject
             this.Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void submitButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            MessageBox.Show("Student added", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

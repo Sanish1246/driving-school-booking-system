@@ -28,43 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            updateStudentButton = new Button();
+            deleteStudentButton = new Button();
+            addStudentButton = new Button();
             label1 = new Label();
-            button4 = new Button();
-            button5 = new Button();
+            searchStudentButton = new Button();
+            listStudentButton = new Button();
+            exitButton = new Button();
+            backButton = new Button();
             SuspendLayout();
             // 
-            // button3
+            // updateStudentButton
             // 
-            button3.Font = new Font("Segoe UI", 13F);
-            button3.Location = new Point(290, 214);
-            button3.Name = "button3";
-            button3.Size = new Size(248, 56);
-            button3.TabIndex = 17;
-            button3.Text = "Update student details";
-            button3.UseVisualStyleBackColor = true;
+            updateStudentButton.Font = new Font("Segoe UI", 13F);
+            updateStudentButton.Location = new Point(290, 214);
+            updateStudentButton.Name = "updateStudentButton";
+            updateStudentButton.Size = new Size(248, 56);
+            updateStudentButton.TabIndex = 17;
+            updateStudentButton.Text = "Update student details";
+            updateStudentButton.UseVisualStyleBackColor = true;
+            updateStudentButton.Click += updateStudentButton_Click;
             // 
-            // button2
+            // deleteStudentButton
             // 
-            button2.Font = new Font("Segoe UI", 13F);
-            button2.Location = new Point(290, 144);
-            button2.Name = "button2";
-            button2.Size = new Size(248, 64);
-            button2.TabIndex = 16;
-            button2.Text = "Delete student";
-            button2.UseVisualStyleBackColor = true;
+            deleteStudentButton.Font = new Font("Segoe UI", 13F);
+            deleteStudentButton.Location = new Point(290, 144);
+            deleteStudentButton.Name = "deleteStudentButton";
+            deleteStudentButton.Size = new Size(248, 64);
+            deleteStudentButton.TabIndex = 16;
+            deleteStudentButton.Text = "Delete student";
+            deleteStudentButton.UseVisualStyleBackColor = true;
+            deleteStudentButton.Click += deleteStudentButton_Click;
             // 
-            // button1
+            // addStudentButton
             // 
-            button1.Font = new Font("Segoe UI", 13F);
-            button1.Location = new Point(290, 79);
-            button1.Name = "button1";
-            button1.Size = new Size(248, 59);
-            button1.TabIndex = 15;
-            button1.Text = "Add student";
-            button1.UseVisualStyleBackColor = true;
+            addStudentButton.Font = new Font("Segoe UI", 13F);
+            addStudentButton.Location = new Point(290, 79);
+            addStudentButton.Name = "addStudentButton";
+            addStudentButton.Size = new Size(248, 59);
+            addStudentButton.TabIndex = 15;
+            addStudentButton.Text = "Add student";
+            addStudentButton.UseVisualStyleBackColor = true;
+            addStudentButton.Click += addStudentButton_Click;
             // 
             // label1
             // 
@@ -76,25 +81,50 @@
             label1.Text = "Choose an option";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button4
+            // searchStudentButton
             // 
-            button4.Font = new Font("Segoe UI", 13F);
-            button4.Location = new Point(290, 276);
-            button4.Name = "button4";
-            button4.Size = new Size(248, 56);
-            button4.TabIndex = 18;
-            button4.Text = "Search for a student";
-            button4.UseVisualStyleBackColor = true;
+            searchStudentButton.Font = new Font("Segoe UI", 13F);
+            searchStudentButton.Location = new Point(290, 276);
+            searchStudentButton.Name = "searchStudentButton";
+            searchStudentButton.Size = new Size(248, 56);
+            searchStudentButton.TabIndex = 18;
+            searchStudentButton.Text = "Search for a student";
+            searchStudentButton.UseVisualStyleBackColor = true;
+            searchStudentButton.Click += searchStudentButton_Click;
             // 
-            // button5
+            // listStudentButton
             // 
-            button5.Font = new Font("Segoe UI", 13F);
-            button5.Location = new Point(290, 338);
-            button5.Name = "button5";
-            button5.Size = new Size(248, 56);
-            button5.TabIndex = 19;
-            button5.Text = "List all students";
-            button5.UseVisualStyleBackColor = true;
+            listStudentButton.Font = new Font("Segoe UI", 13F);
+            listStudentButton.Location = new Point(290, 338);
+            listStudentButton.Name = "listStudentButton";
+            listStudentButton.Size = new Size(248, 56);
+            listStudentButton.TabIndex = 19;
+            listStudentButton.Text = "List all students";
+            listStudentButton.UseVisualStyleBackColor = true;
+            listStudentButton.Click += listStudentButton_Click;
+            // 
+            // exitButton
+            // 
+            exitButton.Font = new Font("Segoe UI", 10F);
+            exitButton.ForeColor = Color.Red;
+            exitButton.Location = new Point(694, 12);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(94, 29);
+            exitButton.TabIndex = 20;
+            exitButton.Text = " Exit";
+            exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += exitButton_Click;
+            // 
+            // backButton
+            // 
+            backButton.Font = new Font("Segoe UI", 10F);
+            backButton.Location = new Point(12, 12);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(94, 29);
+            backButton.TabIndex = 21;
+            backButton.Text = "< Back";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
             // 
             // StudentHandler
             // 
@@ -102,11 +132,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(backButton);
+            Controls.Add(exitButton);
+            Controls.Add(listStudentButton);
+            Controls.Add(searchStudentButton);
+            Controls.Add(updateStudentButton);
+            Controls.Add(deleteStudentButton);
+            Controls.Add(addStudentButton);
             Controls.Add(label1);
             Name = "StudentHandler";
             Text = "StudentHandler";
@@ -115,11 +147,13 @@
 
         #endregion
 
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button updateStudentButton;
+        private Button deleteStudentButton;
+        private Button addStudentButton;
         private Label label1;
-        private Button button4;
-        private Button button5;
+        private Button searchStudentButton;
+        private Button listStudentButton;
+        private Button exitButton;
+        private Button backButton;
     }
 }

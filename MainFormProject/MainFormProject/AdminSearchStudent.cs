@@ -10,25 +10,30 @@ using System.Windows.Forms;
 
 namespace MainFormProject
 {
-    public partial class AdminMenu : Form
+    public partial class AdminSearchStudent : Form
     {
-        public AdminMenu()
+        public AdminSearchStudent()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e)
         {
             StudentHandler studentHandlerMenu = new StudentHandler();
 
-            studentHandlerMenu.Show();
-
             this.Close();
+
+            studentHandlerMenu.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Student found", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

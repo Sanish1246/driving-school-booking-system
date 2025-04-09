@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace MainFormProject
 {
-    public partial class AdminMenu : Form
+    public partial class AdminUpdateStudents : Form
     {
-        public AdminMenu()
+        public AdminUpdateStudents()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void backButton_Click(object sender, EventArgs e)
         {
             StudentHandler studentHandlerMenu = new StudentHandler();
 
@@ -26,7 +26,12 @@ namespace MainFormProject
             this.Close();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Student data updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

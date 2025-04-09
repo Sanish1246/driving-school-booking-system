@@ -32,6 +32,7 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            button4 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -75,12 +76,25 @@
             button3.Text = "Handle cars";
             button3.UseVisualStyleBackColor = true;
             // 
+            // button4
+            // 
+            button4.Font = new Font("Segoe UI", 10F);
+            button4.ForeColor = Color.Red;
+            button4.Location = new Point(694, 12);
+            button4.Name = "button4";
+            button4.Size = new Size(94, 29);
+            button4.TabIndex = 14;
+            button4.Text = " Exit";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // AdminMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -96,5 +110,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private Button button4;
     }
 }
