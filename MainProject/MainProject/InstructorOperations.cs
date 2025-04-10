@@ -3,10 +3,11 @@ using MainProject.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MainProject;
-public class StudentOperations
+
+public class InstructorOperations
 {
-    // CRUD Operations for students
-    public void AddUser()
+    // CRUD Operations for instructors
+    public void AddEntity()
     {
         string? firstName;
         string? lastName;
@@ -16,7 +17,7 @@ public class StudentOperations
         string? address;
         string? phoneNumber;
 
-        Console.WriteLine("A student consists of the following properties: ");
+        Console.WriteLine("An instructor consists of the following properties: ");
 
         while (true)
         {
@@ -137,8 +138,8 @@ public class StudentOperations
             var table = new OfflineDatabase();
             using (var context = new DrivingLessonBookingSystemContext())
             {
-                // Add new student
-                var student = new Student
+                // Add new instructor
+                var instructor = new Instructor()
                 {
                     FirstName = firstName,
                     LastName = lastName,
@@ -148,12 +149,12 @@ public class StudentOperations
                     Password = password,
                     PhoneNumber = phoneNumber
                 };
-                // Add student to hash table
-                table.StudentTable.Insert(email,student);
+                // Add instructor to hash table
+                table.InstructorTable.Insert(email,instructor);
                 
-                context.Students.Add(student);
+                context.Instructors.Add(instructor);
                 context.SaveChanges();
-                Console.WriteLine("Student added successfully.");
+                Console.WriteLine("Instructor added successfully.");
             }
         }
         catch (Exception e)
@@ -173,10 +174,10 @@ public class StudentOperations
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 // Delete user in hash table
-                table.StudentTable.Delete(email);
+                table.InstructorTable.Delete(email);
                 
-                context.Students.Where(s => s.Email == email).ExecuteDelete();
-                Console.WriteLine("Student deleted successfully.");
+                context.Instructors.Where(i => i.Email == email).ExecuteDelete();
+                Console.WriteLine("Instructor deleted successfully.");
             }
         }
         catch (Exception e)
@@ -258,7 +259,7 @@ public class StudentOperations
             string? response;
             while (true)
             {
-                Console.WriteLine("Do you wish to continue updating student details? (Yes/No)");
+                Console.WriteLine("Do you wish to continue updating instructor details? (Yes/No)");
                 response = Console.ReadLine();
                 if (Validations.ValidateString(response))
                 {
@@ -286,7 +287,7 @@ public class StudentOperations
     {
         while (true)
         {
-            Console.Write("Enter the email address of the student: ");
+            Console.Write("Enter the email address of the instructor: ");
             var email = Console.ReadLine();
             if (Validations.ValidateString(email))
             {
@@ -310,7 +311,6 @@ public class StudentOperations
             }
         }
     }
-
     public void UpdateFirstName(string email)
     {
         string? firstName;
@@ -332,12 +332,12 @@ public class StudentOperations
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 // Update into HashTable
-                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
-                table.StudentTable.Delete(email);
+                var result = table.InstructorTable.Where(i => i.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.InstructorTable.Delete(email);
                 result[0].FirstName = firstName;
-                table.StudentTable.Insert(email, result[0]);
+                table.InstructorTable.Insert(email, result[0]);
                 
-                context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.FirstName, firstName));
+                context.Instructors.Where(i => i.Email == email).ExecuteUpdate(setters => setters.SetProperty(i => i.FirstName, firstName));
                 Console.WriteLine("First name updated successfully.");
             }
         }
@@ -367,13 +367,12 @@ public class StudentOperations
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 // Update into HashTable
-                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
-                table.StudentTable.Delete(email);
+                var result = table.InstructorTable.Where(i => i.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.InstructorTable.Delete(email);
                 result[0].LastName = lastName;
-                table.StudentTable.Insert(email, result[0]);
+                table.InstructorTable.Insert(email, result[0]);
                 
-                // Update into DB
-                context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.LastName, lastName));
+                context.Instructors.Where(i => i.Email == email).ExecuteUpdate(setters => setters.SetProperty(i => i.LastName, lastName));
                 Console.WriteLine("Last name updated successfully.");
             }
         }
@@ -418,13 +417,12 @@ public class StudentOperations
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 // Update into HashTable
-                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
-                table.StudentTable.Delete(email);
+                var result = table.InstructorTable.Where(i => i.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.InstructorTable.Delete(email);
                 result[0].Email = email;
-                table.StudentTable.Insert(email, result[0]);
+                table.InstructorTable.Insert(email, result[0]);
                 
-                // Update into DB
-                context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.Email, newEmail));
+                context.Instructors.Where(i => i.Email == email).ExecuteUpdate(setters => setters.SetProperty(i => i.Email, newEmail));
                 Console.WriteLine("Email updated successfully.");
             }
         }
@@ -463,13 +461,12 @@ public class StudentOperations
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 // Update into HashTable
-                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
-                table.StudentTable.Delete(email);
+                var result = table.InstructorTable.Where(i => i.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.InstructorTable.Delete(email);
                 result[0].Password = password;
-                table.StudentTable.Insert(email, result[0]);
+                table.InstructorTable.Insert(email, result[0]);
                 
-                // Update into DB
-                context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.Password, password));
+                context.Instructors.Where(i => i.Email == email).ExecuteUpdate(setters => setters.SetProperty(i => i.Password, password));
                 Console.WriteLine("Password updated successfully.");
             }
         }
@@ -509,13 +506,12 @@ public class StudentOperations
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 // Update into HashTable
-                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
-                table.StudentTable.Delete(email);
+                var result = table.InstructorTable.Where(i => i.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.InstructorTable.Delete(email);
                 result[0].DateOfBirth = dateOfBirth;
-                table.StudentTable.Insert(email, result[0]);
+                table.InstructorTable.Insert(email, result[0]);
                 
-                // Update in DB
-                context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.DateOfBirth, dateOfBirth));
+                context.Instructors.Where(i => i.Email == email).ExecuteUpdate(setters => setters.SetProperty(i => i.DateOfBirth, dateOfBirth));
                 Console.WriteLine("Date of birth updated successfully.");
             }
         }
@@ -546,13 +542,12 @@ public class StudentOperations
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 // Update into HashTable
-                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
-                table.StudentTable.Delete(email);
+                var result = table.InstructorTable.Where(i => i.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.InstructorTable.Delete(email);
                 result[0].Address = address;
-                table.StudentTable.Insert(email, result[0]);
+                table.InstructorTable.Insert(email, result[0]);
                 
-                // Update in DB
-                context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.Address, address));
+                context.Instructors.Where(i => i.Email == email).ExecuteUpdate(setters => setters.SetProperty(i => i.Address, address));
                 Console.WriteLine("Address updated successfully.");
             }
         }
@@ -587,13 +582,12 @@ public class StudentOperations
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 // Update into HashTable
-                var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
-                table.StudentTable.Delete(email);
+                var result = table.InstructorTable.Where(i => i.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
+                table.InstructorTable.Delete(email);
                 result[0].PhoneNumber = phoneNumber;
-                table.StudentTable.Insert(email, result[0]);
+                table.InstructorTable.Insert(email, result[0]);
                 
-                // Update into DB
-                context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.PhoneNumber, phoneNumber));
+                context.Instructors.Where(i => i.Email == email).ExecuteUpdate(setters => setters.SetProperty(i => i.PhoneNumber, phoneNumber));
                 Console.WriteLine("Phone number updated successfully.");
             }
         }
@@ -608,7 +602,7 @@ public class StudentOperations
         string email;
         while (true)
         {
-            Console.Write("Enter the email address of the student: ");
+            Console.Write("Enter the email address of the instructor: ");
             email = Console.ReadLine();
             if (Validations.ValidateString(email))
             {
@@ -635,10 +629,10 @@ public class StudentOperations
         {
             using (var context = new DrivingLessonBookingSystemContext())
             {
-                var students = context.Students.Where(s => s.Email == email);
-                foreach (var student in students)
+                var instructors = context.Instructors.Where(i => i.Email == email);
+                foreach (var instructor in instructors)
                 {
-                    Console.WriteLine($"Student found with details:\n{student}");
+                    Console.WriteLine($"Instructor found with details:\n{instructor}");
                 }
             }
         }
@@ -647,16 +641,17 @@ public class StudentOperations
             Console.WriteLine($"Processing failed: {e.Message}");
         }
     }
+    
     public void DisplayUser()
     {
         try
         {
             using (var context = new DrivingLessonBookingSystemContext())
             {
-                var students = context.Students.AsNoTracking().ToList();
-                foreach (var student in students)
+                var instructors = context.Instructors.AsNoTracking().ToList();
+                foreach (var instructor in instructors)
                 {
-                    Console.WriteLine(student);
+                    Console.WriteLine(instructor);
                 }
             }
         }
@@ -674,7 +669,7 @@ public class StudentOperations
         {
             using (var context = new DrivingLessonBookingSystemContext())
             {
-                success = context.Students.Any(s => s.Email == email);
+                success = context.Instructors.Any(i => i.Email == email);
             }
         }
         catch (Exception e)
@@ -684,6 +679,4 @@ public class StudentOperations
 
         return success;
     }
-    
 }
-

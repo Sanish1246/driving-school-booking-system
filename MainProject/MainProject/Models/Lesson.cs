@@ -4,13 +4,13 @@ public class Lesson
 {
     // Primary Key
     public int LessonId { get; set; }
-
-    public required DateOnly Date { get; set; }
     
     // Foreign keys
     public int InstructorId { get; set; }
     public int StudentId { get; set; }
     public int CarId { get; set; }
+    
+    public required DateOnly Date { get; set; }
     
     // Navigation Properties
     

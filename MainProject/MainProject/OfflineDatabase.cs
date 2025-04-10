@@ -8,10 +8,10 @@ namespace MainProject;
 
 public class OfflineDatabase
 {
-    public HashMap<int, Instructor> InstructorTable { get; } = new HashMap<int, Instructor>();
-    public HashMap<int, Student> StudentTable { get; } = new HashMap<int, Student>();
+    public HashMap<string, Instructor> InstructorTable { get; } = new HashMap<string, Instructor>();
+    public HashMap<string, Student> StudentTable { get; } = new HashMap<string, Student>();
     public HashMap<int, Lesson> LessonTable { get; } = new HashMap<int, Lesson>();
-    public HashMap<int, Car> CarTable { get; } = new HashMap<int, Car>();
+    public HashMap<string, Car> CarTable { get; } = new HashMap<string, Car>();
     
     public  void LoadTables()
     {
@@ -22,21 +22,21 @@ public class OfflineDatabase
             var instructors = context.Instructors.Include(l => l.Lessons);
             foreach (var instructor in instructors)
             {
-                InstructorTable.Insert(instructor.InstructorId,instructor);
+                InstructorTable.Insert(instructor.Email,instructor);
             }
     
             // Loading student table in HashTable
             var students = context.Students.Include(l => l.Lessons);
             foreach (var student in students)
             {
-                StudentTable.Insert(student.StudentId,student);
+                StudentTable.Insert(student.Email,student);
             }
     
             // Loading car table in HashTable
             var cars = context.Cars.Include(l => l.Lessons);
             foreach (var car in cars)
             {
-                CarTable.Insert(car.CarId, car);
+                CarTable.Insert(car.RegistrationNumber, car);
             }
     
             // Loading car table in HashTable
