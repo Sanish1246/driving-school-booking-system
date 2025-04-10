@@ -21,14 +21,19 @@ namespace MainFormProject
         {
             StudentHandler studentHandlerMenu = new StudentHandler();
 
-            studentHandlerMenu.Show();
-
             this.Close();
+
+            studentHandlerMenu.Show();
+            
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Student data updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+
+            AdminUpdateStudentMenu updateMenu = new AdminUpdateStudentMenu();
+
+            updateMenu.Show();
         }
 
         private void exitButton_Click(object sender, EventArgs e)

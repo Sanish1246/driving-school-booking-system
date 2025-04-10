@@ -73,7 +73,7 @@
             firstNames.FormattingEnabled = true;
             firstNames.Location = new Point(11, 84);
             firstNames.Name = "firstNames";
-            firstNames.Size = new Size(150, 104);
+            firstNames.Size = new Size(776, 344);
             firstNames.TabIndex = 35;
             // 
             // AdminListStudent

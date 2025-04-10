@@ -1,6 +1,6 @@
 ﻿namespace MainFormProject
 {
-    partial class AdminUpdateStudents
+    partial class AdminUpdateStudentMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,50 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            submitButton = new Button();
-            email = new TextBox();
-            label4 = new Label();
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
+            comboBox1 = new ComboBox();
+            textBox1 = new TextBox();
+            submitButton = new Button();
             SuspendLayout();
-            // 
-            // submitButton
-            // 
-            submitButton.Font = new Font("Segoe UI", 12F);
-            submitButton.Location = new Point(342, 275);
-            submitButton.Name = "submitButton";
-            submitButton.Size = new Size(102, 39);
-            submitButton.TabIndex = 40;
-            submitButton.Text = "Submit";
-            submitButton.UseVisualStyleBackColor = true;
-            submitButton.Click += submitButton_Click;
-            // 
-            // email
-            // 
-            email.Font = new Font("Segoe UI", 12F);
-            email.Location = new Point(369, 181);
-            email.Name = "email";
-            email.Size = new Size(169, 34);
-            email.TabIndex = 39;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(261, 184);
-            label4.Name = "label4";
-            label4.Size = new Size(59, 28);
-            label4.TabIndex = 38;
-            label4.Text = "Email";
             // 
             // backButton
             // 
             backButton.Font = new Font("Segoe UI", 10F);
-            backButton.Location = new Point(17, 21);
+            backButton.Location = new Point(10, 21);
             backButton.Name = "backButton";
             backButton.Size = new Size(94, 29);
-            backButton.TabIndex = 37;
+            backButton.TabIndex = 40;
             backButton.Text = "< Back";
             backButton.UseVisualStyleBackColor = true;
             backButton.Click += backButton_Click;
@@ -80,10 +51,10 @@
             // 
             exitButton.Font = new Font("Segoe UI", 10F);
             exitButton.ForeColor = Color.Red;
-            exitButton.Location = new Point(699, 21);
+            exitButton.Location = new Point(692, 21);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(94, 29);
-            exitButton.TabIndex = 36;
+            exitButton.TabIndex = 39;
             exitButton.Text = " Exit";
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
@@ -92,37 +63,66 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F);
-            label1.Location = new Point(213, 9);
+            label1.Location = new Point(206, 9);
             label1.Name = "label1";
-            label1.Size = new Size(392, 46);
-            label1.TabIndex = 35;
-            label1.Text = "Input the email to search";
+            label1.Size = new Size(398, 46);
+            label1.TabIndex = 38;
+            label1.Text = "Select the field to update";
             // 
-            // AdminUpdateStudents
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "First name", "Last name", "Email", "Password", "Date of birth", "Address", "Phone number" });
+            comboBox1.Location = new Point(320, 97);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 28);
+            comboBox1.TabIndex = 41;
+            comboBox1.Text = "First Name";
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("Segoe UI", 13F);
+            textBox1.Location = new Point(298, 204);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(195, 36);
+            textBox1.TabIndex = 42;
+            // 
+            // submitButton
+            // 
+            submitButton.Font = new Font("Segoe UI", 12F);
+            submitButton.Location = new Point(320, 298);
+            submitButton.Name = "submitButton";
+            submitButton.Size = new Size(165, 68);
+            submitButton.TabIndex = 43;
+            submitButton.Text = "Submit";
+            submitButton.UseVisualStyleBackColor = true;
+            submitButton.Click += submitButton_Click;
+            // 
+            // AdminUpdateStudentMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(submitButton);
-            Controls.Add(email);
-            Controls.Add(label4);
+            Controls.Add(textBox1);
+            Controls.Add(comboBox1);
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
-            Name = "AdminUpdateStudents";
-            Text = "Update Students";
+            Name = "AdminUpdateStudentMenu";
+            Text = "Update Student Menu";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button submitButton;
-        private TextBox email;
-        private Label label4;
         private Button backButton;
         private Button exitButton;
         private Label label1;
+        private ComboBox comboBox1;
+        private TextBox textBox1;
+        private Button submitButton;
     }
 }
