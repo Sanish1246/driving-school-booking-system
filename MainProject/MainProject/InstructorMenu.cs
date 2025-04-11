@@ -1,7 +1,50 @@
-﻿namespace MainProject;
+﻿using MainProject.Context;
+
+namespace MainProject;
 
 public class InstructorMenu : InstructorOperations
 {
+    public void Login()
+    {
+        // When login is successful, then display instructor menu
+        // instructor login using email and password
+        string email = InstructorOperations.EnterEmail();
+        string password;
+        var success = false;
+        while (!success)
+        {
+            success = InstructorOperations.EnterPassword(email);
+        }
+
+        Console.WriteLine("Login successful ! Find below the operations that you can perform:\n1.View lessons");
+        int option;
+        while (true)
+        {
+            while (true)
+            {
+                Console.Write("Enter option (1): ");
+                var result = int.TryParse(Console.ReadLine(), out option);
+                if (!result)
+                {
+                    Console.WriteLine("Option entered should be a number.");
+                }
+                if (option == 1)
+                {
+                    InstructorOperations.ViewInstructorLessons(email);
+                    break;
+                }
+                Console.WriteLine("Wrong number entered, option entered should be 1. Please re-input.");
+            }
+
+            Console.WriteLine("Do you wish to continue performing any operations? Type -1 to exit.");
+            int answer;
+            var exit = int.TryParse(Console.ReadLine(), out answer);
+            if (!exit) continue;
+            Console.WriteLine("Goodbye !!");
+            break;
+        }
+    }
+    
     public void DisplayInstructorMenu()
     {
         // Menu for Instructor

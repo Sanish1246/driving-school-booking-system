@@ -25,6 +25,6 @@ public class Lesson
 
     public override string ToString()
     {
-        return $"This lesson is associated with student {Student} along with instructor {Instructor} and car {Car} on the following date: {Date}";
+        return $"This lesson is associated with student - {Student} along with instructor - {Instructor} and car - {Car} on the following date: {Date}";
     }
 }
