@@ -48,7 +48,7 @@ private readonly StreamWriter _logStream = new StreamWriter(GetPath(), append: t
 
 **4. Run the following commands to create the database using code-first approach:**
 
-**NOTE: VERY IMPORTANRT !! Before running the following code, make sure you change the connection string in the configuration settings.(appsettings.json file)**
+**NOTE: VERY IMPORTANRT !! Before running the following code, make sure you change the connection string in the configuration settings (appsettings.json file).**
 ```
 "DefaultConnection": "Server=LAPTOP-ILUK0PDF;Database=Driving Booking lesson system;Trusted_Connection=True;TrustServerCertificate=True;"
 ```
