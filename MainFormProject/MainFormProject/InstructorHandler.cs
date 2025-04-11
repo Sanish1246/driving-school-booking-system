@@ -39,5 +39,14 @@ namespace MainFormProject
 
             addInstructor.Show();
         }
+
+        private void deleteInstructorButton_Click(object sender, EventArgs e)
+        {
+            AdminDeleteInstructor deleteInstructor = new AdminDeleteInstructor();
+
+            this.Close();
+
+            deleteInstructor.Show();
+        }
     }
 }

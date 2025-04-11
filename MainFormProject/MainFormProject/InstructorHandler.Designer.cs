@@ -100,6 +100,7 @@
             deleteInstructorButton.TabIndex = 24;
             deleteInstructorButton.Text = "Delete instructor";
             deleteInstructorButton.UseVisualStyleBackColor = true;
+            deleteInstructorButton.Click += deleteInstructorButton_Click;
             // 
             // addInstructorButton
             // 
