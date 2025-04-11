@@ -139,11 +139,15 @@ public class LessonOperations
                     Console.WriteLine("Invalid registration number format, ensure the format is as: AB99 CDE");
                 }
             }
-
-            Console.WriteLine("Registration number can't be empty");
+            else
+            {
+                Console.WriteLine("Registration number can't be empty");
+            }
         }
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 var lesson = new Lesson()
@@ -153,8 +157,15 @@ public class LessonOperations
                     InstructorId = instructorId,
                     Date = lessonDate
                 };
+                
                 context.Lessons.Add(lesson);
                 context.SaveChanges();
+                
+                // Add to hash table
+                Console.WriteLine(lesson.LessonId);
+                table.LessonTable.Insert(lesson.LessonId, lesson);
+                
+                
             }
         }
         catch (Exception e)
@@ -171,6 +182,8 @@ public class LessonOperations
         // list all records for specific date, then delete record by lesson id.
         try
         {
+            var table = new OfflineDatabase();
+            table.LoadTables();
             using (var context = new DrivingLessonBookingSystemContext())
             {
                 var lessons = context.Lessons.Select(lessons => new
@@ -225,7 +238,10 @@ public class LessonOperations
                         Console.WriteLine("Incorrect lesson id, lesson id should be a valid positive number.");
                     }
                 }
-
+                
+                // Delete from hash table
+                table.LessonTable.Delete(lessonId);
+                
                 context.Lessons.Where(l => l.LessonId == lessonId).ExecuteDelete();
                 Console.WriteLine($"Lesson with id {lessonId} successfully deleted.");
             }
@@ -246,7 +262,7 @@ public class LessonOperations
         {
             while (true)
             {
-                Console.WriteLine("The following fields can be updated:\n1.Student first name,\n2.Student last name,\n3.Student email,\n4.Instructor first name,\n5.Instructor second name,\n6.Instructor email,\n7.Car transmission,\n8. Lesson date");
+                Console.WriteLine("The following fields can be updated:\n1.Student first name,\n2.Student last name,\n3.Student email,\n4.Instructor first name,\n5.Instructor second name,\n6.Instructor email,\n7.Car transmission,\n8.Lesson date");
                 string? field;
                 var validField = false;
                 while (true)
@@ -326,7 +342,7 @@ public class LessonOperations
                 string? response;
                 while (true)
                 {
-                    Console.WriteLine("Do you wish to continue updating lesson details? (Yes/No)");
+                    Console.WriteLine("Do you wish to continue updating lesson details for this particular date? (Yes/No)");
                     response = Console.ReadLine();
                     if (Validations.ValidateString(response))
                     {
@@ -482,7 +498,9 @@ public class LessonOperations
                     }
                 }
 
-                context.Lessons.Where(l => l.LessonId == lessonId).ExecuteUpdate(setters => setters.SetProperty(l => l.Date, lessonDate));
+                var newDate = EnterDate();
+
+                context.Lessons.Where(l => l.LessonId == lessonId).ExecuteUpdate(setters => setters.SetProperty(l => l.Date, newDate));
                 Console.WriteLine($"Lesson with id {lessonId} has been successfully updated.");
             }
         }
@@ -515,7 +533,7 @@ public class LessonOperations
         }
     }
 
-    private static DateOnly EnterDate()
+    public static DateOnly EnterDate()
     {
         DateOnly lessonDate;
         while (true)
@@ -557,7 +575,7 @@ public class LessonOperations
         return success;
     }
     
-    private static bool CheckInstructorEmailExistence(string email)
+    public static bool CheckInstructorEmailExistence(string email)
     {
         // Connect with Database
         var success = false;
