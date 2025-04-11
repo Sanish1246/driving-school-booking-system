@@ -40,5 +40,14 @@ namespace MainFormProject
 
             instructorHandlerMenu.Show();
         }
+
+        private void handleCarsButton_Click(object sender, EventArgs e)
+        {
+            CarHandler carHandlerMenu = new CarHandler();
+
+            this.Close();
+
+            carHandlerMenu.Show();
+        }
     }
 }
