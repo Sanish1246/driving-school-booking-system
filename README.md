@@ -9,6 +9,7 @@ git clone https://github.com/Sanish1246/driving-school-booking-system.git
 ```
 
 **2. Delete Migrations folder**
+
 **3. Open context folder, move into DrivingLessonBookingSystem.cs and comment out the following line of codes:**
 
 ```
