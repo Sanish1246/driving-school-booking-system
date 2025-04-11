@@ -10,11 +10,20 @@ using System.Windows.Forms;
 
 namespace MainFormProject
 {
-    public partial class AdminAddStudent : Form
+    public partial class AdminSearchInstructor : Form
     {
-        public AdminAddStudent()
+        public AdminSearchInstructor()
         {
             InitializeComponent();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            InstructorHandler instructorHandlerMenu = new InstructorHandler();
+
+            this.Close();
+
+            instructorHandlerMenu.Show();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -22,18 +31,9 @@ namespace MainFormProject
             Application.Exit();
         }
 
-        private void backButton_Click(object sender, EventArgs e)
-        {
-            StudentHandler studentHandlerMenu = new StudentHandler();
-
-            this.Close();
-
-            studentHandlerMenu.Show();
-        }
-
         private void submitButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Student added", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Instructor found", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

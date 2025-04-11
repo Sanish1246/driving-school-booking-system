@@ -36,6 +36,8 @@
             textBox1 = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            backButton = new Button();
+            exitButton = new Button();
             SuspendLayout();
             // 
             // label6
@@ -114,12 +116,37 @@
             label1.Text = "Enter your login details below";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // backButton
+            // 
+            backButton.Font = new Font("Segoe UI", 10F);
+            backButton.Location = new Point(12, 12);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(94, 29);
+            backButton.TabIndex = 30;
+            backButton.Text = "< Back";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
+            // 
+            // exitButton
+            // 
+            exitButton.Font = new Font("Segoe UI", 10F);
+            exitButton.ForeColor = Color.Red;
+            exitButton.Location = new Point(694, 12);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(94, 29);
+            exitButton.TabIndex = 31;
+            exitButton.Text = " Exit";
+            exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += exitButton_Click;
+            // 
             // AdminLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(exitButton);
+            Controls.Add(backButton);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(button1);
@@ -144,5 +171,7 @@
         private TextBox textBox1;
         private Label label2;
         private Label label1;
+        private Button backButton;
+        private Button exitButton;
     }
 }

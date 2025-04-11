@@ -10,31 +10,25 @@ using System.Windows.Forms;
 
 namespace MainFormProject
 {
-    public partial class AdminUpdateStudentMenu : Form
+    public partial class AdminListInstructor : Form
     {
-        public AdminUpdateStudentMenu()
+        public AdminListInstructor()
         {
             InitializeComponent();
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            AdminUpdateStudents updateInput = new AdminUpdateStudents();
+            InstructorHandler instructorHandlerMenu = new InstructorHandler();
 
             this.Close();
 
-            updateInput.Show();
+            instructorHandlerMenu.Show();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        private void submitButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Student data updated", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
     }
 }

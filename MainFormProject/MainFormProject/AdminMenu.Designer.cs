@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            handleStudentsButton = new Button();
+            handleInstructorsButton = new Button();
+            handleCarsButton = new Button();
             button4 = new Button();
             SuspendLayout();
             // 
@@ -45,36 +45,37 @@
             label1.Text = "Choose an option";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // button1
+            // handleStudentsButton
             // 
-            button1.Font = new Font("Segoe UI", 13F);
-            button1.Location = new Point(286, 107);
-            button1.Name = "button1";
-            button1.Size = new Size(207, 74);
-            button1.TabIndex = 11;
-            button1.Text = "Handle students";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            handleStudentsButton.Font = new Font("Segoe UI", 13F);
+            handleStudentsButton.Location = new Point(286, 107);
+            handleStudentsButton.Name = "handleStudentsButton";
+            handleStudentsButton.Size = new Size(207, 74);
+            handleStudentsButton.TabIndex = 11;
+            handleStudentsButton.Text = "Handle students";
+            handleStudentsButton.UseVisualStyleBackColor = true;
+            handleStudentsButton.Click += handleStudentsButton_Click;
             // 
-            // button2
+            // handleInstructorsButton
             // 
-            button2.Font = new Font("Segoe UI", 13F);
-            button2.Location = new Point(286, 204);
-            button2.Name = "button2";
-            button2.Size = new Size(207, 74);
-            button2.TabIndex = 12;
-            button2.Text = "Handle instructors";
-            button2.UseVisualStyleBackColor = true;
+            handleInstructorsButton.Font = new Font("Segoe UI", 13F);
+            handleInstructorsButton.Location = new Point(286, 204);
+            handleInstructorsButton.Name = "handleInstructorsButton";
+            handleInstructorsButton.Size = new Size(207, 74);
+            handleInstructorsButton.TabIndex = 12;
+            handleInstructorsButton.Text = "Handle instructors";
+            handleInstructorsButton.UseVisualStyleBackColor = true;
+            handleInstructorsButton.Click += handleInstructorsButton_Click;
             // 
-            // button3
+            // handleCarsButton
             // 
-            button3.Font = new Font("Segoe UI", 13F);
-            button3.Location = new Point(286, 300);
-            button3.Name = "button3";
-            button3.Size = new Size(207, 74);
-            button3.TabIndex = 13;
-            button3.Text = "Handle cars";
-            button3.UseVisualStyleBackColor = true;
+            handleCarsButton.Font = new Font("Segoe UI", 13F);
+            handleCarsButton.Location = new Point(286, 300);
+            handleCarsButton.Name = "handleCarsButton";
+            handleCarsButton.Size = new Size(207, 74);
+            handleCarsButton.TabIndex = 13;
+            handleCarsButton.Text = "Handle cars";
+            handleCarsButton.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -95,9 +96,9 @@
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(handleCarsButton);
+            Controls.Add(handleInstructorsButton);
+            Controls.Add(handleStudentsButton);
             Controls.Add(label1);
             Name = "AdminMenu";
             Text = "AdminMenu";
@@ -107,9 +108,9 @@
         #endregion
 
         private Label label1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button handleStudentsButton;
+        private Button handleInstructorsButton;
+        private Button handleCarsButton;
         private Button button4;
     }
 }
