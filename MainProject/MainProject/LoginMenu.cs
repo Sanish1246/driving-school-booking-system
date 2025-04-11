@@ -43,6 +43,37 @@ public class LoginMenu
                 instructorMenu.Login();
                 break;
             case "admin":
+                Console.Write("Enter username: ");
+                string? username;
+                while (true)
+                {
+                    username = Console.ReadLine();
+                    if (Validations.ValidateString(username))
+                    {
+                        if (username.ToLower().Equals("root", StringComparison.InvariantCulture)) break;
+                        Console.WriteLine("Wrong username entered, please re-input.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Password can't be empty.");
+                    }
+                }
+                Console.Write("Enter password: ");
+                string? password;
+                while (true)
+                {
+                    password = Console.ReadLine();
+                    if (Validations.ValidateString(password))
+                    {
+                        if (password.ToLower().Equals("root", StringComparison.InvariantCulture)) break;
+                        Console.WriteLine("Wrong password entered, please re-input.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Password can't be empty.");
+                    }
+                }
+                
                 Console.WriteLine("Choose on which menu you want to proceed:\n1.Student,\n2.Instructor,\n3.Car,\n4.Lesson");
                 string? choice;
                 while (true)
