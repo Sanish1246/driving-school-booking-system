@@ -45,6 +45,7 @@ NOTE: Add a semi-colon (;) before line 26, at the end of the code else, you will
 `"DefaultConnection": "Server=LAPTOP-ILUK0PDF;Database=TestMigration;Trusted_Connection=True;TrustServerCertificate=True;"`
  Server value (LAPTOP-ILUK0PDF) should be changed to the one your machine uses, as shown in the following picture:
 ![Image](https://github.com/user-attachments/assets/6ebb7dae-f7f1-43df-a5b3-71aa4802ebb8)
+
 Then proceed with the following steps:
 
 ```
