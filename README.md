@@ -42,7 +42,9 @@ NOTE: Add a semi-colon (;) before line 26, at the end of the code else, you will
 
 **4. Run the following commands to create the database using code-first approach:**
 **NOTE: VERY IMPORTANRT !! Before running the following code, make sure you change the connection string in the configuration settings.**
-`"DefaultConnection": "Server=LAPTOP-ILUK0PDF;Database=TestMigration;Trusted_Connection=True;TrustServerCertificate=True;"`
+```
+"DefaultConnection": "Server=LAPTOP-ILUK0PDF;Database=TestMigration;Trusted_Connection=True;TrustServerCertificate=True;"
+```
  Server value (LAPTOP-ILUK0PDF) should be changed to the one your machine uses, as shown in the following picture:
 ![Image](https://github.com/user-attachments/assets/6ebb7dae-f7f1-43df-a5b3-71aa4802ebb8)
 
