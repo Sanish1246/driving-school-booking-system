@@ -57,5 +57,23 @@ namespace MainFormProject
 
             updateInstructor.Show();
         }
+
+        private void searchInstructorButton_Click(object sender, EventArgs e)
+        {
+            AdminSearchInstructor searchInstructor = new AdminSearchInstructor();
+
+            this.Close();
+
+            searchInstructor.Show();
+        }
+
+        private void listInstructorButton_Click(object sender, EventArgs e)
+        {
+            AdminListInstructor listInstructor = new AdminListInstructor();
+
+            this.Close();
+
+            listInstructor.Show();
+        }
     }
 }

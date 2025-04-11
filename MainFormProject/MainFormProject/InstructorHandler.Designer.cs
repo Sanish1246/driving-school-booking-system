@@ -70,6 +70,7 @@
             listInstructorButton.TabIndex = 27;
             listInstructorButton.Text = "List all instructors";
             listInstructorButton.UseVisualStyleBackColor = true;
+            listInstructorButton.Click += listInstructorButton_Click;
             // 
             // searchInstructorButton
             // 
@@ -80,6 +81,7 @@
             searchInstructorButton.TabIndex = 26;
             searchInstructorButton.Text = "Search for an instructor";
             searchInstructorButton.UseVisualStyleBackColor = true;
+            searchInstructorButton.Click += searchInstructorButton_Click;
             // 
             // updateInstructorButton
             // 
