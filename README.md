@@ -14,18 +14,22 @@ git clone https://github.com/Sanish1246/driving-school-booking-system.git
 
 ```
 // line 15
+
 private readonly StreamWriter _logStream = new StreamWriter(GetPath(), append: true);
 
 // line 26
+
 // .ConfigureWarnings(
         //     b => b.Log(
         //         (RelationalEventId.ConnectionOpened, LogLevel.Information),
         //         (RelationalEventId.ConnectionClosed, LogLevel.Information)))
         // .LogTo(_logStream.WriteLine, LogLevel.Information, DbContextLoggerOptions.DefaultWithLocalTime | DbContextLoggerOptions.SingleLine);
 
-NOTE: Add a semi-colon (;) before line 26, at the end of the code else, you will have that red squiggly line
-
+```
+**NOTE: Add a semi-colon (;) before line 26, at the end of the code else, you will have that red squiggly line**
+```
 //line 41
+
 // public override void Dispose()
     // {
     //     base.Dispose();
@@ -33,6 +37,7 @@ NOTE: Add a semi-colon (;) before line 26, at the end of the code else, you will
     // }
 
 //line 47
+
 // private static string GetPath()
     // {
     //     var workingDirectory = Environment.CurrentDirectory;
