@@ -17,18 +17,28 @@ namespace MainFormProject
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void handleStudentsButton_Click(object sender, EventArgs e)
         {
             StudentHandler studentHandlerMenu = new StudentHandler();
 
+            this.Close();
+
             studentHandlerMenu.Show();
 
-            this.Close();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void handleInstructorsButton_Click(object sender, EventArgs e)
+        {
+            InstructorHandler instructorHandlerMenu = new InstructorHandler();
+
+            this.Close();
+
+            instructorHandlerMenu.Show();
         }
     }
 }
