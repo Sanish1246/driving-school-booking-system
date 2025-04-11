@@ -76,6 +76,7 @@
             handleCarsButton.TabIndex = 13;
             handleCarsButton.Text = "Handle cars";
             handleCarsButton.UseVisualStyleBackColor = true;
+            handleCarsButton.Click += handleCarsButton_Click;
             // 
             // button4
             // 
