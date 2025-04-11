@@ -48,5 +48,14 @@ namespace MainFormProject
 
             deleteInstructor.Show();
         }
+
+        private void updateInstructorButton_Click(object sender, EventArgs e)
+        {
+            AdminUpdateInstructor updateInstructor = new AdminUpdateInstructor();
+
+            this.Close();
+
+            updateInstructor.Show();
+        }
     }
 }

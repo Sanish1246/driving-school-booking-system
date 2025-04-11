@@ -90,6 +90,7 @@
             updateInstructorButton.TabIndex = 25;
             updateInstructorButton.Text = "Update instructor details";
             updateInstructorButton.UseVisualStyleBackColor = true;
+            updateInstructorButton.Click += updateInstructorButton_Click;
             // 
             // deleteInstructorButton
             // 
