@@ -11,9 +11,10 @@ namespace MainFormProject
         {
             AdminLogin adminLoginForm = new AdminLogin();
 
+            this.Close();
+
             adminLoginForm.Show();
 
-            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)

@@ -30,5 +30,14 @@ namespace MainFormProject
         {
             Application.Exit();
         }
+
+        private void addInstructorButton_Click(object sender, EventArgs e)
+        {
+            AdminAddInstructor addInstructor = new AdminAddInstructor();
+
+            this.Close();
+
+            addInstructor.Show();
+        }
     }
 }

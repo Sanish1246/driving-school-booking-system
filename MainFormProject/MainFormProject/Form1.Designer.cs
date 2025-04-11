@@ -32,6 +32,7 @@
             label2 = new Label();
             textBox1 = new TextBox();
             button1 = new Button();
+            exitButton = new Button();
             SuspendLayout();
             // 
             // label1
@@ -73,12 +74,25 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // exitButton
+            // 
+            exitButton.Font = new Font("Segoe UI", 10F);
+            exitButton.ForeColor = Color.Red;
+            exitButton.Location = new Point(694, 12);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(94, 29);
+            exitButton.TabIndex = 32;
+            exitButton.Text = " Exit";
+            exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += exitButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(exitButton);
             Controls.Add(button1);
             Controls.Add(textBox1);
             Controls.Add(label2);
@@ -95,5 +109,6 @@
         private Label label2;
         private TextBox textBox1;
         private Button button1;
+        private Button exitButton;
     }
 }

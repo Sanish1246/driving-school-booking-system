@@ -30,11 +30,11 @@
         {
             backButton = new Button();
             exitButton = new Button();
-            listStudentButton = new Button();
-            searchStudentButton = new Button();
-            updateStudentButton = new Button();
-            deleteStudentButton = new Button();
-            addStudentButton = new Button();
+            listInstructorButton = new Button();
+            searchInstructorButton = new Button();
+            updateInstructorButton = new Button();
+            deleteInstructorButton = new Button();
+            addInstructorButton = new Button();
             label1 = new Label();
             SuspendLayout();
             // 
@@ -61,55 +61,56 @@
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
             // 
-            // listStudentButton
+            // listInstructorButton
             // 
-            listStudentButton.Font = new Font("Segoe UI", 13F);
-            listStudentButton.Location = new Point(272, 348);
-            listStudentButton.Name = "listStudentButton";
-            listStudentButton.Size = new Size(260, 56);
-            listStudentButton.TabIndex = 27;
-            listStudentButton.Text = "List all instructors";
-            listStudentButton.UseVisualStyleBackColor = true;
+            listInstructorButton.Font = new Font("Segoe UI", 13F);
+            listInstructorButton.Location = new Point(272, 348);
+            listInstructorButton.Name = "listInstructorButton";
+            listInstructorButton.Size = new Size(260, 56);
+            listInstructorButton.TabIndex = 27;
+            listInstructorButton.Text = "List all instructors";
+            listInstructorButton.UseVisualStyleBackColor = true;
             // 
-            // searchStudentButton
+            // searchInstructorButton
             // 
-            searchStudentButton.Font = new Font("Segoe UI", 13F);
-            searchStudentButton.Location = new Point(272, 286);
-            searchStudentButton.Name = "searchStudentButton";
-            searchStudentButton.Size = new Size(260, 56);
-            searchStudentButton.TabIndex = 26;
-            searchStudentButton.Text = "Search for an instructor";
-            searchStudentButton.UseVisualStyleBackColor = true;
+            searchInstructorButton.Font = new Font("Segoe UI", 13F);
+            searchInstructorButton.Location = new Point(272, 286);
+            searchInstructorButton.Name = "searchInstructorButton";
+            searchInstructorButton.Size = new Size(260, 56);
+            searchInstructorButton.TabIndex = 26;
+            searchInstructorButton.Text = "Search for an instructor";
+            searchInstructorButton.UseVisualStyleBackColor = true;
             // 
-            // updateStudentButton
+            // updateInstructorButton
             // 
-            updateStudentButton.Font = new Font("Segoe UI", 13F);
-            updateStudentButton.Location = new Point(272, 216);
-            updateStudentButton.Name = "updateStudentButton";
-            updateStudentButton.Size = new Size(260, 64);
-            updateStudentButton.TabIndex = 25;
-            updateStudentButton.Text = "Update instructor details";
-            updateStudentButton.UseVisualStyleBackColor = true;
+            updateInstructorButton.Font = new Font("Segoe UI", 13F);
+            updateInstructorButton.Location = new Point(272, 216);
+            updateInstructorButton.Name = "updateInstructorButton";
+            updateInstructorButton.Size = new Size(260, 64);
+            updateInstructorButton.TabIndex = 25;
+            updateInstructorButton.Text = "Update instructor details";
+            updateInstructorButton.UseVisualStyleBackColor = true;
             // 
-            // deleteStudentButton
+            // deleteInstructorButton
             // 
-            deleteStudentButton.Font = new Font("Segoe UI", 13F);
-            deleteStudentButton.Location = new Point(272, 144);
-            deleteStudentButton.Name = "deleteStudentButton";
-            deleteStudentButton.Size = new Size(260, 64);
-            deleteStudentButton.TabIndex = 24;
-            deleteStudentButton.Text = "Delete instructor";
-            deleteStudentButton.UseVisualStyleBackColor = true;
+            deleteInstructorButton.Font = new Font("Segoe UI", 13F);
+            deleteInstructorButton.Location = new Point(272, 144);
+            deleteInstructorButton.Name = "deleteInstructorButton";
+            deleteInstructorButton.Size = new Size(260, 64);
+            deleteInstructorButton.TabIndex = 24;
+            deleteInstructorButton.Text = "Delete instructor";
+            deleteInstructorButton.UseVisualStyleBackColor = true;
             // 
-            // addStudentButton
+            // addInstructorButton
             // 
-            addStudentButton.Font = new Font("Segoe UI", 13F);
-            addStudentButton.Location = new Point(272, 79);
-            addStudentButton.Name = "addStudentButton";
-            addStudentButton.Size = new Size(260, 59);
-            addStudentButton.TabIndex = 23;
-            addStudentButton.Text = "Add instructor";
-            addStudentButton.UseVisualStyleBackColor = true;
+            addInstructorButton.Font = new Font("Segoe UI", 13F);
+            addInstructorButton.Location = new Point(272, 79);
+            addInstructorButton.Name = "addInstructorButton";
+            addInstructorButton.Size = new Size(260, 59);
+            addInstructorButton.TabIndex = 23;
+            addInstructorButton.Text = "Add instructor";
+            addInstructorButton.UseVisualStyleBackColor = true;
+            addInstructorButton.Click += addInstructorButton_Click;
             // 
             // label1
             // 
@@ -129,11 +130,11 @@
             ClientSize = new Size(800, 450);
             Controls.Add(backButton);
             Controls.Add(exitButton);
-            Controls.Add(listStudentButton);
-            Controls.Add(searchStudentButton);
-            Controls.Add(updateStudentButton);
-            Controls.Add(deleteStudentButton);
-            Controls.Add(addStudentButton);
+            Controls.Add(listInstructorButton);
+            Controls.Add(searchInstructorButton);
+            Controls.Add(updateInstructorButton);
+            Controls.Add(deleteInstructorButton);
+            Controls.Add(addInstructorButton);
             Controls.Add(label1);
             Name = "InstructorHandler";
             Text = "Instructor Handler";
@@ -144,11 +145,11 @@
 
         private Button backButton;
         private Button exitButton;
-        private Button listStudentButton;
-        private Button searchStudentButton;
-        private Button updateStudentButton;
-        private Button deleteStudentButton;
-        private Button addStudentButton;
+        private Button listInstructorButton;
+        private Button searchInstructorButton;
+        private Button updateInstructorButton;
+        private Button deleteInstructorButton;
+        private Button addInstructorButton;
         private Label label1;
     }
 }

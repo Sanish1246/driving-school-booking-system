@@ -50,5 +50,19 @@ namespace MainFormProject
                 this.Close();
             }
         }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            LoginChoice loginChoice = new LoginChoice();
+
+            this.Close();
+
+            loginChoice.Show();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
