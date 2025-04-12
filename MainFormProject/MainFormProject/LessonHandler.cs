@@ -33,7 +33,38 @@ namespace MainFormProject
 
         private void addLessonButton_Click(object sender, EventArgs e)
         {
+            AdminAddLesson addLesson = new AdminAddLesson();
 
+            this.Close();
+
+            addLesson.Show();
+        }
+
+        private void deleteLessonButton_Click(object sender, EventArgs e)
+        {
+            AdminDeleteLesson deleteLesson = new AdminDeleteLesson();
+
+            this.Close();
+
+            deleteLesson.Show();
+        }
+
+        private void searchLessonButton_Click(object sender, EventArgs e)
+        {
+            AdminSearchLesson searchLesson = new AdminSearchLesson();
+
+            this.Close();
+
+            searchLesson.Show();
+        }
+
+        private void listLessonButton_Click(object sender, EventArgs e)
+        {
+            AdminListLesson listLesson = new AdminListLesson();
+
+            this.Close();
+
+            listLesson.Show();
         }
     }
 }

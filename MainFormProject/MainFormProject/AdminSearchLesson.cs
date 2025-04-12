@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MainFormProject
 {
-    public partial class AdminAddLesson : Form
+    public partial class AdminSearchLesson : Form
     {
-        public AdminAddLesson()
+        public AdminSearchLesson()
         {
             InitializeComponent();
         }
@@ -29,11 +29,6 @@ namespace MainFormProject
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void submitButton_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Lesson added", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

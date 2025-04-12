@@ -51,6 +51,7 @@
             submitButton.TabIndex = 41;
             submitButton.Text = "Submit";
             submitButton.UseVisualStyleBackColor = true;
+            submitButton.Click += submitButton_Click;
             // 
             // backButton
             // 
@@ -61,6 +62,7 @@
             backButton.TabIndex = 40;
             backButton.Text = "< Back";
             backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
             // 
             // exitButton
             // 
@@ -72,6 +74,7 @@
             exitButton.TabIndex = 39;
             exitButton.Text = " Exit";
             exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += exitButton_Click;
             // 
             // password
             // 

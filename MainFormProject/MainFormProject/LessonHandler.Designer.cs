@@ -70,6 +70,7 @@
             listLessonButton.TabIndex = 27;
             listLessonButton.Text = "List all lessons";
             listLessonButton.UseVisualStyleBackColor = true;
+            listLessonButton.Click += listLessonButton_Click;
             // 
             // searchLessonButton
             // 
@@ -80,6 +81,7 @@
             searchLessonButton.TabIndex = 26;
             searchLessonButton.Text = "Search for a lesson";
             searchLessonButton.UseVisualStyleBackColor = true;
+            searchLessonButton.Click += searchLessonButton_Click;
             // 
             // updateLessonButton
             // 
@@ -100,6 +102,7 @@
             deleteLessonButton.TabIndex = 24;
             deleteLessonButton.Text = "Delete lesson";
             deleteLessonButton.UseVisualStyleBackColor = true;
+            deleteLessonButton.Click += deleteLessonButton_Click;
             // 
             // addLessonButton
             // 

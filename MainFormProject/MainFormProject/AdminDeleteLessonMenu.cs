@@ -10,20 +10,20 @@ using System.Windows.Forms;
 
 namespace MainFormProject
 {
-    public partial class AdminAddLesson : Form
+    public partial class AdminDeleteLessonMenu : Form
     {
-        public AdminAddLesson()
+        public AdminDeleteLessonMenu()
         {
             InitializeComponent();
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            LessonHandler lessonHandlerMenu = new LessonHandler();
+            AdminDeleteLesson deleteLesson = new AdminDeleteLesson();
 
             this.Close();
 
-            lessonHandlerMenu.Show();
+            deleteLesson.Show();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace MainFormProject
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Lesson added", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Lesson deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
