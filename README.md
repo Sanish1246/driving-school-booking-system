@@ -15,7 +15,7 @@ git clone https://github.com/Sanish1246/driving-school-booking-system.git
 ```
 // line 15
 
-private readonly StreamWriter _logStream = new StreamWriter(GetPath(), append: true);
+// private readonly StreamWriter _logStream = new StreamWriter(GetPath(), append: true);
 
 // line 26
 
