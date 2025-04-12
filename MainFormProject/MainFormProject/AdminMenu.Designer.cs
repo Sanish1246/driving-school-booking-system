@@ -33,6 +33,7 @@
             handleInstructorsButton = new Button();
             handleCarsButton = new Button();
             button4 = new Button();
+            handleLessonButton = new Button();
             SuspendLayout();
             // 
             // label1
@@ -48,7 +49,7 @@
             // handleStudentsButton
             // 
             handleStudentsButton.Font = new Font("Segoe UI", 13F);
-            handleStudentsButton.Location = new Point(286, 107);
+            handleStudentsButton.Location = new Point(286, 100);
             handleStudentsButton.Name = "handleStudentsButton";
             handleStudentsButton.Size = new Size(207, 74);
             handleStudentsButton.TabIndex = 11;
@@ -59,7 +60,7 @@
             // handleInstructorsButton
             // 
             handleInstructorsButton.Font = new Font("Segoe UI", 13F);
-            handleInstructorsButton.Location = new Point(286, 204);
+            handleInstructorsButton.Location = new Point(286, 180);
             handleInstructorsButton.Name = "handleInstructorsButton";
             handleInstructorsButton.Size = new Size(207, 74);
             handleInstructorsButton.TabIndex = 12;
@@ -70,7 +71,7 @@
             // handleCarsButton
             // 
             handleCarsButton.Font = new Font("Segoe UI", 13F);
-            handleCarsButton.Location = new Point(286, 300);
+            handleCarsButton.Location = new Point(286, 260);
             handleCarsButton.Name = "handleCarsButton";
             handleCarsButton.Size = new Size(207, 74);
             handleCarsButton.TabIndex = 13;
@@ -90,19 +91,31 @@
             button4.UseVisualStyleBackColor = true;
             button4.Click += button4_Click;
             // 
+            // handleLessonButton
+            // 
+            handleLessonButton.Font = new Font("Segoe UI", 13F);
+            handleLessonButton.Location = new Point(286, 340);
+            handleLessonButton.Name = "handleLessonButton";
+            handleLessonButton.Size = new Size(207, 74);
+            handleLessonButton.TabIndex = 15;
+            handleLessonButton.Text = "Handle Lessons";
+            handleLessonButton.UseVisualStyleBackColor = true;
+            handleLessonButton.Click += handleLessonButton_Click;
+            // 
             // AdminMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(handleLessonButton);
             Controls.Add(button4);
             Controls.Add(handleCarsButton);
             Controls.Add(handleInstructorsButton);
             Controls.Add(handleStudentsButton);
             Controls.Add(label1);
             Name = "AdminMenu";
-            Text = "AdminMenu";
+            Text = "Admin Menu";
             ResumeLayout(false);
         }
 
@@ -113,5 +126,6 @@
         private Button handleInstructorsButton;
         private Button handleCarsButton;
         private Button button4;
+        private Button handleLessonButton;
     }
 }

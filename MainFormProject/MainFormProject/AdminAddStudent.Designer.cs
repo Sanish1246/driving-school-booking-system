@@ -37,15 +37,15 @@
             label4 = new Label();
             password = new TextBox();
             label5 = new Label();
-            DOB = new TextBox();
-            label6 = new Label();
-            phoneNum = new TextBox();
-            label7 = new Label();
-            address = new TextBox();
-            label8 = new Label();
             exitButton = new Button();
             backButton = new Button();
             submitButton = new Button();
+            label6 = new Label();
+            DOB = new TextBox();
+            label7 = new Label();
+            phoneNum = new TextBox();
+            label8 = new Label();
+            address = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -130,60 +130,6 @@
             label5.TabIndex = 7;
             label5.Text = "Password";
             // 
-            // DOB
-            // 
-            DOB.Font = new Font("Segoe UI", 12F);
-            DOB.Location = new Point(175, 239);
-            DOB.Name = "DOB";
-            DOB.Size = new Size(169, 34);
-            DOB.TabIndex = 10;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(67, 242);
-            label6.Name = "label6";
-            label6.Size = new Size(52, 28);
-            label6.TabIndex = 9;
-            label6.Text = "DOB";
-            // 
-            // phoneNum
-            // 
-            phoneNum.Font = new Font("Segoe UI", 12F);
-            phoneNum.Location = new Point(546, 242);
-            phoneNum.Name = "phoneNum";
-            phoneNum.Size = new Size(169, 34);
-            phoneNum.TabIndex = 12;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F);
-            label7.Location = new Point(400, 245);
-            label7.Name = "label7";
-            label7.Size = new Size(140, 28);
-            label7.TabIndex = 11;
-            label7.Text = "Phone number";
-            // 
-            // address
-            // 
-            address.Font = new Font("Segoe UI", 12F);
-            address.Location = new Point(334, 311);
-            address.Name = "address";
-            address.Size = new Size(169, 34);
-            address.TabIndex = 14;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F);
-            label8.Location = new Point(226, 314);
-            label8.Name = "label8";
-            label8.Size = new Size(82, 28);
-            label8.TabIndex = 13;
-            label8.Text = "Address";
-            // 
             // exitButton
             // 
             exitButton.Font = new Font("Segoe UI", 10F);
@@ -217,6 +163,60 @@
             submitButton.Text = "Submit";
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(67, 242);
+            label6.Name = "label6";
+            label6.Size = new Size(52, 28);
+            label6.TabIndex = 9;
+            label6.Text = "DOB";
+            // 
+            // DOB
+            // 
+            DOB.Font = new Font("Segoe UI", 12F);
+            DOB.Location = new Point(175, 239);
+            DOB.Name = "DOB";
+            DOB.Size = new Size(169, 34);
+            DOB.TabIndex = 10;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F);
+            label7.Location = new Point(400, 245);
+            label7.Name = "label7";
+            label7.Size = new Size(140, 28);
+            label7.TabIndex = 11;
+            label7.Text = "Phone number";
+            // 
+            // phoneNum
+            // 
+            phoneNum.Font = new Font("Segoe UI", 12F);
+            phoneNum.Location = new Point(546, 242);
+            phoneNum.Name = "phoneNum";
+            phoneNum.Size = new Size(169, 34);
+            phoneNum.TabIndex = 12;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F);
+            label8.Location = new Point(226, 314);
+            label8.Name = "label8";
+            label8.Size = new Size(82, 28);
+            label8.TabIndex = 13;
+            label8.Text = "Address";
+            // 
+            // address
+            // 
+            address.Font = new Font("Segoe UI", 12F);
+            address.Location = new Point(334, 311);
+            address.Name = "address";
+            address.Size = new Size(169, 34);
+            address.TabIndex = 14;
             // 
             // AdminAddStudent
             // 
@@ -259,14 +259,14 @@
         private Label label4;
         private TextBox password;
         private Label label5;
-        private TextBox DOB;
-        private Label label6;
-        private TextBox phoneNum;
-        private Label label7;
-        private TextBox address;
-        private Label label8;
         private Button exitButton;
         private Button backButton;
         private Button submitButton;
+        private Label label6;
+        private TextBox DOB;
+        private Label label7;
+        private TextBox phoneNum;
+        private Label label8;
+        private TextBox address;
     }
 }
