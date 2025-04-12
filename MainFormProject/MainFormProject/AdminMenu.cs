@@ -49,5 +49,14 @@ namespace MainFormProject
 
             carHandlerMenu.Show();
         }
+
+        private void handleLessonButton_Click(object sender, EventArgs e)
+        {
+            LessonHandler lessonHandlerMenu = new LessonHandler();
+
+            this.Close();
+
+            lessonHandlerMenu.Show();
+        }
     }
 }
