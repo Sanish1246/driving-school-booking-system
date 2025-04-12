@@ -141,7 +141,7 @@
             Controls.Add(addStudentButton);
             Controls.Add(label1);
             Name = "StudentHandler";
-            Text = "StudentHandler";
+            Text = "Student Handler";
             ResumeLayout(false);
         }
 

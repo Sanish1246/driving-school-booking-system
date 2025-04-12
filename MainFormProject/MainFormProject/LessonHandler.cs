@@ -16,5 +16,24 @@ namespace MainFormProject
         {
             InitializeComponent();
         }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            AdminMenu adminMenu = new AdminMenu();
+
+            this.Close();
+
+            adminMenu.Show();
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void addLessonButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
