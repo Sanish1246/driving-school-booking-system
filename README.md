@@ -1,7 +1,14 @@
 # driving-school-booking-system
  A project for a Driving lesson booking system, made entirely in C# .Net Version 8.0
 
+
 ## Getting Started
+
+# Installation
+**1. Installing EF Core**
+```
+> dotnet - ![#1589F0] add package CsvHelper
+```
 
 **1. Clone the repo**
 ```
