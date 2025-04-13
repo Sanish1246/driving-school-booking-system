@@ -7,7 +7,7 @@
 ### Installation
 **1. Installing EF Core**
 ```
-dotnet `<blue>add<blue>` package Microsoft.EntityFrameworkCore --version 9.0.2
+dotnet <color>#FFA500<color> package Microsoft.EntityFrameworkCore --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.Tools --version 9.0.2
