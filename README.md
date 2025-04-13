@@ -1,4 +1,4 @@
-# driving-school-booking-system
+# Driving School Booking System
 A project for a Driving lesson booking system, made entirely in C# using .NET Version 8.0.
 
 It consists of the following functionalities:
