@@ -39,7 +39,7 @@ dotnet add package CsvHelper --version 33.0.1
     //     FileShare.ReadWrite
     // ));
 
-// line 26
+// line 31
 
 // .ConfigureWarnings(
         //     b => b.Log(
@@ -50,7 +50,7 @@ dotnet add package CsvHelper --version 33.0.1
 ```
 **NOTE: Add a semi-colon (;) before line 26, at the end of the code else, you will have that red squiggly line**
 ```
-//line 41
+//line 45
 
 // public override void Dispose()
     // {
@@ -58,7 +58,7 @@ dotnet add package CsvHelper --version 33.0.1
     //     _logStream.Dispose();
     // }
 
-//line 47
+//line 51
 
 // private static string GetPath()
     // {
