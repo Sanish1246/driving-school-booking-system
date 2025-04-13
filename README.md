@@ -15,7 +15,7 @@ Before proceeding, make sure you have the following NuGuet Packages:
 Use the **CLI** and run the following commands:
 
 ```
-<code style="color : aqua">text</code>
+$${\color{blue}Blue}$$
 dotnet add package Microsoft.EntityFrameworkCore --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.2
