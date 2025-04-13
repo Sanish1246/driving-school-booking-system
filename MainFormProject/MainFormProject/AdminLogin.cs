@@ -97,9 +97,9 @@ namespace MainFormProject
 
                 if (valid)
                 {
-                    AdminMenu adminMenu = new AdminMenu();
+                    InstructorMenu instructorMenu = new InstructorMenu();
 
-                    adminMenu.Show();
+                    instructorMenu.Show();
 
                     this.Close();
                 }

@@ -28,7 +28,15 @@ namespace MainFormProject
                 this.Close();
 
                 studentMenu.Show();
-            } else
+            } else if (userType == "instructor")
+            {
+                InstructorMenu instructorMenu = new InstructorMenu();
+
+                this.Close();
+
+                instructorMenu.Show();
+            }
+            else
             {
                 LessonHandler lessonHandlerMenu = new LessonHandler();
 
