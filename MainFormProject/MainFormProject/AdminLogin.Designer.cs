@@ -156,7 +156,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "AdminLogin";
-            Text = "AdminLogin";
+            Text = "Login";
             ResumeLayout(false);
             PerformLayout();
         }
