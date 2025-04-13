@@ -34,6 +34,7 @@
             button3 = new Button();
             label1 = new Label();
             label2 = new Label();
+            exitButton = new Button();
             SuspendLayout();
             // 
             // button1
@@ -87,19 +88,32 @@
             label2.TabIndex = 4;
             label2.Text = "Choose an option";
             // 
-            // Form1
+            // exitButton
+            // 
+            exitButton.Font = new Font("Segoe UI", 10F);
+            exitButton.ForeColor = Color.Red;
+            exitButton.Location = new Point(694, 12);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(94, 29);
+            exitButton.TabIndex = 33;
+            exitButton.Text = " Exit";
+            exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += exitButton_Click;
+            // 
+            // LoginChoice
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.GradientActiveCaption;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(exitButton);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Form1";
+            Name = "LoginChoice";
             Text = "Driving Lesson Booking system";
             ResumeLayout(false);
             PerformLayout();
@@ -112,5 +126,6 @@
         private Button button3;
         private Label label1;
         private Label label2;
+        private Button exitButton;
     }
 }

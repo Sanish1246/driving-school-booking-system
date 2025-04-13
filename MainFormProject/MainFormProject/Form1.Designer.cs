@@ -33,6 +33,9 @@
             textBox1 = new TextBox();
             button1 = new Button();
             exitButton = new Button();
+            skipButton = new Button();
+            comboBox1 = new ComboBox();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -49,11 +52,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(278, 137);
+            label2.Location = new Point(185, 196);
             label2.Name = "label2";
-            label2.Size = new Size(234, 28);
+            label2.Size = new Size(87, 28);
             label2.TabIndex = 1;
-            label2.Text = "Please input the file name";
+            label2.Text = "File path";
             // 
             // textBox1
             // 
@@ -66,7 +69,7 @@
             // button1
             // 
             button1.Font = new Font("Segoe UI", 12F);
-            button1.Location = new Point(330, 271);
+            button1.Location = new Point(264, 274);
             button1.Name = "button1";
             button1.Size = new Size(134, 54);
             button1.TabIndex = 3;
@@ -86,12 +89,47 @@
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
             // 
+            // skipButton
+            // 
+            skipButton.Font = new Font("Segoe UI", 12F);
+            skipButton.Location = new Point(404, 274);
+            skipButton.Name = "skipButton";
+            skipButton.Size = new Size(134, 54);
+            skipButton.TabIndex = 33;
+            skipButton.Text = "Skip";
+            skipButton.UseVisualStyleBackColor = true;
+            skipButton.Click += skipButton_Click;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Font = new Font("Segoe UI", 12F);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Lesson", "Student", "Instructor", "Car" });
+            comboBox1.Location = new Point(320, 114);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(151, 36);
+            comboBox1.TabIndex = 34;
+            comboBox1.Text = "Lesson";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(162, 117);
+            label3.Name = "label3";
+            label3.Size = new Size(152, 28);
+            label3.TabIndex = 35;
+            label3.Text = "Table to update:";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
+            Controls.Add(comboBox1);
+            Controls.Add(skipButton);
             Controls.Add(exitButton);
             Controls.Add(button1);
             Controls.Add(textBox1);
@@ -110,5 +148,8 @@
         private TextBox textBox1;
         private Button button1;
         private Button exitButton;
+        private Button skipButton;
+        private ComboBox comboBox1;
+        private Label label3;
     }
 }
