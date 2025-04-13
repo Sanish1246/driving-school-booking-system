@@ -7,7 +7,7 @@
 # Installation
 **1. Installing EF Core**
 ```
-> dotnet - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) `#1589F0`
+The background color is `#ffffff` for light mode and `#000000` for dark mode.
 ```
 
 **1. Clone the repo**
