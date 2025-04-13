@@ -1,4 +1,4 @@
-﻿namespace MainProject.Models;
+﻿namespace MainFormProject.Models;
 
 public class Lesson
 {

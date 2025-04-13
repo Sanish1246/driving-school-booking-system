@@ -1,10 +1,10 @@
-﻿using MainProject.Models;
+﻿using MainFormProject.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 
-namespace MainProject.Context;
+namespace MainFormProject.Context;
 
 public class DrivingLessonBookingSystemContext : DbContext
 {

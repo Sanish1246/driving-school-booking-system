@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
-namespace MainProject.Models;
+namespace MainFormProject.Models;
 [Index(nameof(Email), IsUnique = true)]
 public class Student
 {
