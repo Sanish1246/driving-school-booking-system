@@ -5,9 +5,10 @@
 ## Getting Started
 
 ### Installation
+Use the CLI and run the following commands:
 **1. Installing EF Core**
 ```
-dotnet <span style="color: red;">This is red text</span> package Microsoft.EntityFrameworkCore --version 9.0.2
+dotnet add package Microsoft.EntityFrameworkCore --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.Tools --version 9.0.2
