@@ -1,6 +1,6 @@
 ﻿namespace MainFormProject
 {
-    partial class AdminDeleteLesson
+    partial class BookInstructor
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             submitButton = new Button();
-            email = new TextBox();
-            label4 = new Label();
+            textBox1 = new TextBox();
+            label2 = new Label();
+            firstNames = new ListBox();
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
@@ -39,39 +40,48 @@
             // submitButton
             // 
             submitButton.Font = new Font("Segoe UI", 12F);
-            submitButton.Location = new Point(343, 263);
+            submitButton.Location = new Point(508, 395);
             submitButton.Name = "submitButton";
-            submitButton.Size = new Size(102, 39);
-            submitButton.TabIndex = 34;
+            submitButton.Size = new Size(103, 35);
+            submitButton.TabIndex = 49;
             submitButton.Text = "Submit";
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
-            // email
+            // textBox1
             // 
-            email.Font = new Font("Segoe UI", 12F);
-            email.Location = new Point(370, 169);
-            email.Name = "email";
-            email.Size = new Size(169, 34);
-            email.TabIndex = 33;
+            textBox1.Font = new Font("Segoe UI", 12F);
+            textBox1.Location = new Point(321, 396);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(181, 34);
+            textBox1.TabIndex = 48;
             // 
-            // label4
+            // label2
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(250, 172);
-            label4.Name = "label4";
-            label4.Size = new Size(114, 28);
-            label4.TabIndex = 32;
-            label4.Text = "Lesson date";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.Location = new Point(256, 399);
+            label2.Name = "label2";
+            label2.Size = new Size(59, 28);
+            label2.TabIndex = 47;
+            label2.Text = "Email";
+            // 
+            // firstNames
+            // 
+            firstNames.BackColor = SystemColors.ActiveCaption;
+            firstNames.FormattingEnabled = true;
+            firstNames.Location = new Point(12, 87);
+            firstNames.Name = "firstNames";
+            firstNames.Size = new Size(776, 284);
+            firstNames.TabIndex = 46;
             // 
             // backButton
             // 
             backButton.Font = new Font("Segoe UI", 10F);
-            backButton.Location = new Point(18, 9);
+            backButton.Location = new Point(12, 24);
             backButton.Name = "backButton";
             backButton.Size = new Size(94, 29);
-            backButton.TabIndex = 31;
+            backButton.TabIndex = 45;
             backButton.Text = "< Back";
             backButton.UseVisualStyleBackColor = true;
             backButton.Click += backButton_Click;
@@ -80,10 +90,10 @@
             // 
             exitButton.Font = new Font("Segoe UI", 10F);
             exitButton.ForeColor = Color.Red;
-            exitButton.Location = new Point(700, 9);
+            exitButton.Location = new Point(694, 24);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(94, 29);
-            exitButton.TabIndex = 30;
+            exitButton.TabIndex = 44;
             exitButton.Text = " Exit";
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
@@ -92,26 +102,27 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F);
-            label1.Location = new Point(214, 9);
+            label1.Location = new Point(256, 9);
             label1.Name = "label1";
-            label1.Size = new Size(380, 46);
-            label1.TabIndex = 29;
-            label1.Text = "Input the following data";
+            label1.Size = new Size(308, 46);
+            label1.TabIndex = 43;
+            label1.Text = "Select an instructor";
             // 
-            // AdminDeleteLesson
+            // BookInstructor
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(submitButton);
-            Controls.Add(email);
-            Controls.Add(label4);
+            Controls.Add(textBox1);
+            Controls.Add(label2);
+            Controls.Add(firstNames);
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
-            Name = "AdminDeleteLesson";
-            Text = "Input Lesson Date";
+            Name = "BookInstructor";
+            Text = "Book Instructor";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -119,8 +130,9 @@
         #endregion
 
         private Button submitButton;
-        private TextBox email;
-        private Label label4;
+        private TextBox textBox1;
+        private Label label2;
+        private ListBox firstNames;
         private Button backButton;
         private Button exitButton;
         private Label label1;

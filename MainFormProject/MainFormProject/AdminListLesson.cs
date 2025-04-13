@@ -12,18 +12,30 @@ namespace MainFormProject
 {
     public partial class AdminListLesson : Form
     {
-        public AdminListLesson()
+        private string userType;
+        public AdminListLesson(string userType)
         {
             InitializeComponent();
+            this.userType = userType;
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            LessonHandler lessonHandlerMenu = new LessonHandler();
+            if (userType == "student")
+            {
+                StudentMenu studentMenu = new StudentMenu();
 
-            this.Close();
+                this.Close();
 
-            lessonHandlerMenu.Show();
+                studentMenu.Show();
+            } else
+            {
+                LessonHandler lessonHandlerMenu = new LessonHandler();
+
+                this.Close();
+
+                lessonHandlerMenu.Show();
+            }
         }
 
         private void exitButton_Click(object sender, EventArgs e)

@@ -9,22 +9,30 @@ namespace MainFormProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdminLogin adminLoginForm = new AdminLogin();
+            AdminLogin loginForm = new AdminLogin("admin");
 
             this.Close();
 
-            adminLoginForm.Show();
+            loginForm.Show();
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            AdminLogin loginForm = new AdminLogin("student");
 
+            this.Close();
+
+            loginForm.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            AdminLogin loginForm = new AdminLogin("instructor");
 
+            this.Close();
+
+            loginForm.Show();
         }
     }
 }
