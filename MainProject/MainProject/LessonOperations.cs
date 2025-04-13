@@ -162,7 +162,6 @@ public class LessonOperations
                 context.SaveChanges();
                 
                 // Add to hash table
-                Console.WriteLine(lesson.LessonId);
                 table.LessonTable.Insert(lesson.LessonId, lesson);
                 
                 

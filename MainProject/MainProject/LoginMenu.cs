@@ -73,6 +73,29 @@ public class LoginMenu
                         Console.WriteLine("Password can't be empty.");
                     }
                 }
+                // Give admin the choice, import his own data or use data already present in database
+                Console.WriteLine("Before proceeding any further, you must choose whether your want to upload your own data or use data already present in the database:\n1.Upload data,\n2.Use default data from database");
+                int dataOption;
+                Console.Write("Enter choice (1/2):");
+                while (true)
+                {
+                    var result = int.TryParse(Console.ReadLine(), out dataOption);
+                    if (!result) Console.WriteLine("Invalid choice entered. Choice should either be 1 or 2.");
+                    else break;
+                }
+
+                switch (dataOption)
+                {
+                    case 1:
+                        if (UplodData.LoadData())
+                        {
+                            Console.WriteLine("Data has been successfully uploaded in database");
+                        }
+                        break;
+                    case 2:
+                        Console.WriteLine("Loading data from database...");
+                        break;
+                }
                 
                 Console.WriteLine("Choose on which menu you want to proceed:\n1.Student,\n2.Instructor,\n3.Car,\n4.Lesson");
                 string? choice;

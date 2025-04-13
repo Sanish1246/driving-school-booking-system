@@ -31,12 +31,12 @@ public class CarOperations
             transmission = Console.ReadLine();
             if (Validations.ValidateString(transmission))
             {
-                // Transmission can either be automatic or manuel
+                // Transmission can either be automatic or manual
                 if (TransmissionChecker(transmission))
                 {
                     break;
                 }
-                Console.WriteLine("Transmission can either be automatic or manuel, please re-input.");
+                Console.WriteLine("Transmission can either be automatic or manual, please re-input.");
             }
             else
             {
@@ -329,7 +329,7 @@ public class CarOperations
                     break;
                 }
 
-                Console.WriteLine("Transmission can either be automatic or manuel. Please re-input.");
+                Console.WriteLine("Transmission can either be automatic or manual. Please re-input.");
             }
             else
             {
@@ -419,7 +419,7 @@ public class CarOperations
     public static bool TransmissionChecker(string transmission)
     {
         return transmission.Equals("Automatic", StringComparison.InvariantCultureIgnoreCase) ||
-               transmission.Equals("Manuel", StringComparison.InvariantCultureIgnoreCase);
+               transmission.Equals("Manual", StringComparison.InvariantCultureIgnoreCase);
     }
 
     public static bool CarRegistrationChecker(string registrationNumber)

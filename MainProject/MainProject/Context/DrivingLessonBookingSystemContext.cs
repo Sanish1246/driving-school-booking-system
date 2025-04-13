@@ -12,7 +12,12 @@ public class DrivingLessonBookingSystemContext : DbContext
     public DbSet<Lesson> Lessons { get; set; }
     public DbSet<Student> Students { get; set; }
     public DbSet<Car> Cars { get; set; }
-    private readonly StreamWriter _logStream = new StreamWriter(GetPath(), append: true);
+    private readonly StreamWriter _logStream = new StreamWriter(new FileStream(
+        GetPath(),
+        FileMode.Append,
+        FileAccess.Write,
+        FileShare.ReadWrite   // Allow others to read/write at same time
+    ));
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
