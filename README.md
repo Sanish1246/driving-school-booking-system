@@ -15,6 +15,7 @@ Before proceeding, make sure you have the following NuGuet Packages:
 Use the **CLI** and run the following commands:
 
 ```
+<code style="color : aqua">text</code>
 dotnet add package Microsoft.EntityFrameworkCore --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.2
@@ -32,7 +33,12 @@ dotnet add package CsvHelper --version 33.0.1
 ```
 // line 15
 
-// private readonly StreamWriter _logStream = new StreamWriter(GetPath(), append: true);
+// private readonly StreamWriter _logStream = new StreamWriter(new FileStream(
+    //     GetPath(),
+    //     FileMode.Append,
+    //     FileAccess.Write,
+    //     FileShare.ReadWrite
+    // ));
 
 // line 26
 
