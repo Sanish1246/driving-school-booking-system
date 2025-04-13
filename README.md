@@ -7,14 +7,14 @@
 ### Installation
 Use the **CLI** and run the following commands:
 **1. Installing EF Core**
-```
-dotnet **add** package Microsoft.EntityFrameworkCore --version 9.0.2
-dotnet **add** package Microsoft.EntityFrameworkCore.Design --version 9.0.2
-dotnet **add** package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.2
-dotnet **add** package Microsoft.EntityFrameworkCore.Tools --version 9.0.2
-dotnet **add** package Microsoft.Extensions.Configuration --version 9.0.2
-dotnet **add** package Microsoft.Extensions.Configuration.Json --version 9.0.2
-dotnet **add** package CsvHelper --version 33.0.1
+```HTML
+dotnet <span style="color: red;">This is red text</span>add package Microsoft.EntityFrameworkCore --version 9.0.2
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 9.0.2
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.2
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 9.0.2
+dotnet add package Microsoft.Extensions.Configuration --version 9.0.2
+dotnet add package Microsoft.Extensions.Configuration.Json --version 9.0.2
+dotnet add package CsvHelper --version 33.0.1
 
 ```
 
