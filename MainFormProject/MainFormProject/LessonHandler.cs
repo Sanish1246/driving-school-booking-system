@@ -60,7 +60,7 @@ namespace MainFormProject
 
         private void listLessonButton_Click(object sender, EventArgs e)
         {
-            AdminListLesson listLesson = new AdminListLesson();
+            AdminListLesson listLesson = new AdminListLesson("admin");
 
             this.Close();
 

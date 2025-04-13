@@ -73,11 +73,11 @@ namespace MainFormProject
 
                 if (valid)
                 {
-                    AdminMenu adminMenu = new AdminMenu();
-
-                    adminMenu.Show();
+                    StudentMenu studentMenu = new StudentMenu();
 
                     this.Close();
+
+                    studentMenu.Show();  
                 }
             } else
             {
@@ -94,7 +94,6 @@ namespace MainFormProject
                     valid = false;
                     textBox2.Text = "";
                 }
-
 
                 if (valid)
                 {
