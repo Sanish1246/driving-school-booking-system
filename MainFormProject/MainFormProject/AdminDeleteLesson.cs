@@ -12,9 +12,11 @@ namespace MainFormProject
 {
     public partial class AdminDeleteLesson : Form
     {
-        public AdminDeleteLesson()
+        private string operation;
+        public AdminDeleteLesson(string operation)
         {
             InitializeComponent();
+            this.operation = operation;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -24,20 +26,36 @@ namespace MainFormProject
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            LessonHandler lessonHandlerMenu = new LessonHandler();
+            if (operation == "delete")
+            {
+                LessonHandler lessonHandlerMenu = new LessonHandler();
 
-            this.Close();
+                this.Close();
 
-            lessonHandlerMenu.Show();
+                lessonHandlerMenu.Show();
+            } else
+            {
+                BookCar bookCar = new BookCar();
+
+                this.Close();
+
+                bookCar.Show();
+            }
         }
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            AdminDeleteLessonMenu deleteLessonMenu = new AdminDeleteLessonMenu();
+            if (operation == "delete")
+            {
+                AdminDeleteLessonMenu deleteLessonMenu = new AdminDeleteLessonMenu();
 
-            this.Close();
+                this.Close();
 
-            deleteLessonMenu.Show();
+                deleteLessonMenu.Show();
+            } else
+            {
+                MessageBox.Show("Lesson booked!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

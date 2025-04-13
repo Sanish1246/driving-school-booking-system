@@ -55,6 +55,7 @@
             bookLessonButton.TabIndex = 18;
             bookLessonButton.Text = "Book a lesson";
             bookLessonButton.UseVisualStyleBackColor = true;
+            bookLessonButton.Click += bookLessonButton_Click;
             // 
             // studentLessonsButton
             // 

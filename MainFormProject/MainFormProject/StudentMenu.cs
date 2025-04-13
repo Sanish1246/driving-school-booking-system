@@ -30,5 +30,14 @@ namespace MainFormProject
 
             listLesson.Show();
         }
+
+        private void bookLessonButton_Click(object sender, EventArgs e)
+        {
+            BookInstructor bookInstructor = new BookInstructor();
+
+            this.Close();
+
+            bookInstructor.Show();
+        }
     }
 }

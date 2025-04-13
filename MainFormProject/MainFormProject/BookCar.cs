@@ -10,20 +10,20 @@ using System.Windows.Forms;
 
 namespace MainFormProject
 {
-    public partial class AdminDeleteLessonMenu : Form
+    public partial class BookCar : Form
     {
-        public AdminDeleteLessonMenu()
+        public BookCar()
         {
             InitializeComponent();
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            AdminDeleteLesson deleteLesson = new AdminDeleteLesson("delete");
+            BookInstructor bookInstructor = new BookInstructor();
 
             this.Close();
 
-            deleteLesson.Show();
+            bookInstructor.Show();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -33,7 +33,11 @@ namespace MainFormProject
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Lesson deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            AdminDeleteLesson deleteLesson = new AdminDeleteLesson("book");
+
+            this.Close();
+
+            deleteLesson.Show();
         }
     }
 }
