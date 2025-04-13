@@ -13,9 +13,9 @@ git clone https://github.com/Sanish1246/driving-school-booking-system.git
 Before proceeding, make sure you have the following NuGuet Packages:
 
 Use the **CLI** and run the following commands:
+$${\color{blue}Blue}$$
 
 ```
-$${\color{blue}Blue}$$
 dotnet add package Microsoft.EntityFrameworkCore --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.Design --version 9.0.2
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.2
