@@ -7,7 +7,7 @@
 # Installation
 **1. Installing EF Core**
 ```
-> dotnet - ![#1589F0] add package CsvHelper
+> dotnet - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) `#1589F0`
 ```
 
 **1. Clone the repo**
