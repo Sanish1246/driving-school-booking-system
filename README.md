@@ -1,6 +1,11 @@
 # driving-school-booking-system
- A project for a Driving lesson booking system, made entirely in C# .Net Version 8.0
+A project for a Driving lesson booking system, made entirely in C# using .NET Version 8.0.
 
+It consists of the following functionalities:
+
+1. A student can book and view their lessons.
+2. An instructor can view the lessons assigned to them.
+3. An admin, which can perform **CRUD** operations on entities like students, instructors, cars and lessons.
 
 ## Getting Started
 
