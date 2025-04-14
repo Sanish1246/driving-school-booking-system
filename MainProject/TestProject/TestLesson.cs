@@ -66,6 +66,40 @@ namespace TestProject
             _context.SaveChanges();
         }
 
+        [TestMethod]
+        public void AddLesson()
+        {
+            // Arrange
+            var lessonOps = new LessonOperations();
+            var input = string.Join(Environment.NewLine,
+                "zoumounou@gmail.com",     
+                "quokka@sunnyisle.com",    
+                "2025/04/20",
+                "AB12 XYZ"
+            );
+            using var reader = new StringReader(input);
+            Console.SetIn(reader);
+
+            using var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            // Act
+            lessonOps.AddLesson();
+
+            // Assert
+            var lesson = _context.Lessons
+                .Include(l => l.Student)
+                .Include(l => l.Instructor)
+                .Include(l => l.Car)
+                .FirstOrDefault();
+
+            Assert.IsNotNull(lesson);
+            Assert.AreEqual("zoumounou@gmail.com", lesson.Student.Email);
+            Assert.AreEqual("quokka@sunnyisle.com", lesson.Instructor.Email);
+            Assert.AreEqual("AB12 XYZ", lesson.Car.RegistrationNumber);
+            Assert.AreEqual(new DateOnly(2025, 04, 20), lesson.Date);
+        }
+
 
     }
 }
