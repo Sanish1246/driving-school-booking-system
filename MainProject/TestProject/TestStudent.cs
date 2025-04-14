@@ -88,6 +88,52 @@ namespace TestProject
             Assert.IsFalse(result);
         }
 
+        [TestMethod]
+        public void EnterEmail_ValidAndExistingEmail_ReturnsEmail()
+        {
+            // Arrange
+            var expectedEmail = "zoumounou@gmail.com";
+            var input = $"{expectedEmail}\n";
+            Console.SetIn(new StringReader(input));
+
+            // Act
+            var result = StudentOperations.EnterEmail();
+
+            // Assert
+            Assert.AreEqual(expectedEmail, result);
+        }
+        
+       [TestMethod]
+        public void EnterEmail_InvalidThenValidInput_ReturnsValidEmail()
+        {
+            // Arrange 
+            var invalidEmail = "wrong-format";
+            var validEmail = "janettesginger@gmail.com";
+            var input = $"{invalidEmail}\n{validEmail}\n";
+            Console.SetIn(new StringReader(input));
+
+            // Act
+            var result = StudentOperations.EnterEmail();
+
+            // Assert
+            Assert.AreEqual(validEmail, result);
+        }
+
+        [TestMethod]
+        public void EnterEmail_NonExistingThenValidInput_ReturnsValidEmail()
+        {
+            // Arrange
+            var nonExistent = "ghost@example.com";
+            var valid = "janettesginger@gmail.com";
+            var input = $"{nonExistent}\n{valid}\n";
+            Console.SetIn(new StringReader(input));
+
+            // Act
+            var result = StudentOperations.EnterEmail();
+
+            // Assert
+            Assert.AreEqual(valid, result);
+        }
     
     }
 }
