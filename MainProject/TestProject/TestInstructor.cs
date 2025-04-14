@@ -129,5 +129,42 @@ namespace TestProject
             Assert.IsNull(instructor);
         }
 
+        [TestMethod]
+        public void SearchUser()
+        {
+            // Arrange
+            var input = new StringReader("quokka@sunnyisle.com\n");
+            Console.SetIn(input);
+
+            var output = new StringWriter();
+            Console.SetOut(output);
+
+            var operation = new InstructorOperations();
+
+            // Act
+            operation.SearchUser();
+
+            // Assert
+            var result = output.ToString();
+            Assert.IsTrue(result.Contains("quokka@sunnyisle.com"));
+            Assert.IsTrue(result.Contains("Mighty"));
+        }
+
+        [TestMethod]
+        public void ListAllInstructorEmail()
+        {
+            // Arrange
+            var output = new StringWriter();
+            Console.SetOut(output);
+
+            // Act
+            InstructorOperations.ListAllInstructorEmail();
+
+            // Assert
+            var result = output.ToString();
+            Assert.IsTrue(result.Contains("quokka@sunnyisle.com"));
+        }
+
+
     }
 }
