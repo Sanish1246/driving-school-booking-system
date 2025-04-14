@@ -135,5 +135,80 @@ namespace TestProject
             Assert.AreEqual(valid, result);
         }
     
+        [TestMethod]
+        public void AddUser()
+        {
+            // Arrange
+            var options = new DbContextOptionsBuilder<DrivingLessonBookingSystemContext>()
+                .UseInMemoryDatabase("SharedInMemoryDB")
+                .Options;
+
+            var input = new StringReader(string.Join('\n', new[]
+            {
+                "SampleUser",
+                "SampleLastName",           
+                "SampleUser@example.com",
+                "StrongP@ssw0rd12",     
+                "2010/01/01",         
+                "+23059102030",
+                "1st Address Test Road"
+            }));
+            Console.SetIn(input);
+
+            var operation = new StudentOperations();
+
+            // Act
+            operation.AddUser();
+
+            // Assert
+            using (var context = new DrivingLessonBookingSystemContext(options))
+            {
+                var student = context.Students.FirstOrDefault(s => s.Email == "SampleUser@example.com");
+                Assert.IsNotNull(student);
+                Assert.AreEqual("SampleUser", student!.FirstName);
+                Assert.AreEqual("+23059102030", student.PhoneNumber);
+            }
+        }
+
+        [TestMethod]
+        public void DeleteUser()
+        {
+            // Arrange
+            var options = new DbContextOptionsBuilder<DrivingLessonBookingSystemContext>()
+                .UseInMemoryDatabase("SharedInMemoryDB")
+                .Options;
+
+            // Seed user
+            using (var context = new DrivingLessonBookingSystemContext(options))
+            {
+                var student = new Student
+                {
+                    FirstName = "FakeFirst",
+                    LastName = "FakeLast",
+                    Email = "Fakeuser@example.com",
+                    Password = "Test12345!",
+                    DateOfBirth = new DateOnly(2011, 02, 01),
+                    Address = "Del Fake Road",
+                    PhoneNumber = "+23051212211"
+                };
+                context.Students.Add(student);
+                context.SaveChanges();
+            }
+
+            var input = new StringReader("Fakeuser@example.com\n");
+            Console.SetIn(input);
+
+            var operation = new StudentOperations();
+
+            // Act
+            operation.DeleteUser();
+
+            // Assert
+            using (var context = new DrivingLessonBookingSystemContext(options))
+            {
+                var student = context.Students.FirstOrDefault(s => s.Email == "deleteuser@example.com");
+                Assert.IsNull(student);
+            }
+        }
     }
 }
