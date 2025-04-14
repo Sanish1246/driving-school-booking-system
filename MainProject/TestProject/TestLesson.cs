@@ -6,6 +6,7 @@ using MainProject;
 using MainProject.Context;
 using MainProject.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace TestProject
 {
@@ -25,15 +26,13 @@ namespace TestProject
 
             _context = new DrivingLessonBookingSystemContext(options);
 
-            // Clear existing data
             _context.Lessons.RemoveRange(_context.Lessons);
             _context.Students.RemoveRange(_context.Students);
             _context.Instructors.RemoveRange(_context.Instructors);
             _context.Cars.RemoveRange(_context.Cars);
             _context.SaveChanges();
 
-            // Seed data
-            _context.Students.Add(new Student
+            var student = new Student
             {
                 FirstName = "zouzou",
                 LastName = "mounou",
@@ -42,11 +41,10 @@ namespace TestProject
                 Address = "2 lalaland Main St",
                 PhoneNumber = "+23058226843",
                 Password = "ZouzouMounou123!"
-            });
+            };
 
-            _context.Instructors.Add(new Instructor
+            var instructor = new Instructor
             {
-                InstructorId = 10,
                 FirstName = "Mighty",
                 LastName = "Quokka",
                 Email = "quokka@sunnyisle.com",
@@ -54,39 +52,38 @@ namespace TestProject
                 DateOfBirth = new DateOnly(1990, 03, 15),
                 PhoneNumber = "+2309990000",
                 Address = "18 Hop Avenue"
-            });
+            };
 
-            _context.Cars.Add(new Car
+            var car = new Car
             {
                 Make = "Toyota",
                 Transmission = "Automatic",
                 RegistrationNumber = "AB12 XYZ"
-            });
+            };
 
+            _context.Students.Add(student);
+            _context.Instructors.Add(instructor);
+            _context.Cars.Add(car);
             _context.SaveChanges();
         }
 
         [TestMethod]
         public void AddLesson()
         {
-            // Arrange
             var lessonOps = new LessonOperations();
+
             var input = string.Join(Environment.NewLine,
-                "zoumounou@gmail.com",     
-                "quokka@sunnyisle.com",    
+                "zoumounou@gmail.com",
+                "quokka@sunnyisle.com",
                 "2025/04/20",
                 "AB12 XYZ"
             );
             using var reader = new StringReader(input);
             Console.SetIn(reader);
+            Console.SetOut(new StringWriter());
 
-            using var writer = new StringWriter();
-            Console.SetOut(writer);
-
-            // Act
             lessonOps.AddLesson();
 
-            // Assert
             var lesson = _context.Lessons
                 .Include(l => l.Student)
                 .Include(l => l.Instructor)
@@ -100,6 +97,71 @@ namespace TestProject
             Assert.AreEqual(new DateOnly(2025, 04, 20), lesson.Date);
         }
 
+        [TestMethod]
+        public void DeleteLesson()
+        {
+            var student = _context.Students.First();
+            var instructor = _context.Instructors.First();
+            var car = _context.Cars.First();
 
+            var lesson = new Lesson
+            {
+                StudentId = student.StudentId,
+                InstructorId = instructor.InstructorId,
+                CarId = car.CarId,
+                Date = DateOnly.FromDateTime(DateTime.Today)
+            };
+
+            _context.Lessons.Add(lesson);
+            _context.SaveChanges();
+
+            var input = string.Join(Environment.NewLine,
+                lesson.Date.ToString("yyyy/MM/dd"),
+                lesson.LessonId.ToString()
+            );
+            
+            Console.SetIn(new StringReader(input));
+            Console.SetOut(new StringWriter());
+
+            var lessonOps = new LessonOperations();
+            lessonOps.DeleteLesson();
+
+            var deletedLesson = _context.Lessons.Find(lesson.LessonId);
+
+            Assert.IsNull(deletedLesson);
+        }
+
+        [TestMethod]
+        public void SearchDate()
+        {
+            var student = _context.Students.First();
+            var instructor = _context.Instructors.First();
+            var car = _context.Cars.First();
+
+            var date = new DateOnly(2025, 04, 20);
+
+            var lesson = new Lesson
+            {
+                StudentId = student.StudentId,
+                InstructorId = instructor.InstructorId,
+                CarId = car.CarId,
+                Date = date
+            };
+
+            _context.Lessons.Add(lesson);
+            _context.SaveChanges();
+
+            var input = date.ToString("yyyy/MM/dd");
+            Console.SetIn(new StringReader(input));
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            var lessonOps = new LessonOperations();
+            lessonOps.SearchDate();
+
+            var output = writer.ToString();
+            Assert.IsTrue(output.Contains(student.Email));
+            Assert.IsTrue(output.Contains(instructor.Email));
+        }
     }
 }

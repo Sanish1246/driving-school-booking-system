@@ -32,7 +32,7 @@ namespace TestProject
             {
                 context.Instructors.Add(new Instructor
                 {
-                    InstructorId = 10,
+                    InstructorId = 3,
                     FirstName = "Mighty",
                     LastName = "Quokka",
                     Email = "quokka@sunnyisle.com",
@@ -66,7 +66,7 @@ namespace TestProject
                     LessonId = 1,
                     Date = DateOnly.FromDateTime(DateTime.Today),
                     CarId = 1,
-                    InstructorId = 10,
+                    InstructorId = 3,
                     StudentId = 1
                 });
 
