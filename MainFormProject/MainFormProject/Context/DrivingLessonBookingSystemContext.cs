@@ -13,7 +13,7 @@ public class DrivingLessonBookingSystemContext : DbContext
     public DbSet<Student> Students { get; set; }
     public DbSet<Car> Cars { get; set; }
     private readonly StreamWriter _logStream = new StreamWriter(GetPath(), append: true);
-    
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var builder = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true);
@@ -36,18 +36,18 @@ public class DrivingLessonBookingSystemContext : DbContext
         modelBuilder.Entity<Instructor>().Property(i => i.Email)
             .UseCollation("SQL_Latin1_General_CP1_CI_AI");
     }
-    
+
     public override void Dispose()
     {
         base.Dispose();
         _logStream.Dispose();
     }
-    
+
     private static string GetPath()
     {
         var workingDirectory = Environment.CurrentDirectory;
         var projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
-        return(Path.Combine(projectDirectory, "Logs","logs.txt"));
+        return (Path.Combine(projectDirectory, "Logs", "logs.txt"));
     }
-    
+
 }

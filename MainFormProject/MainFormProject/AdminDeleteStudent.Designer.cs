@@ -31,9 +31,10 @@
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
-            email = new TextBox();
+            Email = new TextBox();
             label4 = new Label();
             submitButton = new Button();
+            emailError = new Label();
             SuspendLayout();
             // 
             // backButton
@@ -69,13 +70,13 @@
             label1.TabIndex = 23;
             label1.Text = "Input the following data";
             // 
-            // email
+            // Email
             // 
-            email.Font = new Font("Segoe UI", 12F);
-            email.Location = new Point(364, 172);
-            email.Name = "email";
-            email.Size = new Size(169, 34);
-            email.TabIndex = 27;
+            Email.Font = new Font("Segoe UI", 12F);
+            Email.Location = new Point(364, 172);
+            Email.Name = "Email";
+            Email.Size = new Size(169, 34);
+            Email.TabIndex = 27;
             // 
             // label4
             // 
@@ -98,14 +99,27 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
+            // emailError
+            // 
+            emailError.AutoSize = true;
+            emailError.Font = new Font("Segoe UI", 10F);
+            emailError.ForeColor = Color.Red;
+            emailError.Location = new Point(337, 209);
+            emailError.Name = "emailError";
+            emailError.Size = new Size(47, 23);
+            emailError.TabIndex = 29;
+            emailError.Text = "Error";
+            emailError.Visible = false;
+            // 
             // AdminDeleteStudent
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(emailError);
             Controls.Add(submitButton);
-            Controls.Add(email);
+            Controls.Add(Email);
             Controls.Add(label4);
             Controls.Add(backButton);
             Controls.Add(exitButton);
@@ -121,8 +135,9 @@
         private Button backButton;
         private Button exitButton;
         private Label label1;
-        private TextBox email;
+        private TextBox Email;
         private Label label4;
         private Button submitButton;
+        private Label emailError;
     }
 }

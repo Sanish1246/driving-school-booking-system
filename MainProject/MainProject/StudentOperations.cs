@@ -445,8 +445,7 @@ public class StudentOperations
             {
                 if (Validations.ValidatePassword(password))
                 {
-                    //TODO: Double-entry check
-                    //TODO: Hash Password
+
                     break;
                 }
             }
