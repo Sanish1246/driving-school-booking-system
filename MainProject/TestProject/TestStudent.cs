@@ -42,6 +42,20 @@ namespace TestProject
             }
         }
 
+        [TestMethod]
+        public void CheckEmailExistence_ReturnsTrueForExistingEmail()
+        {
+            string email = "zoumounou@gmail.com";
+            bool exists = StudentOperations.CheckEmailExistence(email);
+            Assert.IsTrue(exists);
+        }
 
+        [TestMethod]
+        public void CheckEmailExistence_ReturnsFalseForNonExistingEmail()
+        {
+            string email = "nonexistent@example.com";
+            bool exists = StudentOperations.CheckEmailExistence(email);
+            Assert.IsFalse(exists);
+        }    
     }
 }
