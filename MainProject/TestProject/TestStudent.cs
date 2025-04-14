@@ -210,5 +210,64 @@ namespace TestProject
                 Assert.IsNull(student);
             }
         }
+        
+        [TestMethod]
+        public void SearchUser()
+        {
+            // Arrange
+            var options = new DbContextOptionsBuilder<DrivingLessonBookingSystemContext>()
+                .UseInMemoryDatabase("SharedInMemoryDB")
+                .Options;
+
+            using (var context = new DrivingLessonBookingSystemContext(options))
+            {
+                context.Students.Add(new Student
+                {
+                    FirstName = "Searchyy",
+                    LastName = "McFindme",
+                    Email = "searchme@example.com",
+                    Password = "FindMe@123",
+                    DateOfBirth = new DateOnly(2009, 06, 05),
+                    Address = "123 Finder Street",
+                    PhoneNumber = "+23051313232"
+                });
+                context.SaveChanges();
+            }
+
+            var input = new StringReader("searchme@example.com\n");
+            Console.SetIn(input);
+
+            var output = new StringWriter();
+            Console.SetOut(output);
+
+            var operation = new StudentOperations();
+
+            // Act
+            operation.SearchUser();
+
+            // Assert
+            var consoleOutput = output.ToString();
+            Assert.IsTrue(consoleOutput.Contains("searchme@example.com"));
+            Assert.IsTrue(consoleOutput.Contains("Searchyy"));
+        }
+
+        [TestMethod]
+        public void DisplayUser()
+        {
+            // Arrange
+            var output = new StringWriter();
+            Console.SetOut(output);
+
+            var operation = new StudentOperations();
+
+            // Act
+            operation.DisplayUser();
+
+            // Assert
+            var consoleOutput = output.ToString();
+            
+            Assert.IsTrue(consoleOutput.Contains("zoumounou@gmail.com"));
+            Assert.IsTrue(consoleOutput.Contains("janettesginger@gmail.com"));
+        }
     }
 }
