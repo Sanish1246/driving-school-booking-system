@@ -125,7 +125,34 @@ namespace TestProject
             Assert.IsTrue(output.Contains("Make: BMW"));
         }
 
+        [TestMethod]
+        public void TransmissionChecker_ShouldReturnTrueForValidTransmission()
+        {
+            Assert.IsTrue(CarOperations.TransmissionChecker("Automatic"));
+            Assert.IsTrue(CarOperations.TransmissionChecker("Manuel"));
+        }
 
-   
+        [TestMethod]
+        public void TransmissionChecker_ShouldReturnFalseForInvalidTransmission()
+        {
+            Assert.IsFalse(CarOperations.TransmissionChecker("Auto"));
+            Assert.IsFalse(CarOperations.TransmissionChecker("manuals"));
+        }
+
+        [TestMethod]
+        public void CarRegistrationChecker_ValidInput_ShouldReturnTrue()
+        {
+            Assert.IsTrue(CarOperations.CarRegistrationChecker("AB12 XYZ"));
+            Assert.IsTrue(CarOperations.CarRegistrationChecker("CD34EFG"));
+        }
+
+        [TestMethod]
+        public void CarRegistrationChecker_InvalidInput_ShouldReturnFalse()
+        {
+            Assert.IsFalse(CarOperations.CarRegistrationChecker("1234 AB"));
+            Assert.IsFalse(CarOperations.CarRegistrationChecker("ABCD123"));
+            Assert.IsFalse(CarOperations.CarRegistrationChecker(""));
+        }
+
     }
 }
