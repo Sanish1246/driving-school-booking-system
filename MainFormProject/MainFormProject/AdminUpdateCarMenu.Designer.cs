@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             submitButton = new Button();
-            textBox1 = new TextBox();
+            inputUpdate = new TextBox();
             comboBox1 = new ComboBox();
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
+            errorLabel = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // submitButton
@@ -47,13 +49,13 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
-            // textBox1
+            // inputUpdate
             // 
-            textBox1.Font = new Font("Segoe UI", 13F);
-            textBox1.Location = new Point(300, 204);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(195, 36);
-            textBox1.TabIndex = 54;
+            inputUpdate.Font = new Font("Segoe UI", 13F);
+            inputUpdate.Location = new Point(300, 204);
+            inputUpdate.Name = "inputUpdate";
+            inputUpdate.Size = new Size(195, 36);
+            inputUpdate.TabIndex = 54;
             // 
             // comboBox1
             // 
@@ -98,14 +100,38 @@
             label1.TabIndex = 50;
             label1.Text = "Select the field to update";
             // 
+            // errorLabel
+            // 
+            errorLabel.AutoSize = true;
+            errorLabel.Font = new Font("Segoe UI", 10F);
+            errorLabel.ForeColor = Color.Red;
+            errorLabel.Location = new Point(300, 243);
+            errorLabel.Name = "errorLabel";
+            errorLabel.Size = new Size(47, 23);
+            errorLabel.TabIndex = 56;
+            errorLabel.Text = "error";
+            errorLabel.Visible = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(135, 386);
+            label4.Name = "label4";
+            label4.Size = new Size(528, 28);
+            label4.TabIndex = 57;
+            label4.Text = "Car registration number should be in the format (AB99CDE)";
+            // 
             // AdminUpdateCarMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(errorLabel);
             Controls.Add(submitButton);
-            Controls.Add(textBox1);
+            Controls.Add(inputUpdate);
             Controls.Add(comboBox1);
             Controls.Add(backButton);
             Controls.Add(exitButton);
@@ -119,10 +145,12 @@
         #endregion
 
         private Button submitButton;
-        private TextBox textBox1;
+        private TextBox inputUpdate;
         private ComboBox comboBox1;
         private Button backButton;
         private Button exitButton;
         private Label label1;
+        private Label errorLabel;
+        private Label label4;
     }
 }

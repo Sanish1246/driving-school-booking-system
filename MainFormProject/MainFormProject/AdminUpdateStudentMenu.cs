@@ -46,30 +46,30 @@ namespace MainFormProject
             switch (option)
             {
                 case "First name":
-                    UpdateFirstName(email);
+                    UpdateFirstName();
                     break;
                 case "Last name":
-                    UpdateLastName(email);
+                    UpdateLastName();
                     break;
                 case "Email":
-                    UpdateEmail(email);
+                    UpdateEmail();
                     break;
                 case "Password":
-                    UpdatePassword(email);
+                    UpdatePassword();
                     break;
                 case "Date of birth":
-                    UpdateDateOfBirth(email);
+                    UpdateDateOfBirth();
                     break;
                 case "Address":
-                    UpdateAddress(email);
+                    UpdateAddress();
                     break;
                 case "Phone number":
-                    UpdatePhoneNumber(email);
+                    UpdatePhoneNumber();
                     break;
             }
         }
 
-        public void UpdateFirstName(string email)
+        public void UpdateFirstName()
         {
             string firstName=inputUpdate.Text;
 
@@ -103,7 +103,7 @@ namespace MainFormProject
                 }
         }
 
-        public void UpdateLastName(string email)
+        public void UpdateLastName()
         {
             string lastName = inputUpdate.Text;
 
@@ -138,7 +138,7 @@ namespace MainFormProject
             }
         }
 
-        public void UpdateEmail(string email)
+        public void UpdateEmail()
         {
             string newEmail= inputUpdate.Text;
             if (Validations.ValidateString(newEmail))
@@ -186,7 +186,7 @@ namespace MainFormProject
         }
 
 
-        private void UpdatePassword(string email)
+        private void UpdatePassword()
         {
             string password=inputUpdate.Text;
             if (Validations.ValidateString(password))
@@ -228,7 +228,7 @@ namespace MainFormProject
             }
         }
 
-        private void UpdateDateOfBirth(string email)
+        private void UpdateDateOfBirth()
         {
             string date = inputUpdate.Text;
             DateOnly dateOfBirth;
@@ -275,7 +275,7 @@ namespace MainFormProject
         }
 
 
-        private void UpdateAddress(string email)
+        private void UpdateAddress()
         {
             string address=inputUpdate.Text;
 
@@ -312,7 +312,7 @@ namespace MainFormProject
 
         }
 
-        private void UpdatePhoneNumber(string email)
+        private void UpdatePhoneNumber()
         {
             string phoneNumber = inputUpdate.Text;
 
