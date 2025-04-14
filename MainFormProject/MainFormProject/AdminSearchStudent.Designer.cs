@@ -119,6 +119,7 @@
             emailError.Size = new Size(47, 23);
             emailError.TabIndex = 36;
             emailError.Text = "error";
+            emailError.Visible = false;
             // 
             // AdminSearchStudent
             // 

@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            firstNames = new ListBox();
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
+            listView1 = new ListView();
             SuspendLayout();
-            // 
-            // firstNames
-            // 
-            firstNames.BackColor = SystemColors.ActiveCaption;
-            firstNames.FormattingEnabled = true;
-            firstNames.Location = new Point(12, 87);
-            firstNames.Name = "firstNames";
-            firstNames.Size = new Size(776, 344);
-            firstNames.TabIndex = 39;
             // 
             // backButton
             // 
@@ -72,9 +63,19 @@
             label1.Font = new Font("Segoe UI", 20F);
             label1.Location = new Point(271, 7);
             label1.Name = "label1";
-            label1.Size = new Size(247, 46);
+            label1.Size = new Size(277, 46);
             label1.TabIndex = 36;
-            label1.Text = "List of students";
+            label1.Text = "List of instructors";
+            // 
+            // listView1
+            // 
+            listView1.FullRowSelect = true;
+            listView1.GridLines = true;
+            listView1.Location = new Point(2, 59);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(795, 382);
+            listView1.TabIndex = 39;
+            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // AdminListInstructor
             // 
@@ -82,21 +83,21 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
-            Controls.Add(firstNames);
+            Controls.Add(listView1);
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
             Name = "AdminListInstructor";
             Text = "List Instructors";
+            Load += AdminListInstructor_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ListBox firstNames;
         private Button backButton;
         private Button exitButton;
         private Label label1;
+        private ListView listView1;
     }
 }

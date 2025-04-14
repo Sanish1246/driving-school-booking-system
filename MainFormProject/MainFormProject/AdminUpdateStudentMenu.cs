@@ -63,7 +63,7 @@ namespace MainFormProject
                 case "Address":
                     UpdateAddress(email);
                     break;
-                case "Phone Number":
+                case "Phone number":
                     UpdatePhoneNumber(email);
                     break;
             }
@@ -155,7 +155,7 @@ namespace MainFormProject
                             {
                                 // Update into HashTable
                                 var result = table.StudentTable.Where(s => s.Email.Equals(email, StringComparison.InvariantCulture)).ToArray();
-                                table.StudentTable.Delete(newEmail);
+                                table.StudentTable.Delete(email);
                                 result[0].Email = newEmail;
                                 table.StudentTable.Insert(email, result[0]);
 

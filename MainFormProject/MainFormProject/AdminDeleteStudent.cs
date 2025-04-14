@@ -36,7 +36,6 @@ namespace MainFormProject
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            bool valid = true;
             string email = Email.Text;
             emailError.Hide();
 
@@ -48,45 +47,39 @@ namespace MainFormProject
                     {
                         emailError.Text = "Email doesn't exist";
                         emailError.Show();
-                        valid = false;
+                    } else
+                    {
+                        try
+                        {
+                            var table = new OfflineDatabase();
+                            table.LoadTables();
+                            using (var context = new DrivingLessonBookingSystemContext())
+                            {
+                                // Delete user in hash table
+                                table.StudentTable.Delete(email);
+
+                                context.Students.Where(s => s.Email == email).ExecuteDelete();
+                                MessageBox.Show("Student deleted successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Email.Text = "";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Processing failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
                 else
                 {
                     emailError.Text="Format should be in the form John.Doe@example.com";
                     emailError.Show();
-                    valid = false;
                 }
             }
             else
             {
                 emailError.Text = "Email can't be empty";
                 emailError.Show();
-                valid = false;
             }
-
-            if (valid)
-            {
-                try
-                {
-                    var table = new OfflineDatabase();
-                    table.LoadTables();
-                    using (var context = new DrivingLessonBookingSystemContext())
-                    {
-                        // Delete user in hash table
-                        table.StudentTable.Delete(email);
-
-                        context.Students.Where(s => s.Email == email).ExecuteDelete();
-                        MessageBox.Show("Student deleted successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Email.Text = "";
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Processing failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-
             
         }
 

@@ -22,7 +22,7 @@ namespace MainFormProject
 
         private void AdminListStudent_Load(object sender, EventArgs e)
         {
-            listView1.View = View.Details; // assicurati che sia in modalità "Details"
+            listView1.View = View.Details; 
             listView1.FullRowSelect = true;
             listView1.GridLines = true;
 

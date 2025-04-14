@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             submitButton = new Button();
-            textBox1 = new TextBox();
+            inputUpdate = new TextBox();
             comboBox1 = new ComboBox();
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
+            errorLabel = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // submitButton
@@ -47,13 +49,13 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
-            // textBox1
+            // inputUpdate
             // 
-            textBox1.Font = new Font("Segoe UI", 13F);
-            textBox1.Location = new Point(301, 204);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(195, 36);
-            textBox1.TabIndex = 48;
+            inputUpdate.Font = new Font("Segoe UI", 13F);
+            inputUpdate.Location = new Point(301, 204);
+            inputUpdate.Name = "inputUpdate";
+            inputUpdate.Size = new Size(195, 36);
+            inputUpdate.TabIndex = 48;
             // 
             // comboBox1
             // 
@@ -63,7 +65,7 @@
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(151, 28);
             comboBox1.TabIndex = 47;
-            comboBox1.Text = "First Name";
+            comboBox1.Text = "First name";
             // 
             // backButton
             // 
@@ -98,14 +100,37 @@
             label1.TabIndex = 44;
             label1.Text = "Select the field to update";
             // 
+            // errorLabel
+            // 
+            errorLabel.AutoSize = true;
+            errorLabel.Font = new Font("Segoe UI", 10F);
+            errorLabel.ForeColor = Color.Red;
+            errorLabel.Location = new Point(301, 243);
+            errorLabel.Name = "errorLabel";
+            errorLabel.Size = new Size(47, 23);
+            errorLabel.TabIndex = 50;
+            errorLabel.Text = "error";
+            errorLabel.Visible = false;
+            // 
+            // label6
+            // 
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(3, 385);
+            label6.Name = "label6";
+            label6.Size = new Size(785, 56);
+            label6.TabIndex = 51;
+            label6.Text = "Password should contain at least one uppercase letter, one lowercase letter, one digit, one special character and should be at least 12 charaters long";
+            // 
             // AdminUpdateInstructorMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(label6);
+            Controls.Add(errorLabel);
             Controls.Add(submitButton);
-            Controls.Add(textBox1);
+            Controls.Add(inputUpdate);
             Controls.Add(comboBox1);
             Controls.Add(backButton);
             Controls.Add(exitButton);
@@ -119,10 +144,12 @@
         #endregion
 
         private Button submitButton;
-        private TextBox textBox1;
+        private TextBox inputUpdate;
         private ComboBox comboBox1;
         private Button backButton;
         private Button exitButton;
         private Label label1;
+        private Label errorLabel;
+        private Label label6;
     }
 }
