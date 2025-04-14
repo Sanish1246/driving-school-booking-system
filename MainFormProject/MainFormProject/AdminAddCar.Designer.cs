@@ -150,7 +150,7 @@
             invalidMake.Name = "invalidMake";
             invalidMake.Size = new Size(147, 20);
             invalidMake.TabIndex = 42;
-            invalidMake.Text = "Make can;t be empty";
+            invalidMake.Text = "Make can't be empty";
             invalidMake.Visible = false;
             // 
             // invalidTransmission
