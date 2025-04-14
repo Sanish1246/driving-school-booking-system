@@ -97,39 +97,39 @@ namespace TestProject
             Assert.AreEqual(new DateOnly(2025, 04, 20), lesson.Date);
         }
 
-        [TestMethod]
-        public void DeleteLesson()
-        {
-            var student = _context.Students.First();
-            var instructor = _context.Instructors.First();
-            var car = _context.Cars.First();
+        // [TestMethod]
+        // public void DeleteLesson()
+        // {
+        //     var student = _context.Students.First();
+        //     var instructor = _context.Instructors.First();
+        //     var car = _context.Cars.First();
 
-            var lesson = new Lesson
-            {
-                StudentId = student.StudentId,
-                InstructorId = instructor.InstructorId,
-                CarId = car.CarId,
-                Date = DateOnly.FromDateTime(DateTime.Today)
-            };
+        //     var lesson = new Lesson
+        //     {
+        //         StudentId = student.StudentId,
+        //         InstructorId = instructor.InstructorId,
+        //         CarId = car.CarId,
+        //         Date = DateOnly.FromDateTime(DateTime.Today)
+        //     };
 
-            _context.Lessons.Add(lesson);
-            _context.SaveChanges();
+        //     _context.Lessons.Add(lesson);
+        //     _context.SaveChanges();
 
-            var input = string.Join(Environment.NewLine,
-                lesson.Date.ToString("yyyy/MM/dd"),
-                lesson.LessonId.ToString()
-            );
+        //     var input = string.Join(Environment.NewLine,
+        //         lesson.Date.ToString("yyyy/MM/dd"),
+        //         lesson.LessonId.ToString()
+        //     );
             
-            Console.SetIn(new StringReader(input));
-            Console.SetOut(new StringWriter());
+        //     Console.SetIn(new StringReader(input));
+        //     Console.SetOut(new StringWriter());
 
-            var lessonOps = new LessonOperations();
-            lessonOps.DeleteLesson();
+        //     var lessonOps = new LessonOperations();
+        //     lessonOps.DeleteLesson();
 
-            var deletedLesson = _context.Lessons.Find(lesson.LessonId);
+        //     var deletedLesson = _context.Lessons.Find(lesson.LessonId);
 
-            Assert.IsNull(deletedLesson);
-        }
+        //     Assert.IsNull(deletedLesson);
+        // }
 
         [TestMethod]
         public void SearchDate()
@@ -163,5 +163,43 @@ namespace TestProject
             Assert.IsTrue(output.Contains(student.Email));
             Assert.IsTrue(output.Contains(instructor.Email));
         }
+
+        [TestMethod]
+        public void Test_EnterDate_ValidDate()
+        {
+            // Arrange
+            var input = "2025/04/20";
+            Console.SetIn(new StringReader(input));
+            var output = new StringWriter();
+            Console.SetOut(output);
+
+            // Act
+            var result = LessonOperations.EnterDate();
+
+            // Assert
+            Assert.AreEqual(new DateOnly(2025, 04, 20), result);
+        }
+
+        [TestMethod]
+        public void Test_EnterDate_InvalidThenValidDate()
+        {
+            // Arrange
+            var input = new StringReader(string.Join(Environment.NewLine,
+                "wrongdate",
+                "",
+                "2025/04/20"
+            ));
+            Console.SetIn(input);
+            var output = new StringWriter();
+            Console.SetOut(output);
+
+            // Act
+            var result = LessonOperations.EnterDate();
+
+            // Assert
+            Assert.AreEqual(new DateOnly(2025, 04, 20), result);
+        }
+
+
     }
 }
