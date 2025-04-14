@@ -176,8 +176,17 @@ public class InstructorOperations
                 // Delete user in hash table
                 table.InstructorTable.Delete(email);
                 
-                context.Instructors.Where(i => i.Email == email).ExecuteDelete();
-                Console.WriteLine("Instructor deleted successfully.");
+                var instructor = context.Instructors.FirstOrDefault(i => i.Email == email);
+                if (instructor != null)
+                {
+                    context.Instructors.Remove(instructor);
+                    context.SaveChanges();
+                    Console.WriteLine("Instructor deleted successfully.");
+                }
+                else
+                {
+                    Console.WriteLine("Instructor not found.");
+                }
             }
         }
         catch (Exception e)
@@ -775,4 +784,5 @@ public class InstructorOperations
             Console.WriteLine($"Processing failed: {e.Message}");
         }
     }
+
 }

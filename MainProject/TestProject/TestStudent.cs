@@ -103,7 +103,7 @@ namespace TestProject
             Assert.AreEqual(expectedEmail, result);
         }
         
-       [TestMethod]
+        [TestMethod]
         public void EnterEmail_InvalidThenValidInput_ReturnsValidEmail()
         {
             // Arrange 
