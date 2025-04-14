@@ -73,6 +73,61 @@ namespace TestProject
             }
         }
 
+        [TestMethod]
+        public void AddEntity()
+        {
+            // Arrange
+            var input = new StringReader(string.Join('\n', new[]
+            {
+                "Eloise",
+                "Vanderfox",                 
+                "eloise.fox@tutorsden.com",
+                "FoxySecurePass12!",         
+                "1992/04/25",
+                "+2307771122",
+                "14 Burrow Lane"
+            }));
+            Console.SetIn(input);
+
+            var operation = new InstructorOperations();
+
+            // Act
+            operation.AddEntity();
+
+            // Assert
+            using var context = new DrivingLessonBookingSystemContext(
+                new DbContextOptionsBuilder<DrivingLessonBookingSystemContext>()
+                    .UseInMemoryDatabase(InMemoryDbName)
+                    .Options);
+
+            var instructor = context.Instructors.FirstOrDefault(i => i.Email == "eloise.fox@tutorsden.com");
+
+            Assert.IsNotNull(instructor);
+            Assert.AreEqual("Eloise", instructor.FirstName);
+            Assert.AreEqual("+2307771122", instructor.PhoneNumber);
+        }
+
+        [TestMethod]
+        public void DeleteUser()
+        {
+            // Arrange
+            var input = new StringReader("quokka@sunnyisle.com\n");
+            Console.SetIn(input);
+
+            var operation = new InstructorOperations();
+
+            // Act
+            operation.DeleteUser();
+
+            // Assert
+            using var context = new DrivingLessonBookingSystemContext(
+                new DbContextOptionsBuilder<DrivingLessonBookingSystemContext>()
+                    .UseInMemoryDatabase(InMemoryDbName)
+                    .Options);
+
+            var instructor = context.Instructors.FirstOrDefault(i => i.Email == "quokka@sunnyisle.com");
+            Assert.IsNull(instructor);
+        }
 
     }
 }
