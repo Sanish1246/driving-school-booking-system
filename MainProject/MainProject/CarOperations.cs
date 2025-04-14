@@ -125,13 +125,21 @@ public class CarOperations
         {
             var table = new OfflineDatabase();
             table.LoadTables();
+
+
             using (var context = new DrivingLessonBookingSystemContext())
             {
-                // Delete car in hash table
-                table.CarTable.Delete(registrationNumber);
-                
-                context.Cars.Where(c => c.RegistrationNumber == registrationNumber).ExecuteDelete();
-                Console.WriteLine("Car successfully deleted.");
+                var carToDelete = context.Cars.FirstOrDefault(c => c.RegistrationNumber == registrationNumber);
+                if (carToDelete != null)
+                {
+                    context.Cars.Remove(carToDelete); 
+                    context.SaveChanges();
+                    Console.WriteLine("Car successfully deleted.");
+                }
+                else
+                {
+                    Console.WriteLine("Car not found for deletion.");
+                }
             }
         }
         catch (Exception e)
@@ -139,7 +147,6 @@ public class CarOperations
             Console.WriteLine($"Processing failed: {e.Message}");
         }
     }
-
     public void SearchCar()
     {
         var registrationNumber = EnterCarReg();

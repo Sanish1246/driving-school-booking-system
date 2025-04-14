@@ -166,7 +166,7 @@ namespace TestProject
             Assert.IsTrue(result.Contains("quokka@sunnyisle.com"));
         }
 
-        [TestMethod] //Not working
+        [TestMethod]
         public void ViewInstructorLessons()
         {
             // Arrange
