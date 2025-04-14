@@ -28,23 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            firstNames = new ListBox();
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
+            LessonId = new TextBox();
             submitButton = new Button();
+            invalidLesson = new Label();
+            listView1 = new ListView();
             SuspendLayout();
-            // 
-            // firstNames
-            // 
-            firstNames.BackColor = SystemColors.ActiveCaption;
-            firstNames.FormattingEnabled = true;
-            firstNames.Location = new Point(12, 87);
-            firstNames.Name = "firstNames";
-            firstNames.Size = new Size(776, 284);
-            firstNames.TabIndex = 39;
             // 
             // backButton
             // 
@@ -83,24 +75,24 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(221, 399);
+            label2.Location = new Point(221, 380);
             label2.Name = "label2";
             label2.Size = new Size(94, 28);
             label2.TabIndex = 40;
             label2.Text = "Lesson ID";
             // 
-            // textBox1
+            // LessonId
             // 
-            textBox1.Font = new Font("Segoe UI", 12F);
-            textBox1.Location = new Point(321, 396);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(181, 34);
-            textBox1.TabIndex = 41;
+            LessonId.Font = new Font("Segoe UI", 12F);
+            LessonId.Location = new Point(321, 377);
+            LessonId.Name = "LessonId";
+            LessonId.Size = new Size(181, 34);
+            LessonId.TabIndex = 41;
             // 
             // submitButton
             // 
             submitButton.Font = new Font("Segoe UI", 12F);
-            submitButton.Location = new Point(508, 395);
+            submitButton.Location = new Point(508, 376);
             submitButton.Name = "submitButton";
             submitButton.Size = new Size(103, 35);
             submitButton.TabIndex = 42;
@@ -108,33 +100,55 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
+            // invalidLesson
+            // 
+            invalidLesson.AutoSize = true;
+            invalidLesson.Font = new Font("Segoe UI", 10F);
+            invalidLesson.ForeColor = Color.Red;
+            invalidLesson.Location = new Point(353, 414);
+            invalidLesson.Name = "invalidLesson";
+            invalidLesson.Size = new Size(137, 23);
+            invalidLesson.TabIndex = 43;
+            invalidLesson.Text = "invalid Lesson ID";
+            invalidLesson.Visible = false;
+            // 
+            // listView1
+            // 
+            listView1.Location = new Point(4, 58);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(794, 312);
+            listView1.TabIndex = 44;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // AdminDeleteLessonMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(listView1);
+            Controls.Add(invalidLesson);
             Controls.Add(submitButton);
-            Controls.Add(textBox1);
+            Controls.Add(LessonId);
             Controls.Add(label2);
-            Controls.Add(firstNames);
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
             Name = "AdminDeleteLessonMenu";
             Text = "Delete Lesson";
+            Load += AdminDeleteLessonMenu_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private ListBox firstNames;
         private Button backButton;
         private Button exitButton;
         private Label label1;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox LessonId;
         private Button submitButton;
+        private Label invalidLesson;
+        private ListView listView1;
     }
 }

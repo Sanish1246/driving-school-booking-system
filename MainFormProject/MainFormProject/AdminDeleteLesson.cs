@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,7 +48,10 @@ namespace MainFormProject
         {
             if (operation == "delete")
             {
-                AdminDeleteLessonMenu deleteLessonMenu = new AdminDeleteLessonMenu();
+                string lessonDate = LessonDate.Value.ToString("yyyy/MM/dd");
+                DateOnly newLessonDate = DateOnly.ParseExact(lessonDate, "yyyy/MM/dd", CultureInfo.InvariantCulture);
+
+                AdminDeleteLessonMenu deleteLessonMenu = new AdminDeleteLessonMenu(newLessonDate);
 
                 this.Close();
 
