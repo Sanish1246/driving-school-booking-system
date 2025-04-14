@@ -29,6 +29,50 @@ namespace TestProject
             _context.SaveChanges();
         }
 
+        [TestMethod]
+        public void AddCar()
+        {
+            var carOps = new CarOperations();
+            var input = string.Join(Environment.NewLine, "Toyota", "Automatic", "AB12 XYZ");
+            using var reader = new StringReader(input);
+            Console.SetIn(reader);
+
+            using var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            carOps.AddCar();
+
+            var car = _context.Cars.FirstOrDefault(c => c.RegistrationNumber == "AB12XYZ");
+            Assert.IsNotNull(car);
+            Assert.AreEqual("Toyota", car.Make);
+            Assert.AreEqual("Automatic", car.Transmission);
+        }
+
+        [TestMethod]
+        public void DeleteCar()
+        {
+            _context.Cars.Add(new Car
+            {
+                Make = "Honda",
+                Transmission = "Manual",
+                RegistrationNumber = "CD34 EFG"
+            });
+            _context.SaveChanges();
+
+            var carOps = new CarOperations();
+            using var reader = new StringReader("CD34 EFG");
+            Console.SetIn(reader);
+
+            using var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            carOps.DeleteCar();
+            _context.SaveChanges();
+
+            var car = _context.Cars.FirstOrDefault(c => c.RegistrationNumber == "CD34 EFG");
+            Assert.IsNull(car);
+        }
+
 
     }
 }
