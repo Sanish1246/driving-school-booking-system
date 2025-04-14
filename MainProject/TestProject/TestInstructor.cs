@@ -66,7 +66,8 @@ namespace TestProject
                     LessonId = 1,
                     Date = DateOnly.FromDateTime(DateTime.Today),
                     CarId = 1,
-                    InstructorId = 10
+                    InstructorId = 10,
+                    StudentId = 1
                 });
 
                 context.SaveChanges();
@@ -165,6 +166,22 @@ namespace TestProject
             Assert.IsTrue(result.Contains("quokka@sunnyisle.com"));
         }
 
+        [TestMethod] //Not working
+        public void ViewInstructorLessons()
+        {
+            // Arrange
+            var output = new StringWriter();
+            Console.SetOut(output);
 
+            // Act
+            InstructorOperations.ViewInstructorLessons("quokka@sunnyisle.com");
+
+            // Assert
+            var result = output.ToString();
+            Assert.IsTrue(result.Contains("learna@trymail.com"));
+            Assert.IsTrue(result.Contains("quokka@sunnyisle.com"));
+            Assert.IsTrue(result.Contains("Manual"));
+        }
+    
     }
 }
