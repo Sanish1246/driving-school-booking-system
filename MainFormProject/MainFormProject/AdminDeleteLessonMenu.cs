@@ -61,7 +61,7 @@ namespace MainFormProject
                 using (var context = new DrivingLessonBookingSystemContext())
                 {
                     var lessons = context.Lessons
-                        .Where(l => l.Date == lessonDate) // assicurati che lessonDate sia definito
+                        .Where(l => l.Date == lessonDate) 
                         .Select(l => new
                         {
                             l.LessonId,
