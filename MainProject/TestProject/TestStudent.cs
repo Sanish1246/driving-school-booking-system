@@ -56,6 +56,38 @@ namespace TestProject
             string email = "nonexistent@example.com";
             bool exists = StudentOperations.CheckEmailExistence(email);
             Assert.IsFalse(exists);
-        }    
+        }
+
+        [TestMethod]
+        public void EnterPassword_CorrectPassword_ReturnsTrue()
+        {
+            // Arrange
+            var email = "zoumounou@gmail.com";
+            var input = "ZouzouMounou123!\n";
+            Console.SetIn(new StringReader(input));
+
+            // Act
+            bool result = StudentOperations.EnterPassword(email);
+
+            // Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void EnterPassword_WrongPassword_ReturnsFalse()
+        {
+            // Arrange
+            var email = "zoumounou@gmail.com";
+            var input = "wrongpassword\n";
+            Console.SetIn(new StringReader(input));
+
+            // Act
+            bool result = StudentOperations.EnterPassword(email);
+
+            // Assert
+            Assert.IsFalse(result);
+        }
+
+    
     }
 }
