@@ -73,6 +73,59 @@ namespace TestProject
             Assert.IsNull(car);
         }
 
+        [TestMethod]
+        public void SearchCar()
+        {
+            _context.Cars.Add(new Car
+            {
+                Make = "Ford",
+                Transmission = "Automatic",
+                RegistrationNumber = "EF56 HIJ"
+            });
+            _context.SaveChanges();
 
+            var input = new StringReader("EF56 HIJ\n");
+            Console.SetIn(input);
+
+            var output = new StringWriter();
+            Console.SetOut(output);
+
+            var operation = new CarOperations();
+            operation.SearchCar();
+
+            var consoleOutput = output.ToString();
+            Assert.IsTrue(consoleOutput.Contains("EF56 HIJ"));
+            Assert.IsTrue(consoleOutput.Contains("Ford"));
+        }
+
+        [TestMethod]
+        public void DisplayCar()
+        {
+            _context.Cars.Add(new Car
+            {
+                Make = "Nissan",
+                Transmission = "Automatic",
+                RegistrationNumber = "GH78 KLM"
+            });
+            _context.Cars.Add(new Car
+            {
+                Make = "BMW",
+                Transmission = "Manuel",
+                RegistrationNumber = "IJ90 NOP"
+            });
+            _context.SaveChanges();
+
+            using var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            CarOperations.DisplayCar();
+
+            var output = writer.ToString();
+            Assert.IsTrue(output.Contains("Make: Nissan"));
+            Assert.IsTrue(output.Contains("Make: BMW"));
+        }
+
+
+   
     }
 }
