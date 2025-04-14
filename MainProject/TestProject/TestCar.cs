@@ -154,5 +154,44 @@ namespace TestProject
             Assert.IsFalse(CarOperations.CarRegistrationChecker(""));
         }
 
+        [TestMethod]
+        public void IsUnique_ShouldReturnFalseIfRegistrationExists()
+        {
+            _context.Cars.Add(new Car
+            {
+                Make = "Ford",
+                Transmission = "Manual",
+                RegistrationNumber = "XY99 ZZZ"
+            });
+            _context.SaveChanges();
+
+            bool result = CarOperations.IsUnique("XY99 ZZZ");
+            Assert.IsFalse(result);
+        }
+
+        [TestMethod]
+        public void IsUnique_ShouldReturnTrueIfRegistrationIsNew()
+        {
+            bool result = CarOperations.IsUnique("ZZ88 AAA");
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void EnterCarReg_ShouldReturnValidInput()
+        {
+            // Arrange
+            var validReg = "AB12 XYZ";
+            var input = new StringReader(validReg + "\n");
+            Console.SetIn(input);
+
+            var output = new StringWriter();
+            Console.SetOut(output);
+
+            var result = CarOperations.EnterCarReg();
+
+            // Assert
+            Assert.AreEqual(validReg, result);
+        }
+   
     }
 }
