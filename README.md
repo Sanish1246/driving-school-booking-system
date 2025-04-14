@@ -1,2 +1,100 @@
-# driving-school-booking-system
- A project for a Driving lesson booking system, made entirely in C# .Net Version 8.0
+# Driving School Booking System
+A project for a Driving lesson booking system, made entirely in C# using .NET Version 8.0.
+
+It consists of the following functionalities:
+
+1. A student can book and view their lessons.
+2. An instructor can view the lessons assigned to them.
+3. An admin, which can perform **CRUD** operations on entities like students, instructors, cars and lessons.
+
+## Getting Started
+
+**1. Clone the repo**
+```
+git clone https://github.com/Sanish1246/driving-school-booking-system.git
+```
+### Installation
+
+Before proceeding, make sure you have the following NuGuet Packages:
+
+Use the **CLI** and run the following commands:
+
+```
+dotnet add package Microsoft.EntityFrameworkCore --version 9.0.2
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 9.0.2
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 9.0.2
+dotnet add package Microsoft.EntityFrameworkCore.Tools --version 9.0.2
+dotnet add package Microsoft.Extensions.Configuration --version 9.0.2
+dotnet add package Microsoft.Extensions.Configuration.Json --version 9.0.2
+dotnet add package CsvHelper --version 33.0.1
+
+```
+
+**2. Delete Migrations folder**
+
+**3. Open context folder, move into DrivingLessonBookingSystem.cs and comment out the following line of codes:**
+
+```
+// line 15
+
+// private readonly StreamWriter _logStream = new StreamWriter(new FileStream(
+    //     GetPath(),
+    //     FileMode.Append,
+    //     FileAccess.Write,
+    //     FileShare.ReadWrite
+    // ));
+
+// line 31
+
+// .ConfigureWarnings(
+        //     b => b.Log(
+        //         (RelationalEventId.ConnectionOpened, LogLevel.Information),
+        //         (RelationalEventId.ConnectionClosed, LogLevel.Information)))
+        // .LogTo(_logStream.WriteLine, LogLevel.Information, DbContextLoggerOptions.DefaultWithLocalTime | DbContextLoggerOptions.SingleLine);
+
+```
+**NOTE: Add a semi-colon (;) before line 26, at the end of the code else, you will have that red squiggly line**
+```
+//line 45
+
+// public override void Dispose()
+    // {
+    //     base.Dispose();
+    //     _logStream.Dispose();
+    // }
+
+//line 51
+
+// private static string GetPath()
+    // {
+    //     var workingDirectory = Environment.CurrentDirectory;
+    //     var projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+    //     return(Path.Combine(projectDirectory, "Logs","logs.txt"));
+    // }
+```
+
+**4. Run the following commands to create the database using code-first approach:**
+
+**NOTE: VERY IMPORTANRT !! Before running the following code, make sure you change the connection string in the configuration settings (appsettings.json file).**
+```
+"DefaultConnection": "Server=LAPTOP-ILUK0PDF;Database=Driving Booking lesson system;Trusted_Connection=True;TrustServerCertificate=True;"
+```
+ Server value (LAPTOP-ILUK0PDF) should be changed to the one your machine uses, as shown in the following picture:
+![Image](https://github.com/user-attachments/assets/6ebb7dae-f7f1-43df-a5b3-71aa4802ebb8)
+
+Then proceed with the following steps:
+
+```
+dotnet ef migrations add InitialCreate -p MainProject
+
+dotnet ef database update -p MainProject
+
+```
+**Verify if the database has been created using MSSQL or any other UI**
+
+**5. Uncomment the code in step 3 (don't forget to remove the semi-colon added or you can just undo everythings in that file)**
+
+
+
+
+

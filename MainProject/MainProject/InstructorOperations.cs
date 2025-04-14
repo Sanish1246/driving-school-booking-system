@@ -679,4 +679,100 @@ public class InstructorOperations
 
         return success;
     }
+
+    public static void ListAllInstructorEmail()
+    {
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                var instructorEmails = context.Instructors.Select(i => new
+                {
+                    i.Email
+                });
+                var i = 1;
+                foreach (var email in instructorEmails)
+                {
+                    Console.WriteLine($"{i}. {email.ToString().Replace("{","").Replace("}","").Trim()}");
+                    i++;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+    }
+    
+    public static bool EnterPassword(string email)
+    {
+        string? password;
+        var success = false;
+        while (true)
+        {
+            Console.Write("Enter password: ");
+            password = Console.ReadLine();
+            if (Validations.ValidateString(password))
+            {
+                break;
+            }
+
+            Console.WriteLine("Password can't be empty, please re-input");
+
+        }
+        // check if password entered matches the one for particular user in the database
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                var instructor = context.Instructors.Where(i => i.Email == email).ToList();
+                if (instructor[0].Password == password)
+                {
+                    // password is valid
+                    success = true;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect Password entered. Please re-input.");
+                }
+                
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+
+        return success;
+    }
+    
+    public static void ViewInstructorLessons(string email)
+    {
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                var lessons = context.Lessons.Select(lessons => new
+                {
+                    StudentFirstName = lessons.Student.FirstName,
+                    StudentLastName = lessons.Student.LastName,
+                    StudentEmail = lessons.Student.Email,
+                    InstructorFirstName = lessons.Instructor.FirstName,
+                    InstructorLastName = lessons.Instructor.LastName,
+                    InstructorEmail = lessons.Instructor.Email,
+                    CarTransmission = lessons.Car.Transmission,
+                    LessonDate = lessons.Date
+                }).Where(l => email.Equals(l.InstructorEmail));
+                foreach (var lesson in lessons)
+                {
+                    Console.WriteLine(lesson.ToString().Replace("{","").Replace("}","").Trim());
+                }
+                
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+    }
 }

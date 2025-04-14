@@ -38,7 +38,7 @@ public class LessonMenu : LessonOperations
             }
             // Load Tables
             var tables = new OfflineDatabase();
-            // tables.LoadTables();
+            tables.LoadTables();
             var lessonOperations = new LessonMenu();
             switch (options)
             {
@@ -55,7 +55,8 @@ public class LessonMenu : LessonOperations
                     lessonOperations.SearchDate();
                     break;
                 case 5:
-                    lessonOperations.DisplayLessons();
+                    // lessonOperations.DisplayLessons();
+                    tables.LessonTable.Display();
                     break;
             }
 

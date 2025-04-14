@@ -397,7 +397,7 @@ public class CarOperations
         }
     }
 
-    public void DisplayCar()
+    public static void DisplayCar()
     {
         try
         {
@@ -416,7 +416,7 @@ public class CarOperations
         }
     }
 
-    private static bool TransmissionChecker(string transmission)
+    public static bool TransmissionChecker(string transmission)
     {
         return transmission.Equals("Automatic", StringComparison.InvariantCultureIgnoreCase) ||
                transmission.Equals("Manuel", StringComparison.InvariantCultureIgnoreCase);

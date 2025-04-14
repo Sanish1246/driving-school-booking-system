@@ -684,6 +684,233 @@ public class StudentOperations
 
         return success;
     }
+
+    public static bool EnterPassword(string email)
+    {
+        string? password;
+        var success = false;
+        while (true)
+        {
+            Console.Write("Enter password: ");
+            password = Console.ReadLine();
+            if (Validations.ValidateString(password))
+            {
+                break;
+            }
+
+            Console.WriteLine("Password can't be empty, please re-input");
+
+        }
+        // check if password entered matches the one for particular user in the database
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                var student = context.Students.Where(s => s.Email == email).ToList();
+                if (student[0].Password == password)
+                {
+                    // password is valid
+                    success = true;
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect Password entered. Please re-input.");
+                }
+                
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+
+        return success;
+    }
+
+    public static void ViewStudentLessons(string email)
+    {
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                var lessons = context.Lessons.Select(lessons => new
+                {
+                    StudentFirstName = lessons.Student.FirstName,
+                    StudentLastName = lessons.Student.LastName,
+                    StudentEmail = lessons.Student.Email,
+                    InstructorFirstName = lessons.Instructor.FirstName,
+                    InstructorLastName = lessons.Instructor.LastName,
+                    InstructorEmail = lessons.Instructor.Email,
+                    CarTransmission = lessons.Car.Transmission,
+                    LessonDate = lessons.Date
+                }).Where(l => email.Equals(l.StudentEmail));
+                foreach (var lesson in lessons)
+                {
+                    Console.WriteLine(lesson.ToString().Replace("{","").Replace("}","").Trim());
+                }
+                
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+    }
     
+    public static void AddStudentLesson(string studentEmail)
+    {
+        var studentId = 0;
+        var studentOperation = false;
+        var instructorOperation = false;
+        var carOperation = false;
+        try
+        {
+            using (var context = new DrivingLessonBookingSystemContext())
+            {
+                var result = context.Students.First(s => studentEmail == s.Email);
+                studentId = result.StudentId;
+                studentOperation = true;
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+        // Give a date, an instructor, a car transmission (automatic/manual)
+        Console.WriteLine("In order to register for a new lesson, the following information need to be entered:\n1.Instructor email,\n2.Car Transmission(Automatic/Manual),\n3.Lesson date");
+        Console.WriteLine("Let's start with the instructors. Find the list of the registered instructors:");
+        
+        // List all instructors email
+        InstructorOperations.ListAllInstructorEmail();
+        Console.WriteLine("Choose one from the available instructors.");
+        
+        string instructorEmail;
+        int instructorId;
+        while (true)
+        {
+            Console.Write("Instructor email: ");
+            instructorEmail = Console.ReadLine() ?? "";
+            if (Validations.ValidateString(instructorEmail))
+            {
+                
+                // Validate email
+                if (Validations.ValidateEmail(instructorEmail))
+                {
+                    // Check if email is present in database.
+                    if (LessonOperations.CheckInstructorEmailExistence(instructorEmail))
+                    {
+                        try
+                        {
+                            using (var context = new DrivingLessonBookingSystemContext())
+                            {
+                                var instructor = context.Instructors.Select(i => new
+                                {
+                                    instructorId = i.InstructorId,
+                                    email = i.Email
+                                }).First(i => i.email == instructorEmail);
+                                instructorId = instructor.instructorId;
+                                instructorOperation = true;
+                            }
+                            break;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"Processing Failed: {e.Message}");
+                        }
+                    }
+
+                    Console.WriteLine("Instructor email doesn't exist, please re-input.");
+                }
+                else
+                {
+                    Console.WriteLine("Wrong email format; format should be in the form John.Doe@example.com, please re-input.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Email can't be empty, please re-input.");
+            }
+        }
+
+
+        Console.WriteLine("Here is a list of all the cars available:");
+        // List all cars
+        CarOperations.DisplayCar();
+        
+        string? registrationNumber;
+        int carId;
+        while (true)
+        {
+            Console.Write("Enter the car registration number: ");
+            registrationNumber = Console.ReadLine();
+            if (Validations.ValidateString(registrationNumber))
+            {
+                if (CarOperations.CarRegistrationChecker(registrationNumber))
+                {
+                    if (!CarOperations.IsUnique(registrationNumber))
+                    {
+                        try
+                        {
+                            using (var context = new DrivingLessonBookingSystemContext())
+                            {
+                                var car = context.Cars.Select(c => new
+                                {
+                                    CarID = c.CarId,
+                                    regNumber = c.RegistrationNumber
+                                }).First(c => c.regNumber == registrationNumber);
+                                carId = car.CarID;
+                                carOperation = true;
+                            }
+                            break;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine($"Processing Failed: {e.Message}");
+                        }
+                    }
+
+                    Console.WriteLine("Car registration number doesn't exist, please re-input.");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid registration number format, ensure the format is as: AB99 CDE");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Registration number can't be empty");
+            }
+        }
+        
+        DateOnly lessonDate = LessonOperations.EnterDate();
+        
+        try
+        {
+            if (studentOperation && instructorOperation && carOperation)
+            {
+                using (var context = new DrivingLessonBookingSystemContext())
+                {
+                    var lesson = new Lesson()
+                    {
+                        CarId = carId,
+                        StudentId = studentId,
+                        InstructorId = instructorId,
+                        Date = lessonDate
+                    };
+                    context.Lessons.Add(lesson);
+                    context.SaveChanges();
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Processing failed.");
+            }
+           
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine($"Processing failed: {e.Message}");
+        }
+    }
 }
 

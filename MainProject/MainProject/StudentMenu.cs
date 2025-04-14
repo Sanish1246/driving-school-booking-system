@@ -2,6 +2,54 @@
 
 public class StudentMenu : StudentOperations
 {
+
+    public void Login()
+    {
+        // When login is successful, then display student menu
+        // student login using email and password
+        string email = StudentOperations.EnterEmail();
+        string password;
+        var success = false;
+        while (!success)
+        {
+            success = StudentOperations.EnterPassword(email);
+        }
+
+        Console.WriteLine("Login successful ! Find below the operations that you can perform:\n1.View lessons,\n2.Add new lesson");
+        int option;
+        while (true)
+        {
+            while (true)
+            {
+                Console.Write("Enter option (1/2): ");
+                var result = int.TryParse(Console.ReadLine(), out option);
+                if (!result)
+                {
+                    Console.WriteLine("Option entered should be a number, either 1 or 2.");
+                }
+                if (option is 1 or 2)
+                {
+                    if (option == 1)
+                    {
+                        StudentOperations.ViewStudentLessons(email);
+                        break;
+                    }
+                    //Add lesson for particular student
+                    StudentOperations.AddStudentLesson(email);
+                    break;
+                }
+                Console.WriteLine("Wrong number entered, option entered should either be 1 or 2. Please re-input.");
+            }
+
+            Console.WriteLine("Do you wish to continue performing any operations? Type -1 to exit.");
+            int answer;
+            var exit = int.TryParse(Console.ReadLine(), out answer);
+            if (!exit) continue;
+            Console.WriteLine("Goodbye !!");
+            break;
+        }
+    }
+    
     public void DisplayStudentMenu()
     {
         // Menu for Student
