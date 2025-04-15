@@ -42,7 +42,7 @@ namespace MainFormProject
 
         private void deleteLessonButton_Click(object sender, EventArgs e)
         {
-            AdminDeleteLesson deleteLesson = new AdminDeleteLesson("delete","","","");
+            AdminDeleteLesson deleteLesson = new AdminDeleteLesson("delete", "", "", "");
 
             this.Close();
 
@@ -60,11 +60,20 @@ namespace MainFormProject
 
         private void listLessonButton_Click(object sender, EventArgs e)
         {
-            AdminListLesson listLesson = new AdminListLesson("admin","");
+            AdminListLesson listLesson = new AdminListLesson("admin", "");
 
             this.Close();
 
             listLesson.Show();
+        }
+
+        private void updateLessonButton_Click(object sender, EventArgs e)
+        {
+            AdminDeleteLesson deleteLesson = new AdminDeleteLesson("update", "", "", "");
+
+            this.Close();
+
+            deleteLesson.Show();
         }
     }
 }

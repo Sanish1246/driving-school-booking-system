@@ -16,15 +16,17 @@ namespace MainFormProject
     public partial class AdminDeleteLessonMenu : Form
     {
         private DateOnly lessonDate;
-        public AdminDeleteLessonMenu(DateOnly newLessonDate)
+        private string operation;
+        public AdminDeleteLessonMenu(DateOnly newLessonDate,string newOperation)
         {
             InitializeComponent();
             lessonDate = newLessonDate;
+            operation = newOperation;
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            AdminDeleteLesson deleteLesson = new AdminDeleteLesson("delete","","","");
+            AdminDeleteLesson deleteLesson = new AdminDeleteLesson(operation,"","","");
 
             this.Close();
 
@@ -125,41 +127,63 @@ namespace MainFormProject
                 }
                 else
                 {
-                    // check if lesson id exist in db
+                    // Check if lesson id exists in db
                     try
                     {
                         var table = new OfflineDatabase();
                         table.LoadTables();
                         using (var context = new DrivingLessonBookingSystemContext())
                         {
-                            var result = context.Lessons.Find(lessonId);
+                            var result = context.Lessons
+                                .Include(l => l.Student)
+                                .Include(l => l.Instructor)
+                                .Include(l => l.Car)
+                                .FirstOrDefault(l => l.LessonId == lessonId);
                             if (result != null)
                             {
-                                // Delete from hash table
-                                table.LessonTable.Delete(lessonId);
+                                if (operation == "update")
+                                {
+                                    // Retrieve StudentEmail, InstructorEmail, and RegistrationNumber
+                                    string studentEmail = result.Student.Email;
+                                    string instructorEmail = result.Instructor.Email;
+                                    string regNo = result.Car.RegistrationNumber;
 
-                                context.Lessons.Where(l => l.LessonId == lessonId).ExecuteDelete();
-                                MessageBox.Show($"Lesson with id {lessonId} successfully deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            } else
+                                    // Pass these values to the update form
+                                    AdminUpdateLesson updateLesson = new AdminUpdateLesson(lessonId, lessonDate, studentEmail, instructorEmail, regNo);
+
+                                    this.Close();
+
+                                    updateLesson.Show();
+                                }
+                                else if (operation == "delete")
+                                {
+                                    // Delete from hash table
+                                    table.LessonTable.Delete(lessonId);
+
+                                    context.Lessons.Where(l => l.LessonId == lessonId).ExecuteDelete();
+                                    MessageBox.Show($"Lesson with id {lessonId} successfully deleted", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            else
                             {
                                 invalidLesson.Text = "Lesson ID not found";
                                 invalidLesson.Show();
                             }
-
                         }
-                    } catch (Exception ex)
+                    }
+                    catch (Exception ex)
                     {
-                        Console.WriteLine($"Processing failed: {ex.Message}");
-                    } 
+                        MessageBox.Show($"Processing failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
             {
                 // For invalid data type inputs
-                invalidLesson.Text="Lesson ID should be a number.";
+                invalidLesson.Text = "Lesson ID should be a number.";
                 invalidLesson.Show();
             }
-
         }
+
     }
 }

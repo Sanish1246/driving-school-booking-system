@@ -92,6 +92,7 @@
             updateLessonButton.TabIndex = 25;
             updateLessonButton.Text = "Update lesson details";
             updateLessonButton.UseVisualStyleBackColor = true;
+            updateLessonButton.Click += updateLessonButton_Click;
             // 
             // deleteLessonButton
             // 
