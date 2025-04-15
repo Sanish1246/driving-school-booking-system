@@ -129,7 +129,7 @@ namespace TestProject
         public void TransmissionChecker_ShouldReturnTrueForValidTransmission()
         {
             Assert.IsTrue(CarOperations.TransmissionChecker("Automatic"));
-            Assert.IsTrue(CarOperations.TransmissionChecker("Manuel"));
+            Assert.IsTrue(CarOperations.TransmissionChecker("Manual"));
         }
 
         [TestMethod]
