@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             submitButton = new Button();
-            email = new TextBox();
+            Email = new TextBox();
             label4 = new Label();
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
+            studentDetails = new Label();
+            emailError = new Label();
             SuspendLayout();
             // 
             // submitButton
@@ -47,13 +49,13 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
-            // email
+            // Email
             // 
-            email.Font = new Font("Segoe UI", 12F);
-            email.Location = new Point(364, 181);
-            email.Name = "email";
-            email.Size = new Size(169, 34);
-            email.TabIndex = 33;
+            Email.Font = new Font("Segoe UI", 12F);
+            Email.Location = new Point(364, 181);
+            Email.Name = "Email";
+            Email.Size = new Size(169, 34);
+            Email.TabIndex = 33;
             // 
             // label4
             // 
@@ -98,14 +100,37 @@
             label1.TabIndex = 29;
             label1.Text = "Input the email to search";
             // 
+            // studentDetails
+            // 
+            studentDetails.BackColor = SystemColors.ControlLightLight;
+            studentDetails.Font = new Font("Segoe UI", 10F);
+            studentDetails.Location = new Point(24, 339);
+            studentDetails.Name = "studentDetails";
+            studentDetails.Size = new Size(764, 102);
+            studentDetails.TabIndex = 35;
+            // 
+            // emailError
+            // 
+            emailError.AutoSize = true;
+            emailError.Font = new Font("Segoe UI", 10F);
+            emailError.ForeColor = Color.Red;
+            emailError.Location = new Point(341, 221);
+            emailError.Name = "emailError";
+            emailError.Size = new Size(47, 23);
+            emailError.TabIndex = 36;
+            emailError.Text = "error";
+            emailError.Visible = false;
+            // 
             // AdminSearchStudent
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(emailError);
+            Controls.Add(studentDetails);
             Controls.Add(submitButton);
-            Controls.Add(email);
+            Controls.Add(Email);
             Controls.Add(label4);
             Controls.Add(backButton);
             Controls.Add(exitButton);
@@ -119,10 +144,12 @@
         #endregion
 
         private Button submitButton;
-        private TextBox email;
+        private TextBox Email;
         private Label label4;
         private Button backButton;
         private Button exitButton;
         private Label label1;
+        private Label studentDetails;
+        private Label emailError;
     }
 }

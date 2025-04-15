@@ -31,21 +31,25 @@
             submitButton = new Button();
             backButton = new Button();
             exitButton = new Button();
-            password = new TextBox();
+            RegNo = new TextBox();
             label5 = new Label();
-            email = new TextBox();
             label4 = new Label();
-            lastName = new TextBox();
+            InstructorEmail = new TextBox();
             label3 = new Label();
-            firstName = new TextBox();
+            StudentEmail = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            invalidStudent = new Label();
+            invalidInstructor = new Label();
+            LessonDate = new DateTimePicker();
+            invalidRegNo = new Label();
+            label6 = new Label();
             SuspendLayout();
             // 
             // submitButton
             // 
             submitButton.Font = new Font("Segoe UI", 12F);
-            submitButton.Location = new Point(334, 373);
+            submitButton.Location = new Point(336, 320);
             submitButton.Name = "submitButton";
             submitButton.Size = new Size(102, 39);
             submitButton.TabIndex = 41;
@@ -76,13 +80,13 @@
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
             // 
-            // password
+            // RegNo
             // 
-            password.Font = new Font("Segoe UI", 12F);
-            password.Location = new Point(563, 220);
-            password.Name = "password";
-            password.Size = new Size(169, 34);
-            password.TabIndex = 32;
+            RegNo.Font = new Font("Segoe UI", 12F);
+            RegNo.Location = new Point(563, 220);
+            RegNo.Name = "RegNo";
+            RegNo.Size = new Size(169, 34);
+            RegNo.TabIndex = 32;
             // 
             // label5
             // 
@@ -94,31 +98,23 @@
             label5.TabIndex = 31;
             label5.Text = "Registration No.";
             // 
-            // email
-            // 
-            email.Font = new Font("Segoe UI", 12F);
-            email.Location = new Point(192, 223);
-            email.Name = "email";
-            email.Size = new Size(169, 34);
-            email.TabIndex = 30;
-            // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(133, 226);
+            label4.Location = new Point(71, 226);
             label4.Name = "label4";
             label4.Size = new Size(53, 28);
             label4.TabIndex = 29;
             label4.Text = "Date";
             // 
-            // lastName
+            // InstructorEmail
             // 
-            lastName.Font = new Font("Segoe UI", 12F);
-            lastName.Location = new Point(563, 150);
-            lastName.Name = "lastName";
-            lastName.Size = new Size(169, 34);
-            lastName.TabIndex = 28;
+            InstructorEmail.Font = new Font("Segoe UI", 12F);
+            InstructorEmail.Location = new Point(563, 150);
+            InstructorEmail.Name = "InstructorEmail";
+            InstructorEmail.Size = new Size(169, 34);
+            InstructorEmail.TabIndex = 28;
             // 
             // label3
             // 
@@ -130,13 +126,13 @@
             label3.TabIndex = 27;
             label3.Text = "Instructor email";
             // 
-            // firstName
+            // StudentEmail
             // 
-            firstName.Font = new Font("Segoe UI", 12F);
-            firstName.Location = new Point(192, 153);
-            firstName.Name = "firstName";
-            firstName.Size = new Size(169, 34);
-            firstName.TabIndex = 26;
+            StudentEmail.Font = new Font("Segoe UI", 12F);
+            StudentEmail.Location = new Point(192, 153);
+            StudentEmail.Name = "StudentEmail";
+            StudentEmail.Size = new Size(169, 34);
+            StudentEmail.TabIndex = 26;
             // 
             // label2
             // 
@@ -158,22 +154,76 @@
             label1.TabIndex = 24;
             label1.Text = "Input the following data";
             // 
+            // invalidStudent
+            // 
+            invalidStudent.AutoSize = true;
+            invalidStudent.ForeColor = Color.Red;
+            invalidStudent.Location = new Point(163, 190);
+            invalidStudent.Name = "invalidStudent";
+            invalidStudent.Size = new Size(217, 20);
+            invalidStudent.TabIndex = 43;
+            invalidStudent.Text = "Student email cannot be empty";
+            invalidStudent.Visible = false;
+            // 
+            // invalidInstructor
+            // 
+            invalidInstructor.AutoSize = true;
+            invalidInstructor.ForeColor = Color.Red;
+            invalidInstructor.Location = new Point(534, 187);
+            invalidInstructor.Name = "invalidInstructor";
+            invalidInstructor.Size = new Size(228, 20);
+            invalidInstructor.TabIndex = 44;
+            invalidInstructor.Text = "Instructor email cannot be empty";
+            invalidInstructor.Visible = false;
+            // 
+            // LessonDate
+            // 
+            LessonDate.Location = new Point(130, 228);
+            LessonDate.Name = "LessonDate";
+            LessonDate.Size = new Size(250, 27);
+            LessonDate.TabIndex = 55;
+            // 
+            // invalidRegNo
+            // 
+            invalidRegNo.AutoSize = true;
+            invalidRegNo.ForeColor = Color.Red;
+            invalidRegNo.Location = new Point(517, 257);
+            invalidRegNo.Name = "invalidRegNo";
+            invalidRegNo.Size = new Size(260, 20);
+            invalidRegNo.TabIndex = 56;
+            invalidRegNo.Text = "Registration number cannot be empty";
+            invalidRegNo.Visible = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(130, 379);
+            label6.Name = "label6";
+            label6.Size = new Size(528, 28);
+            label6.TabIndex = 57;
+            label6.Text = "Car registration number should be in the format (AB99CDE)";
+            // 
             // AdminAddLesson
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(label6);
+            Controls.Add(invalidRegNo);
+            Controls.Add(LessonDate);
+            Controls.Add(invalidInstructor);
+            Controls.Add(invalidStudent);
             Controls.Add(submitButton);
             Controls.Add(backButton);
             Controls.Add(exitButton);
-            Controls.Add(password);
+            Controls.Add(RegNo);
             Controls.Add(label5);
-            Controls.Add(email);
             Controls.Add(label4);
-            Controls.Add(lastName);
+            Controls.Add(InstructorEmail);
             Controls.Add(label3);
-            Controls.Add(firstName);
+            Controls.Add(StudentEmail);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "AdminAddLesson";
@@ -187,14 +237,18 @@
         private Button submitButton;
         private Button backButton;
         private Button exitButton;
-        private TextBox password;
+        private TextBox RegNo;
         private Label label5;
-        private TextBox email;
         private Label label4;
-        private TextBox lastName;
+        private TextBox InstructorEmail;
         private Label label3;
-        private TextBox firstName;
+        private TextBox StudentEmail;
         private Label label2;
         private Label label1;
+        private Label invalidStudent;
+        private Label invalidInstructor;
+        private DateTimePicker LessonDate;
+        private Label invalidRegNo;
+        private Label label6;
     }
 }

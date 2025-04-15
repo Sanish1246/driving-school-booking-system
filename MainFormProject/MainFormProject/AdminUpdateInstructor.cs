@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MainFormProject.Context;
 
 namespace MainFormProject
 {
@@ -33,11 +34,57 @@ namespace MainFormProject
 
         private void submitButton_Click(object sender, EventArgs e)
         {
-            AdminUpdateInstructorMenu updateMenu = new AdminUpdateInstructorMenu();
+            string email = Email.Text;
+            emailError.Hide();
 
-            this.Close();
+            if (Validations.ValidateString(email))
+            {
+                if (Validations.ValidateEmail(email))
+                {
+                    if (!CheckEmailExistence(email))
+                    {
+                        emailError.Text = "Email doesn't exist";
+                        emailError.Show();
+                    }
+                    else
+                    {
+                        AdminUpdateInstructorMenu updateMenu = new AdminUpdateInstructorMenu(email);
 
-            updateMenu.Show();
+                        this.Close();
+
+                        updateMenu.Show();
+                    }
+                }
+                else
+                {
+                    emailError.Text = "Format should be in the form John.Doe@example.com";
+                    emailError.Show();
+                }
+            }
+            else
+            {
+                emailError.Text = "Email can't be empty";
+                emailError.Show();
+            }
+        }
+
+        public static bool CheckEmailExistence(string email)
+        {
+            // Connect with Database
+            var success = false;
+            try
+            {
+                using (var context = new DrivingLessonBookingSystemContext())
+                {
+                    success = context.Instructors.Any(i => i.Email == email);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Processing failed: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            return success;
         }
     }
 }

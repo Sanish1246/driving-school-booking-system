@@ -31,13 +31,17 @@
             submitButton = new Button();
             backButton = new Button();
             exitButton = new Button();
-            registrationNo = new TextBox();
+            RegistrationNo = new TextBox();
             label8 = new Label();
-            transmission = new TextBox();
+            Transmission = new TextBox();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            make = new TextBox();
+            Make = new TextBox();
+            invalidMake = new Label();
+            invalidTransmission = new Label();
+            invalidRegNo = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // submitButton
@@ -74,13 +78,13 @@
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
             // 
-            // registrationNo
+            // RegistrationNo
             // 
-            registrationNo.Font = new Font("Segoe UI", 12F);
-            registrationNo.Location = new Point(336, 241);
-            registrationNo.Name = "registrationNo";
-            registrationNo.Size = new Size(169, 34);
-            registrationNo.TabIndex = 38;
+            RegistrationNo.Font = new Font("Segoe UI", 12F);
+            RegistrationNo.Location = new Point(336, 241);
+            RegistrationNo.Name = "RegistrationNo";
+            RegistrationNo.Size = new Size(169, 34);
+            RegistrationNo.TabIndex = 38;
             // 
             // label8
             // 
@@ -92,13 +96,13 @@
             label8.TabIndex = 37;
             label8.Text = "Registration number";
             // 
-            // transmission
+            // Transmission
             // 
-            transmission.Font = new Font("Segoe UI", 12F);
-            transmission.Location = new Point(548, 136);
-            transmission.Name = "transmission";
-            transmission.Size = new Size(169, 34);
-            transmission.TabIndex = 28;
+            Transmission.Font = new Font("Segoe UI", 12F);
+            Transmission.Location = new Point(548, 136);
+            Transmission.Name = "Transmission";
+            Transmission.Size = new Size(169, 34);
+            Transmission.TabIndex = 28;
             // 
             // label3
             // 
@@ -130,13 +134,56 @@
             label1.TabIndex = 24;
             label1.Text = "Input the following data";
             // 
-            // make
+            // Make
             // 
-            make.Font = new Font("Segoe UI", 12F);
-            make.Location = new Point(177, 139);
-            make.Name = "make";
-            make.Size = new Size(169, 34);
-            make.TabIndex = 26;
+            Make.Font = new Font("Segoe UI", 12F);
+            Make.Location = new Point(177, 139);
+            Make.Name = "Make";
+            Make.Size = new Size(169, 34);
+            Make.TabIndex = 26;
+            // 
+            // invalidMake
+            // 
+            invalidMake.AutoSize = true;
+            invalidMake.ForeColor = Color.Red;
+            invalidMake.Location = new Point(183, 176);
+            invalidMake.Name = "invalidMake";
+            invalidMake.Size = new Size(147, 20);
+            invalidMake.TabIndex = 42;
+            invalidMake.Text = "Make can't be empty";
+            invalidMake.Visible = false;
+            // 
+            // invalidTransmission
+            // 
+            invalidTransmission.AutoSize = true;
+            invalidTransmission.ForeColor = Color.Red;
+            invalidTransmission.Location = new Point(465, 173);
+            invalidTransmission.Name = "invalidTransmission";
+            invalidTransmission.Size = new Size(325, 20);
+            invalidTransmission.TabIndex = 43;
+            invalidTransmission.Text = "Transmission can either be automatic or manual";
+            invalidTransmission.Visible = false;
+            // 
+            // invalidRegNo
+            // 
+            invalidRegNo.AutoSize = true;
+            invalidRegNo.ForeColor = Color.Red;
+            invalidRegNo.Location = new Point(336, 278);
+            invalidRegNo.Name = "invalidRegNo";
+            invalidRegNo.Size = new Size(188, 20);
+            invalidRegNo.TabIndex = 44;
+            invalidRegNo.Text = "Invaild registration number";
+            invalidRegNo.Visible = false;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(121, 399);
+            label4.Name = "label4";
+            label4.Size = new Size(528, 28);
+            label4.TabIndex = 45;
+            label4.Text = "Car registration number should be in the format (AB99CDE)";
             // 
             // AdminAddCar
             // 
@@ -144,14 +191,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(label4);
+            Controls.Add(invalidRegNo);
+            Controls.Add(invalidTransmission);
+            Controls.Add(invalidMake);
             Controls.Add(submitButton);
             Controls.Add(backButton);
             Controls.Add(exitButton);
-            Controls.Add(registrationNo);
+            Controls.Add(RegistrationNo);
             Controls.Add(label8);
-            Controls.Add(transmission);
+            Controls.Add(Transmission);
             Controls.Add(label3);
-            Controls.Add(make);
+            Controls.Add(Make);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "AdminAddCar";
@@ -165,12 +216,16 @@
         private Button submitButton;
         private Button backButton;
         private Button exitButton;
-        private TextBox registrationNo;
+        private TextBox RegistrationNo;
         private Label label8;
-        private TextBox transmission;
+        private TextBox Transmission;
         private Label label3;
         private Label label2;
         private Label label1;
-        private TextBox make;
+        private TextBox Make;
+        private Label invalidMake;
+        private Label invalidTransmission;
+        private Label invalidRegNo;
+        private Label label4;
     }
 }

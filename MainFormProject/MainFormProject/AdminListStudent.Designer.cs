@@ -31,7 +31,7 @@
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
-            firstNames = new ListBox();
+            listView1 = new ListView();
             SuspendLayout();
             // 
             // backButton
@@ -67,14 +67,15 @@
             label1.TabIndex = 32;
             label1.Text = "List of students";
             // 
-            // firstNames
+            // listView1
             // 
-            firstNames.BackColor = SystemColors.ActiveCaption;
-            firstNames.FormattingEnabled = true;
-            firstNames.Location = new Point(11, 84);
-            firstNames.Name = "firstNames";
-            firstNames.Size = new Size(776, 344);
-            firstNames.TabIndex = 35;
+            listView1.FullRowSelect = true;
+            listView1.GridLines = true;
+            listView1.Location = new Point(3, 56);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(795, 382);
+            listView1.TabIndex = 35;
+            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // AdminListStudent
             // 
@@ -82,7 +83,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
-            Controls.Add(firstNames);
+            Controls.Add(listView1);
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
@@ -98,6 +99,6 @@
         private Button backButton;
         private Button exitButton;
         private Label label1;
-        private ListBox firstNames;
+        private ListView listView1;
     }
 }

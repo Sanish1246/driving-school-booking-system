@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MainFormProject;
 
 namespace MainFormProject
 {
@@ -31,18 +32,37 @@ namespace MainFormProject
             label6.Hide();
             if (this.loginType == "admin")
             {
-                if (username != "root")
+                if (Validations.ValidateString(username))
                 {
-                    label5.Show();
+                    if (!(username.ToLower().Equals("root", StringComparison.InvariantCulture)))
+                    {
+                        label5.Text = "Wrong username entered, please re-input.";
+                        valid = false;
+                        label5.Show();
+                    }
+                }
+                else
+                {
+                    label5.Text = "Username can't be empty.";
                     valid = false;
-                    textBox1.Text = "";
+                    label5.Show();
                 }
 
-                if (password != "root")
+                if (Validations.ValidateString(password))
                 {
-                    label6.Show();
+                    if (!(password.ToLower().Equals("root", StringComparison.InvariantCulture)))
+                    {
+                        label6.Text = "Wrong password entered, please re-input.";
+                        valid = false;
+                        label6.Show();
+                    }
+
+                }
+                else
+                {
+                    label6.Text = "Password can't be empty.";
                     valid = false;
-                    textBox2.Text = "";
+                    label6.Show();
                 }
 
 

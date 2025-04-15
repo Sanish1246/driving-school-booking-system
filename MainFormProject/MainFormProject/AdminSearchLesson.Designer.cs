@@ -28,23 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            firstNames = new ListBox();
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
             submitButton = new Button();
-            textBox1 = new TextBox();
             label2 = new Label();
+            LessonDate = new DateTimePicker();
+            listView1 = new ListView();
             SuspendLayout();
-            // 
-            // firstNames
-            // 
-            firstNames.BackColor = SystemColors.ActiveCaption;
-            firstNames.FormattingEnabled = true;
-            firstNames.Location = new Point(12, 154);
-            firstNames.Name = "firstNames";
-            firstNames.Size = new Size(776, 284);
-            firstNames.TabIndex = 46;
             // 
             // backButton
             // 
@@ -82,30 +73,38 @@
             // submitButton
             // 
             submitButton.Font = new Font("Segoe UI", 12F);
-            submitButton.Location = new Point(486, 85);
+            submitButton.Location = new Point(532, 70);
             submitButton.Name = "submitButton";
             submitButton.Size = new Size(103, 35);
             submitButton.TabIndex = 52;
             submitButton.Text = "Submit";
             submitButton.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Font = new Font("Segoe UI", 12F);
-            textBox1.Location = new Point(299, 86);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(181, 34);
-            textBox1.TabIndex = 51;
+            submitButton.Click += submitButton_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(177, 89);
+            label2.Location = new Point(154, 73);
             label2.Name = "label2";
             label2.Size = new Size(116, 28);
             label2.TabIndex = 50;
             label2.Text = "Lesson Date";
+            // 
+            // LessonDate
+            // 
+            LessonDate.Location = new Point(276, 75);
+            LessonDate.Name = "LessonDate";
+            LessonDate.Size = new Size(250, 27);
+            LessonDate.TabIndex = 56;
+            // 
+            // listView1
+            // 
+            listView1.Location = new Point(2, 111);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(796, 338);
+            listView1.TabIndex = 57;
+            listView1.UseCompatibleStateImageBehavior = false;
             // 
             // AdminSearchLesson
             // 
@@ -113,10 +112,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(listView1);
+            Controls.Add(LessonDate);
             Controls.Add(submitButton);
-            Controls.Add(textBox1);
             Controls.Add(label2);
-            Controls.Add(firstNames);
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
@@ -127,13 +126,12 @@
         }
 
         #endregion
-
-        private ListBox firstNames;
         private Button backButton;
         private Button exitButton;
         private Label label1;
         private Button submitButton;
-        private TextBox textBox1;
         private Label label2;
+        private DateTimePicker LessonDate;
+        private ListView listView1;
     }
 }

@@ -34,12 +34,15 @@
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
+            carDetails = new Label();
+            invalidRegNo = new Label();
+            label2 = new Label();
             SuspendLayout();
             // 
             // submitButton
             // 
             submitButton.Font = new Font("Segoe UI", 12F);
-            submitButton.Location = new Point(337, 263);
+            submitButton.Location = new Point(338, 208);
             submitButton.Name = "submitButton";
             submitButton.Size = new Size(102, 39);
             submitButton.TabIndex = 46;
@@ -50,7 +53,7 @@
             // registrationNo
             // 
             registrationNo.Font = new Font("Segoe UI", 12F);
-            registrationNo.Location = new Point(364, 169);
+            registrationNo.Location = new Point(365, 114);
             registrationNo.Name = "registrationNo";
             registrationNo.Size = new Size(169, 34);
             registrationNo.TabIndex = 45;
@@ -59,7 +62,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(168, 172);
+            label4.Location = new Point(169, 117);
             label4.Name = "label4";
             label4.Size = new Size(190, 28);
             label4.TabIndex = 44;
@@ -98,12 +101,46 @@
             label1.TabIndex = 41;
             label1.Text = "Input the registration number";
             // 
+            // carDetails
+            // 
+            carDetails.BackColor = SystemColors.ControlLightLight;
+            carDetails.Font = new Font("Segoe UI", 10F);
+            carDetails.Location = new Point(12, 339);
+            carDetails.Name = "carDetails";
+            carDetails.Size = new Size(764, 102);
+            carDetails.TabIndex = 47;
+            // 
+            // invalidRegNo
+            // 
+            invalidRegNo.AutoSize = true;
+            invalidRegNo.Font = new Font("Segoe UI", 10F);
+            invalidRegNo.ForeColor = Color.Red;
+            invalidRegNo.Location = new Point(338, 151);
+            invalidRegNo.Name = "invalidRegNo";
+            invalidRegNo.Size = new Size(47, 23);
+            invalidRegNo.TabIndex = 48;
+            invalidRegNo.Text = "error";
+            invalidRegNo.Visible = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F);
+            label2.Location = new Point(136, 272);
+            label2.Name = "label2";
+            label2.Size = new Size(528, 28);
+            label2.TabIndex = 49;
+            label2.Text = "Car registration number should be in the format (AB99CDE)";
+            // 
             // AdminSearchCar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
+            Controls.Add(invalidRegNo);
+            Controls.Add(carDetails);
             Controls.Add(submitButton);
             Controls.Add(registrationNo);
             Controls.Add(label4);
@@ -124,5 +161,8 @@
         private Button backButton;
         private Button exitButton;
         private Label label1;
+        private Label carDetails;
+        private Label invalidRegNo;
+        private Label label2;
     }
 }

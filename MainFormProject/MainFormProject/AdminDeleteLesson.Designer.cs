@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             submitButton = new Button();
-            email = new TextBox();
             label4 = new Label();
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
+            LessonDate = new DateTimePicker();
             SuspendLayout();
             // 
             // submitButton
@@ -47,19 +47,11 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
-            // email
-            // 
-            email.Font = new Font("Segoe UI", 12F);
-            email.Location = new Point(370, 169);
-            email.Name = "email";
-            email.Size = new Size(169, 34);
-            email.TabIndex = 33;
-            // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(250, 172);
+            label4.Location = new Point(214, 169);
             label4.Name = "label4";
             label4.Size = new Size(114, 28);
             label4.TabIndex = 32;
@@ -98,14 +90,21 @@
             label1.TabIndex = 29;
             label1.Text = "Input the following data";
             // 
+            // LessonDate
+            // 
+            LessonDate.Location = new Point(334, 171);
+            LessonDate.Name = "LessonDate";
+            LessonDate.Size = new Size(250, 27);
+            LessonDate.TabIndex = 55;
+            // 
             // AdminDeleteLesson
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(LessonDate);
             Controls.Add(submitButton);
-            Controls.Add(email);
             Controls.Add(label4);
             Controls.Add(backButton);
             Controls.Add(exitButton);
@@ -119,10 +118,10 @@
         #endregion
 
         private Button submitButton;
-        private TextBox email;
         private Label label4;
         private Button backButton;
         private Button exitButton;
         private Label label1;
+        private DateTimePicker LessonDate;
     }
 }
