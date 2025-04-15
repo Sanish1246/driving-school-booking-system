@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MainFormProject;
+using MainFormProject.Context;
 
 namespace MainFormProject
 {
@@ -23,46 +24,46 @@ namespace MainFormProject
         private void button1_Click(object sender, EventArgs e)
         {
             bool valid = true;
-            string username = textBox1.Text;
-            string email=textBox1.Text;
-            string password = textBox2.Text;
+            string username = Email.Text;
+            string email=Email.Text;
+            string password = Password.Text;
 
 
-            label5.Hide();
-            label6.Hide();
+            emailError.Hide();
+            passwordError.Hide();
             if (this.loginType == "admin")
             {
                 if (Validations.ValidateString(username))
                 {
                     if (!(username.ToLower().Equals("root", StringComparison.InvariantCulture)))
                     {
-                        label5.Text = "Wrong username entered, please re-input.";
+                        emailError.Text = "Wrong username entered, please re-input.";
                         valid = false;
-                        label5.Show();
+                        emailError.Show();
                     }
                 }
                 else
                 {
-                    label5.Text = "Username can't be empty.";
+                    emailError.Text = "Username can't be empty.";
                     valid = false;
-                    label5.Show();
+                    emailError.Show();
                 }
 
                 if (Validations.ValidateString(password))
                 {
                     if (!(password.ToLower().Equals("root", StringComparison.InvariantCulture)))
                     {
-                        label6.Text = "Wrong password entered, please re-input.";
+                        passwordError.Text = "Wrong password entered, please re-input.";
                         valid = false;
-                        label6.Show();
+                        passwordError.Show();
                     }
 
                 }
                 else
                 {
-                    label6.Text = "Password can't be empty.";
+                    passwordError.Text = "Password can't be empty.";
                     valid = false;
-                    label6.Show();
+                    passwordError.Show();
                 }
 
 
@@ -76,24 +77,70 @@ namespace MainFormProject
                 }
             } else if (this.loginType == "student")
             {
-                if (email == "")
+                if (Validations.ValidateString(email))
                 {
-                    label5.Show();
+                    if (Validations.ValidateEmail(email))
+                    {
+                        if (!CheckStudentEmailExistence(email))
+                        {
+                            emailError.Text = "Email doesn't exist";
+                            emailError.Show();
+                            valid = false;
+                        }
+                    }
+                    else
+                    {
+                        emailError.Text = "Format should be in the form John.Doe@example.com";
+                        emailError.Show();
+                        valid = false;
+                    }
+                }
+                else
+                {
+                    emailError.Text = "Email can't be empty";
+                    emailError.Show();
                     valid = false;
-                    textBox1.Text = "";
                 }
 
-                if (password == "")
-                {
-                    label6.Show();
-                    valid = false;
-                    textBox2.Text = "";
-                }
+                if (valid) {
+                    if (!Validations.ValidateString(password))
+                    {
+                        passwordError.Text = "Password can't be empty";
+                        passwordError.Show();
+                        valid = false;
+                    } else
+                    {
+                        // check if password entered matches the one for particular user in the database
+                        try
+                        {
+                            using (var context = new DrivingLessonBookingSystemContext())
+                            {
+                                var student = context.Students.Where(s => s.Email == email).ToList();
+                                if (student[0].Password == password)
+                                {
+                                    // password is valid
+                                    valid = true;
+                                }
+                                else
+                                {
+                                    passwordError.Text = "Incorrect Password entered";
+                                    passwordError.Show();
+                                    valid = false;
+                                }
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Processing failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+            }
 
 
                 if (valid)
                 {
-                    StudentMenu studentMenu = new StudentMenu();
+                    StudentMenu studentMenu = new StudentMenu(email);
 
                     this.Close();
 
@@ -101,23 +148,71 @@ namespace MainFormProject
                 }
             } else
             {
-                if (email == "")
+                if (Validations.ValidateString(email))
                 {
-                    label5.Show();
-                    valid = false;
-                    textBox1.Text = "";
+                    if (Validations.ValidateEmail(email))
+                    {
+                        if (!CheckInstructorEmailExistence(email))
+                        {
+                            emailError.Text = "Email doesn't exist";
+                            emailError.Show();
+                            valid = false;
+                        }
+                    }
+                    else
+                    {
+                        emailError.Text = "Format should be in the form John.Doe@example.com";
+                        emailError.Show();
+                        valid = false;
+                    }
                 }
-
-                if (password == "")
+                else
                 {
-                    label6.Show();
+                    emailError.Text = "Email can't be empty";
+                    emailError.Show();
                     valid = false;
-                    textBox2.Text = "";
                 }
 
                 if (valid)
                 {
-                    InstructorMenu instructorMenu = new InstructorMenu();
+                    if (!Validations.ValidateString(password))
+                    {
+                        passwordError.Text = "Password can't be empty";
+                        passwordError.Show();
+                        valid = false;
+                    }
+                    else
+                    {
+                        // check if password entered matches the one for particular user in the database
+                        try
+                        {
+                            using (var context = new DrivingLessonBookingSystemContext())
+                            {
+                                var instructor = context.Instructors.Where(i => i.Email == email).ToList();
+                                if (instructor[0].Password == password)
+                                {
+                                    // password is valid
+                                    valid = true;
+                                }
+                                else
+                                {
+                                    passwordError.Text = "Incorrect Password entered";
+                                    passwordError.Show();
+                                    valid = false;
+                                }
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Processing failed: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+
+                if (valid)
+                {
+                    InstructorMenu instructorMenu = new InstructorMenu(email);
 
                     instructorMenu.Show();
 
@@ -138,6 +233,44 @@ namespace MainFormProject
         private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        public static bool CheckStudentEmailExistence(string email)
+        {
+            // Connect with Database
+            var success = false;
+            try
+            {
+                using (var context = new DrivingLessonBookingSystemContext())
+                {
+                    success = context.Students.Any(s => s.Email == email);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Processing failed: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            return success;
+        }
+
+        public static bool CheckInstructorEmailExistence(string email)
+        {
+            // Connect with Database
+            var success = false;
+            try
+            {
+                using (var context = new DrivingLessonBookingSystemContext())
+                {
+                    success = context.Instructors.Any(i => i.Email == email);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Processing failed: {e.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            return success;
         }
     }
 }

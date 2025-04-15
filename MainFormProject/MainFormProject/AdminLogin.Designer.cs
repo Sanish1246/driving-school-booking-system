@@ -28,39 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label6 = new Label();
-            label5 = new Label();
+            passwordError = new Label();
+            emailError = new Label();
             button1 = new Button();
             label3 = new Label();
-            textBox2 = new TextBox();
-            textBox1 = new TextBox();
+            Password = new TextBox();
+            Email = new TextBox();
             label2 = new Label();
             label1 = new Label();
             backButton = new Button();
             exitButton = new Button();
             SuspendLayout();
             // 
-            // label6
+            // passwordError
             // 
-            label6.AutoSize = true;
-            label6.ForeColor = Color.Red;
-            label6.Location = new Point(379, 286);
-            label6.Name = "label6";
-            label6.Size = new Size(138, 20);
-            label6.TabIndex = 16;
-            label6.Text = "Incorrect password!";
-            label6.Visible = false;
+            passwordError.AutoSize = true;
+            passwordError.ForeColor = Color.Red;
+            passwordError.Location = new Point(292, 286);
+            passwordError.Name = "passwordError";
+            passwordError.Size = new Size(138, 20);
+            passwordError.TabIndex = 16;
+            passwordError.Text = "Incorrect password!";
+            passwordError.Visible = false;
             // 
-            // label5
+            // emailError
             // 
-            label5.AutoSize = true;
-            label5.ForeColor = Color.Red;
-            label5.Location = new Point(364, 219);
-            label5.Name = "label5";
-            label5.Size = new Size(167, 20);
-            label5.TabIndex = 15;
-            label5.Text = "Incorrect email address!";
-            label5.Visible = false;
+            emailError.AutoSize = true;
+            emailError.ForeColor = Color.Red;
+            emailError.Location = new Point(292, 219);
+            emailError.Name = "emailError";
+            emailError.Size = new Size(167, 20);
+            emailError.TabIndex = 15;
+            emailError.Text = "Incorrect email address!";
+            emailError.Visible = false;
             // 
             // button1
             // 
@@ -82,29 +82,29 @@
             label3.TabIndex = 13;
             label3.Text = "Password";
             // 
-            // textBox2
+            // Password
             // 
-            textBox2.Location = new Point(292, 256);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(334, 27);
-            textBox2.TabIndex = 12;
+            Password.Location = new Point(292, 256);
+            Password.Name = "Password";
+            Password.Size = new Size(334, 27);
+            Password.TabIndex = 12;
             // 
-            // textBox1
+            // Email
             // 
-            textBox1.Location = new Point(292, 189);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(334, 27);
-            textBox1.TabIndex = 11;
+            Email.Location = new Point(292, 189);
+            Email.Name = "Email";
+            Email.Size = new Size(334, 27);
+            Email.TabIndex = 11;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(217, 188);
+            label2.Location = new Point(132, 189);
             label2.Name = "label2";
-            label2.Size = new Size(59, 28);
+            label2.Size = new Size(154, 28);
             label2.TabIndex = 10;
-            label2.Text = "Email";
+            label2.Text = "Username/Email";
             // 
             // label1
             // 
@@ -147,12 +147,12 @@
             ClientSize = new Size(800, 450);
             Controls.Add(exitButton);
             Controls.Add(backButton);
-            Controls.Add(label6);
-            Controls.Add(label5);
+            Controls.Add(passwordError);
+            Controls.Add(emailError);
             Controls.Add(button1);
             Controls.Add(label3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(Password);
+            Controls.Add(Email);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "AdminLogin";
@@ -163,12 +163,12 @@
 
         #endregion
 
-        private Label label6;
-        private Label label5;
+        private Label passwordError;
+        private Label emailError;
         private Button button1;
         private Label label3;
-        private TextBox textBox2;
-        private TextBox textBox1;
+        private TextBox Password;
+        private TextBox Email;
         private Label label2;
         private Label label1;
         private Button backButton;

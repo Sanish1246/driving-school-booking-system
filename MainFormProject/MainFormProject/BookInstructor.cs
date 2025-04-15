@@ -12,14 +12,16 @@ namespace MainFormProject
 {
     public partial class BookInstructor : Form
     {
-        public BookInstructor()
+        private string email;
+        public BookInstructor(string newEmail)
         {
             InitializeComponent();
+            email = newEmail;
         }
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            StudentMenu studentMenu = new StudentMenu();
+            StudentMenu studentMenu = new StudentMenu(email);
 
             this.Close();
 

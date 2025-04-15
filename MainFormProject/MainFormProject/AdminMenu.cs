@@ -58,5 +58,14 @@ namespace MainFormProject
 
             lessonHandlerMenu.Show();
         }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            AdminLogin loginMenu = new AdminLogin("admin");
+
+            this.Close();
+
+            loginMenu.Show();
+        }
     }
 }
