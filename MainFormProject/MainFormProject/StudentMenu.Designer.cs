@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentMenu));
             exitButton = new Button();
             bookLessonButton = new Button();
             studentLessonsButton = new Button();
@@ -101,6 +102,7 @@
             Controls.Add(bookLessonButton);
             Controls.Add(studentLessonsButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StudentMenu";
             Text = "Student Menu";
             ResumeLayout(false);

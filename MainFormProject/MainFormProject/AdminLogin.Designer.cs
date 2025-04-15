@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminLogin));
             passwordError = new Label();
             emailError = new Label();
             button1 = new Button();
@@ -155,6 +156,7 @@
             Controls.Add(Email);
             Controls.Add(label2);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminLogin";
             Text = "Login";
             ResumeLayout(false);

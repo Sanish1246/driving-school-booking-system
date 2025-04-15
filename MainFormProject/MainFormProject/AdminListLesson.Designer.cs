@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminListLesson));
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
@@ -85,6 +86,7 @@
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminListLesson";
             Text = "List Lesson";
             Load += AdminListLesson_Load;

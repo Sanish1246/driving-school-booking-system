@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMenu));
             label1 = new Label();
             handleStudentsButton = new Button();
             handleInstructorsButton = new Button();
@@ -127,6 +128,7 @@
             Controls.Add(handleInstructorsButton);
             Controls.Add(handleStudentsButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminMenu";
             Text = "Admin Menu";
             ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminAddInstructor));
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
@@ -330,6 +331,7 @@
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminAddInstructor";
             Text = "Add Instructor";
             ResumeLayout(false);

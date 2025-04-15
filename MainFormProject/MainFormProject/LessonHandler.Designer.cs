@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LessonHandler));
             backButton = new Button();
             exitButton = new Button();
             listLessonButton = new Button();
@@ -140,6 +141,7 @@
             Controls.Add(deleteLessonButton);
             Controls.Add(addLessonButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LessonHandler";
             Text = "Lesson Handler";
             ResumeLayout(false);

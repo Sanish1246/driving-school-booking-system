@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookCar));
             submitButton = new Button();
             registrationNo = new TextBox();
             label2 = new Label();
@@ -134,6 +135,7 @@
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BookCar";
             Text = "Book Car";
             Load += BookCar_Load;

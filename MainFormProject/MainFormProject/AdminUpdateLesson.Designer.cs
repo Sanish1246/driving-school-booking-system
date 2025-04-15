@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminUpdateLesson));
             errorLabel = new Label();
             submitButton = new Button();
             inputUpdate = new TextBox();
@@ -71,7 +72,7 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Student first name", "Student last name", "Student email", "Instructor first name", "Instructor last name", "Instructor email", "Car Transmission", "Lesson Date" });
+            comboBox1.Items.AddRange(new object[] { "Student first name", "Student last name", "Student email", "Instructor first name", "Instructor last name", "Instructor email", "Car transmission", "Lesson date" });
             comboBox1.Location = new Point(327, 97);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(151, 28);
@@ -124,6 +125,7 @@
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminUpdateLesson";
             Text = "Update Lesson";
             ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarHandler));
             backButton = new Button();
             exitButton = new Button();
             listCarButton = new Button();
@@ -140,6 +141,7 @@
             Controls.Add(deleteCarButton);
             Controls.Add(addCarButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CarHandler";
             Text = "Car Handler";
             ResumeLayout(false);

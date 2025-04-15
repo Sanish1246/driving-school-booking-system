@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminUpdateCarMenu));
             submitButton = new Button();
             inputUpdate = new TextBox();
             comboBox1 = new ComboBox();
@@ -136,6 +137,7 @@
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminUpdateCarMenu";
             Text = "Update Car";
             ResumeLayout(false);

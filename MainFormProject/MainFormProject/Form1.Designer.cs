@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             label1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
+            dataPath = new TextBox();
             button1 = new Button();
             exitButton = new Button();
             skipButton = new Button();
             comboBox1 = new ComboBox();
             label3 = new Label();
+            errorLabel = new Label();
             SuspendLayout();
             // 
             // label1
@@ -54,17 +56,17 @@
             label2.Font = new Font("Segoe UI", 12F);
             label2.Location = new Point(185, 196);
             label2.Name = "label2";
-            label2.Size = new Size(87, 28);
+            label2.Size = new Size(95, 28);
             label2.TabIndex = 1;
-            label2.Text = "File path";
+            label2.Text = "File name";
             // 
-            // textBox1
+            // dataPath
             // 
-            textBox1.Font = new Font("Segoe UI", 15F);
-            textBox1.Location = new Point(278, 188);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(234, 41);
-            textBox1.TabIndex = 2;
+            dataPath.Font = new Font("Segoe UI", 15F);
+            dataPath.Location = new Point(278, 188);
+            dataPath.Name = "dataPath";
+            dataPath.Size = new Size(234, 41);
+            dataPath.TabIndex = 2;
             // 
             // button1
             // 
@@ -104,12 +106,12 @@
             // 
             comboBox1.Font = new Font("Segoe UI", 12F);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Lesson", "Student", "Instructor", "Car" });
+            comboBox1.Items.AddRange(new object[] { "Student", "Instructor", "Car", "Lesson" });
             comboBox1.Location = new Point(320, 114);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(151, 36);
             comboBox1.TabIndex = 34;
-            comboBox1.Text = "Lesson";
+            comboBox1.Text = "Student";
             // 
             // label3
             // 
@@ -121,20 +123,34 @@
             label3.TabIndex = 35;
             label3.Text = "Table to update:";
             // 
+            // errorLabel
+            // 
+            errorLabel.AutoSize = true;
+            errorLabel.Font = new Font("Segoe UI", 10F);
+            errorLabel.ForeColor = Color.Red;
+            errorLabel.Location = new Point(264, 232);
+            errorLabel.Name = "errorLabel";
+            errorLabel.Size = new Size(47, 23);
+            errorLabel.TabIndex = 36;
+            errorLabel.Text = "error";
+            errorLabel.Visible = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(errorLabel);
             Controls.Add(label3);
             Controls.Add(comboBox1);
             Controls.Add(skipButton);
             Controls.Add(exitButton);
             Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(dataPath);
             Controls.Add(label2);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Driving lesson booking system";
             ResumeLayout(false);
@@ -145,11 +161,12 @@
 
         private Label label1;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox dataPath;
         private Button button1;
         private Button exitButton;
         private Button skipButton;
         private ComboBox comboBox1;
         private Label label3;
+        private Label errorLabel;
     }
 }
