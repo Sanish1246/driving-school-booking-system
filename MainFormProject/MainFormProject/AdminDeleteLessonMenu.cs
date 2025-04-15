@@ -24,7 +24,7 @@ namespace MainFormProject
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            AdminDeleteLesson deleteLesson = new AdminDeleteLesson("delete");
+            AdminDeleteLesson deleteLesson = new AdminDeleteLesson("delete","","","");
 
             this.Close();
 

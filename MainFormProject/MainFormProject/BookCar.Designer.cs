@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             submitButton = new Button();
-            textBox1 = new TextBox();
+            registrationNo = new TextBox();
             label2 = new Label();
-            firstNames = new ListBox();
             backButton = new Button();
             exitButton = new Button();
             label1 = new Label();
+            listView1 = new ListView();
+            invalidRegNo = new Label();
             SuspendLayout();
             // 
             // submitButton
             // 
             submitButton.Font = new Font("Segoe UI", 12F);
-            submitButton.Location = new Point(507, 395);
+            submitButton.Location = new Point(507, 374);
             submitButton.Name = "submitButton";
             submitButton.Size = new Size(103, 35);
             submitButton.TabIndex = 56;
@@ -48,32 +49,23 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
-            // textBox1
+            // registrationNo
             // 
-            textBox1.Font = new Font("Segoe UI", 12F);
-            textBox1.Location = new Point(320, 396);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(181, 34);
-            textBox1.TabIndex = 55;
+            registrationNo.Font = new Font("Segoe UI", 12F);
+            registrationNo.Location = new Point(320, 375);
+            registrationNo.Name = "registrationNo";
+            registrationNo.Size = new Size(181, 34);
+            registrationNo.TabIndex = 55;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(165, 398);
+            label2.Location = new Point(165, 377);
             label2.Name = "label2";
             label2.Size = new Size(149, 28);
             label2.TabIndex = 54;
             label2.Text = "Registration No";
-            // 
-            // firstNames
-            // 
-            firstNames.BackColor = SystemColors.ActiveCaption;
-            firstNames.FormattingEnabled = true;
-            firstNames.Location = new Point(11, 87);
-            firstNames.Name = "firstNames";
-            firstNames.Size = new Size(776, 284);
-            firstNames.TabIndex = 53;
             // 
             // backButton
             // 
@@ -108,21 +100,43 @@
             label1.TabIndex = 50;
             label1.Text = "Select a car";
             // 
+            // listView1
+            // 
+            listView1.Location = new Point(0, 59);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(799, 310);
+            listView1.TabIndex = 57;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // invalidRegNo
+            // 
+            invalidRegNo.AutoSize = true;
+            invalidRegNo.Font = new Font("Segoe UI", 10F);
+            invalidRegNo.ForeColor = Color.Red;
+            invalidRegNo.Location = new Point(295, 412);
+            invalidRegNo.Name = "invalidRegNo";
+            invalidRegNo.Size = new Size(55, 23);
+            invalidRegNo.TabIndex = 58;
+            invalidRegNo.Text = "label3";
+            invalidRegNo.Visible = false;
+            // 
             // BookCar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(invalidRegNo);
+            Controls.Add(listView1);
             Controls.Add(submitButton);
-            Controls.Add(textBox1);
+            Controls.Add(registrationNo);
             Controls.Add(label2);
-            Controls.Add(firstNames);
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
             Name = "BookCar";
             Text = "Book Car";
+            Load += BookCar_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -130,11 +144,12 @@
         #endregion
 
         private Button submitButton;
-        private TextBox textBox1;
+        private TextBox registrationNo;
         private Label label2;
-        private ListBox firstNames;
         private Button backButton;
         private Button exitButton;
         private Label label1;
+        private ListView listView1;
+        private Label invalidRegNo;
     }
 }

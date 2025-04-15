@@ -35,12 +35,13 @@
             exitButton = new Button();
             label1 = new Label();
             listView1 = new ListView();
+            emailError = new Label();
             SuspendLayout();
             // 
             // submitButton
             // 
             submitButton.Font = new Font("Segoe UI", 12F);
-            submitButton.Location = new Point(508, 395);
+            submitButton.Location = new Point(508, 377);
             submitButton.Name = "submitButton";
             submitButton.Size = new Size(103, 35);
             submitButton.TabIndex = 49;
@@ -51,7 +52,7 @@
             // InstructorEmail
             // 
             InstructorEmail.Font = new Font("Segoe UI", 12F);
-            InstructorEmail.Location = new Point(321, 396);
+            InstructorEmail.Location = new Point(321, 378);
             InstructorEmail.Name = "InstructorEmail";
             InstructorEmail.Size = new Size(181, 34);
             InstructorEmail.TabIndex = 48;
@@ -60,7 +61,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(256, 399);
+            label2.Location = new Point(256, 381);
             label2.Name = "label2";
             label2.Size = new Size(59, 28);
             label2.TabIndex = 47;
@@ -103,9 +104,20 @@
             // 
             listView1.Location = new Point(3, 59);
             listView1.Name = "listView1";
-            listView1.Size = new Size(794, 330);
+            listView1.Size = new Size(794, 313);
             listView1.TabIndex = 50;
             listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // emailError
+            // 
+            emailError.AutoSize = true;
+            emailError.Font = new Font("Segoe UI", 10F);
+            emailError.ForeColor = Color.Red;
+            emailError.Location = new Point(307, 415);
+            emailError.Name = "emailError";
+            emailError.Size = new Size(55, 23);
+            emailError.TabIndex = 51;
+            emailError.Text = "label3";
             // 
             // BookInstructor
             // 
@@ -113,6 +125,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(emailError);
             Controls.Add(listView1);
             Controls.Add(submitButton);
             Controls.Add(InstructorEmail);
@@ -122,6 +135,7 @@
             Controls.Add(label1);
             Name = "BookInstructor";
             Text = "Book Instructor";
+            Load += BookInstructor_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -135,5 +149,6 @@
         private Button exitButton;
         private Label label1;
         private ListView listView1;
+        private Label emailError;
     }
 }
