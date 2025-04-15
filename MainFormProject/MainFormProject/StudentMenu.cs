@@ -12,9 +12,11 @@ namespace MainFormProject
 {
     public partial class StudentMenu : Form
     {
-        public StudentMenu()
+        private string email;
+        public StudentMenu(string newEmail)
         {
             InitializeComponent();
+            email = newEmail;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -24,7 +26,7 @@ namespace MainFormProject
 
         private void studentLessonsButton_Click(object sender, EventArgs e)
         {
-            AdminListLesson listLesson = new AdminListLesson("student");
+            AdminListLesson listLesson = new AdminListLesson("student", email);
 
             this.Close();
 
@@ -33,11 +35,20 @@ namespace MainFormProject
 
         private void bookLessonButton_Click(object sender, EventArgs e)
         {
-            BookInstructor bookInstructor = new BookInstructor();
+            BookInstructor bookInstructor = new BookInstructor(email);
+
+            bookInstructor.Show();
+
+            this.Close();
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            AdminLogin loginMenu = new AdminLogin("student");
 
             this.Close();
 
-            bookInstructor.Show();
+            loginMenu.Show();
         }
     }
 }

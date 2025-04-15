@@ -264,7 +264,7 @@ public class LessonOperations
                 Console.WriteLine("The following fields can be updated:\n1.Student first name,\n2.Student last name,\n3.Student email,\n4.Instructor first name,\n5.Instructor second name,\n6.Instructor email,\n7.Car transmission,\n8.Lesson date");
                 string? field;
                 var validField = false;
-                while (true)
+                while (true) 
                 {
                     Console.WriteLine("Enter the field you want to update: ");
                     field = Console.ReadLine().Trim().ToLower();

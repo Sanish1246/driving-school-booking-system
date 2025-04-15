@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminMenu));
             label1 = new Label();
             handleStudentsButton = new Button();
             handleInstructorsButton = new Button();
             handleCarsButton = new Button();
             button4 = new Button();
             handleLessonButton = new Button();
+            backButton = new Button();
             SuspendLayout();
             // 
             // label1
@@ -102,18 +104,31 @@
             handleLessonButton.UseVisualStyleBackColor = true;
             handleLessonButton.Click += handleLessonButton_Click;
             // 
+            // backButton
+            // 
+            backButton.Font = new Font("Segoe UI", 10F);
+            backButton.Location = new Point(12, 12);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(94, 29);
+            backButton.TabIndex = 31;
+            backButton.Text = "< Back";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
+            // 
             // AdminMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(backButton);
             Controls.Add(handleLessonButton);
             Controls.Add(button4);
             Controls.Add(handleCarsButton);
             Controls.Add(handleInstructorsButton);
             Controls.Add(handleStudentsButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminMenu";
             Text = "Admin Menu";
             ResumeLayout(false);
@@ -127,5 +142,6 @@
         private Button handleCarsButton;
         private Button button4;
         private Button handleLessonButton;
+        private Button backButton;
     }
 }

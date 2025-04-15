@@ -162,6 +162,7 @@ namespace MainFormProject
                                 // Update into DB
                                 context.Students.Where(s => s.Email == email).ExecuteUpdate(setters => setters.SetProperty(s => s.Email, newEmail));
                                 MessageBox.Show("Email updated successfully.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                email = newEmail;
                                 inputUpdate.Text = "";
                             }
                         }

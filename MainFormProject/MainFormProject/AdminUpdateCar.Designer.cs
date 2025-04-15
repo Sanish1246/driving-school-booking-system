@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminUpdateCar));
             submitButton = new Button();
             registrationNo = new TextBox();
             label4 = new Label();
@@ -136,6 +137,7 @@
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminUpdateCar";
             Text = "Update Car";
             ResumeLayout(false);

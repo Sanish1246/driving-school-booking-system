@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InstructorMenu));
             exitButton = new Button();
             studentLessonsButton = new Button();
             label1 = new Label();
+            backButton = new Button();
             SuspendLayout();
             // 
             // exitButton
@@ -66,15 +68,28 @@
             label1.Text = "Choose an option";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // backButton
+            // 
+            backButton.Font = new Font("Segoe UI", 10F);
+            backButton.Location = new Point(12, 13);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(94, 29);
+            backButton.TabIndex = 32;
+            backButton.Text = "< Back";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
+            // 
             // InstructorMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(studentLessonsButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "InstructorMenu";
             Text = "Instructor Menu";
             ResumeLayout(false);
@@ -85,5 +100,6 @@
         private Button exitButton;
         private Button studentLessonsButton;
         private Label label1;
+        private Button backButton;
     }
 }

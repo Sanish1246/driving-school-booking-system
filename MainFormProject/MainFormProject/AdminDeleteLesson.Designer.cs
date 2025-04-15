@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminDeleteLesson));
             submitButton = new Button();
             label4 = new Label();
             backButton = new Button();
@@ -109,6 +110,7 @@
             Controls.Add(backButton);
             Controls.Add(exitButton);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AdminDeleteLesson";
             Text = "Input Lesson Date";
             ResumeLayout(false);
