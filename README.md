@@ -163,6 +163,9 @@ A dropdown menu is provided to select the specific table to update, followed by 
 - If the user **submits a file**, the data is loaded from the provided CSV file and used in the system.
 - If the user **skips** this step, the application defaults to using the data stored in the **database**.
 
+
+**NOTE: Multiple files can be selected for each category. For instance, we are not limited to upload only one single student file.**
+
 ---
 
 ### ⚠️ Incorrect File Handling
