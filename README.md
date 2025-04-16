@@ -174,6 +174,8 @@ Instructors are responsible for conducting the driving lessons. Once logged in, 
   - Date and time
   - Assigned vehicle
 
+![Image](https://github.com/user-attachments/assets/036eb1dd-e8c3-4c9b-a32e-9882b6d9f32b)
+
 Instructors do not book or modify lessons themselves. They only have access to their lesson schedule to stay informed about upcoming sessions.
 
 ---
