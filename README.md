@@ -18,10 +18,10 @@ Includes support for students, instructors, and admins with full CRUD operations
   - [2. Installation](#2-installation)
 - [🧪 Using the Program](#-using-the-program)
 - [📄 Initial File Upload](#-initial-file-upload)
-- [Users and their roles](#-users-and-their-roles)
- - [👨‍🎓 Students](#-students)
- - [👨‍🎓 Instructors](#-instructors)
- - [👩🏽‍💻Admin](#-admin) 
+- [Users and Their Roles](#-users-and-their-roles)
+  - [👨‍🎓 Students](#-students)
+  - [👨‍🎓 Instructors](#-instructors)
+  - [👩🏽‍💻 Admin](#-admin) 
 - [📁 Project Structure Note](#-project-structure-note)
 
 ---
@@ -132,7 +132,7 @@ dotnet ef database update -p MainProject
 
 ## 🧪 Using the Program
 
-Once the program is started, users can choose from a dropdown menu, one of the following roles:
+Once the program is started, users can choose one of the following roles:
 
 1. **Student** – Can book lessons and view their upcoming sessions.  
 2. **Instructor** – Can view lessons assigned to them.  
@@ -143,9 +143,9 @@ Once the program is started, users can choose from a dropdown menu, one of the f
 
 ---
 
-## 📄 Initial File Upload (Optional)
+## 📄 Initial File Upload
 
-When the application starts, the user is first prompted with a screen to **upload a file** for one of the data tables:  
+When the application starts, the user is first prompted with a screen to **upload a file** for one of the data tables (optional):  
 - **Student**
 - **Instructor**
 - **Car**
@@ -203,7 +203,7 @@ Instructors do not book or modify lessons themselves. They only have access to t
 
 This system ensures smooth coordination between students, instructors, and the driving school’s fleet of cars — providing a structured and efficient learning experience.
 
-### 👩🏽‍💻Admin 
+### 👩🏽‍💻 Admin 
 
 Admins have full control over the management of students, instructors, vehicles, and lessons.
 
