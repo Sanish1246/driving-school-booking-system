@@ -239,7 +239,7 @@ There are **two project folders** in this repository:
 
 This separation exists because one of the contributors was working on a **Mac**, and **WinForms is not supported on macOS**.
 
-As a workaround, they created a **console-based project** to:
+As a workaround, they use a **console-based project** to:
 
 - Reuse the same core logic  
 - Handle input/output via terminal  
