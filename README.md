@@ -180,11 +180,13 @@ If the **wrong file** is uploaded (e.g., a `students.csv` file is selected while
 **NOTE: If ever a user want to clear his database, the following commands can be used:**
 
 ```SQL
+/* Delete records*/
 DELETE FROM Students;
 DELETE FROM Instructors;
 DELETE FROM Cars;
 DELETE FROM Lessons;
 
+/* Reset IDs*/
 DBCC CHECKIDENT('Students', RESEED, 0);
 DBCC CHECKIDENT('Instructors', RESEED, 0);
 DBCC CHECKIDENT('Cars', RESEED, 0);
