@@ -193,7 +193,7 @@ DBCC CHECKIDENT('Lessons', RESEED, 0);
 
 ---
 
-The above command ensure consistency with our `database` and `.csv` files since the lessonIDs have already been defined into the `.csv` file
+The above commands ensure consistency with our `database` and `.csv` files since the lessonIDs have already been defined into the `.csv` file
 
 ## Users and Their Roles
 
