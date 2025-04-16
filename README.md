@@ -1,18 +1,43 @@
-# Driving School Booking System
-A project for a Driving lesson booking system, made entirely in C# using .NET Version 8.0.
+# 🚗 Driving School Booking System
 
-It consists of the following functionalities:
+![.NET](https://img.shields.io/badge/.NET-8.0-blueviolet)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![License](https://img.shields.io/badge/License-MIT-brightgreen)
+![Contributions](https://img.shields.io/badge/Contributions-Welcome-ff69b4)
 
-1. A student can book and view their lessons.
-2. An instructor can view the lessons assigned to them.
-3. An admin, which can perform **CRUD** operations on entities like students, instructors, cars and lessons.
+A simple and efficient Driving Lesson Booking System built entirely in **C# using .NET 8.0**.  
+Includes support for students, instructors, and admins with full CRUD operations.
 
-## Getting Started
+---
 
-**1. Clone the repo**
-```
+## 📑 Table of Contents
+
+- [🚀 Features](#-features)
+- [🛠 Getting Started](#-getting-started)
+  - [1. Clone the Repo](#1-clone-the-repo)
+  - [2. Installation](#2-installation)
+  - [3. Comment Logging Code (For Migration Only)](#3-comment-logging-code-for-migration-only)
+  - [4. Set up the Database](#4-set-up-the-database)
+  - [5. Revert Logging Code](#5-revert-logging-code)
+- [🧪 Using the Program](#-using-the-program)
+- [📁 Project Structure Note](#-project-structure-note)
+
+---
+
+## 🚀 Features
+
+- ✅ Students can book and view their driving lessons  
+- ✅ Instructors can view assigned lessons  
+- ✅ Admins can manage Students, Instructors, Cars, and Lessons (CRUD support)
+
+---
+
+## 🛠 Getting Started
+
+### 1. Clone the Repo
+
+```bash
 git clone https://github.com/Sanish1246/driving-school-booking-system.git
-```
 ### Installation
 
 Before proceeding, make sure you have the following NuGuet Packages:
@@ -32,7 +57,7 @@ dotnet add package CsvHelper --version 33.0.1
 
 **2. Delete Migrations folder**
 
-**3. Open context folder, move into DrivingLessonBookingSystem.cs and comment out the following line of codes:**
+**3. Open context folder, go into DrivingLessonBookingSystem.cs and comment out the following line of codes:**
 
 ```
 // line 15
@@ -90,14 +115,40 @@ dotnet ef migrations add InitialCreate -p MainProject
 dotnet ef database update -p MainProject
 
 ```
+
 **Verify if the database has been created using MSSQL or any other UI**
 
 **5. Uncomment the code in step 3 (don't forget to remove the semi-colon added or you can just undo everythings in that file)**
 
 
-##Using the Program
+## 🧪 Using the Program
 
+Once the program is started, users can log in as one of the following roles:
 
+1. **Student** – Can book lessons and view their upcoming sessions.  
+2. **Instructor** – Can view lessons assigned to them.  
+3. **Admin** – Has full control (CRUD operations) over students, instructors, cars, and lessons.
+
+---
+
+## 📁 Project Structure Note
+
+There are **two project folders** in this repository:
+
+- One folder contains the **GUI version** of the application, built with **Windows Forms (WinForms)**.  
+- The other folder is a **Console Application**, used for **unit testing**.
+
+### ❓ Why Two Projects?
+
+This separation exists because one of the contributors was working on a **Mac**, and **WinForms is not supported on macOS**.
+
+As a workaround, they created a **console-based project** to:
+
+- Reuse the same core logic  
+- Handle input/output via terminal  
+- Apply **MSTest** effectively for unit testing
+
+This structure improves **testability** and ensures **cross-platform compatibility** for all contributors.
 
 
 
