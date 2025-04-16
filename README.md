@@ -160,6 +160,18 @@ A dropdown menu is provided to select the specific table to update, followed by 
 - If the user **submits a file**, the data is loaded from the provided CSV file and used in the system.
 - If the user **skips** this step, the application defaults to using the data stored in the **database**.
 
+---
+
+### ⚠️ Incorrect File Handling
+
+If the **wrong file** is uploaded (e.g., a `students.csv` file is selected while trying to update the **Car** table), the system will detect a **format mismatch** and display an error message such as:
+
+> ❌ "Incorrect file format. Please check the file and try again."
+
+- **No data** will be inserted or modified in the database in this case.
+- The user can **retry** by entering the correct file name or choose to **skip** and continue using the default values from the database.
+
+---
 
 
 
