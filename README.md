@@ -228,7 +228,9 @@ In addition to adding students, the Admin has the ability to:
 - **Edit** any details related to students, instructors, cars, or lessons.
 - **Delete** students, instructors, cars, or lessons from the system if needed.
 
-  ![Image](https://github.com/user-attachments/assets/33a00d17-bd34-441d-ba78-24ae40fbab9a)
+
+  ![Image](https://github.com/user-attachments/assets/8f3021da-c252-4159-bf60-aa45e59f49e6)
+
 
 These features provide full administrative control to maintain a clean and up-to-date booking system database.
 
