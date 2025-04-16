@@ -136,17 +136,53 @@ Once the program is started, users can log in as one of the following roles:
 
 ---
 
+## Users and Their Roles
+
+### 👨‍🎓 Students
+
+Students are the primary users of the system who want to learn driving. After logging in, students can:
+
+- **Book lessons** by choosing:
+  - A date and time
+  - An available **instructor**
+  - An available **car**
+- **View** upcoming scheduled lessons
+- **Update** their profile information if needed
+
+The booking system ensures:
+- The selected instructor and car are not double-booked.
+- The date is valid and in the future.
+
+This process simulates how a real-world driving school manages bookings for driving sessions.
+
+---
+
+### 👨‍🏫 Instructors
+
+Instructors are responsible for conducting the driving lessons. Once logged in, instructors can:
+
+- **View their assigned lessons**, including:
+  - Student name
+  - Date and time
+  - Assigned vehicle
+
+Instructors do not book or modify lessons themselves. They only have access to their lesson schedule to stay informed about upcoming sessions.
+
+---
+
+This system ensures smooth coordination between students, instructors, and the driving school’s fleet of cars — providing a structured and efficient learning experience.
+
 ### Admin Features
 
 Admins have full control over the management of students, instructors, vehicles, and lessons.
 
-### Add Student Form
+#### Add Student Form
 
 One key feature is the **Add Student** interface, which allows Admins to register new students into the system.
 
-![Add Student Screenshot](./screenshots/add-student.jpeg) <!-- Update path if needed -->
+![Add Student Screenshot](./screenshots/add-student.jpeg) 
 
-#### Input Validation
+### Input Validation
 
 When adding a student, the system performs real-time validation on all fields to ensure data integrity:
 
@@ -176,7 +212,19 @@ If any of the fields are invalid, an appropriate error message is shown in red u
 
 ---
 
-This form is part of the Windows Forms (WinForms) application included in the `MainProject` folder.
+### Admin CRUD Functionality
+
+In addition to adding students, the Admin has the ability to:
+
+- **View** all registered students, instructors, cars, and lessons.
+- **Edit** any details related to students, instructors, cars, or lessons.
+- **Delete** students, instructors, cars, or lessons from the system if needed.
+
+These features provide full administrative control to maintain a clean and up-to-date booking system database.
+
+---
+
+This form and related functionality are part of the Windows Forms (WinForms) application included in the `MainProject` folder.
 
 ## 📁 Project Structure Note
 
