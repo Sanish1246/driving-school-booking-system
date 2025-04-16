@@ -77,8 +77,8 @@ namespace MainFormProject
 
                         if (lessons.Any())
                         {
-                            // Verify if lessons exist for particular data
-                            AdminDeleteLessonMenu deleteLessonMenu = new AdminDeleteLessonMenu(newLessonDate, "update");
+                            // Verify if lessons exist for particular data then delete
+                            AdminDeleteLessonMenu deleteLessonMenu = new AdminDeleteLessonMenu(newLessonDate, "delete");
 
                             this.Close();
 
