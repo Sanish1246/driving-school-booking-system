@@ -153,6 +153,9 @@ When the application starts, the user is first prompted with a screen to **uploa
 
 
   ![Image](https://github.com/user-attachments/assets/33a00d17-bd34-441d-ba78-24ae40fbab9a)
+
+
+  **NOTE: If a specific file need to be uploaded, make sure that the file is in the Data folder, else the program won't be able to know where to locate the files.**
   
 
 A dropdown menu is provided to select the specific table to update, followed by a field to enter the file name (expected to be in `.csv` format).
