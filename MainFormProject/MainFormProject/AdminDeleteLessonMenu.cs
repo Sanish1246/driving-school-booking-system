@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MainFormProject.Context;
-using MainFormProject.Models;
+﻿using MainFormProject.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace MainFormProject
@@ -57,6 +47,7 @@ namespace MainFormProject
 
             try
             {
+                // Load data into Hash table
                 var table = new OfflineDatabase();
                 table.LoadTables();
 
@@ -66,6 +57,7 @@ namespace MainFormProject
                         .Where(l => l.Date == lessonDate) 
                         .Select(l => new
                         {
+                            // Fields to be included when displaying lessons
                             l.LessonId,
                             StudentFirstName = l.Student.FirstName,
                             StudentLastName = l.Student.LastName,
@@ -82,6 +74,7 @@ namespace MainFormProject
 
                     if (lessons.Any())
                     {
+                        // Check if there is any lessons for particular date
                         foreach (var lesson in lessons)
                         {
                             var item = new ListViewItem(lesson.LessonId.ToString());

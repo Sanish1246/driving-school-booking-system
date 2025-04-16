@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Globalization;
 using MainFormProject.Context;
 using MainFormProject.Models;
-using Microsoft.EntityFrameworkCore;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MainFormProject
 {
@@ -54,7 +43,8 @@ namespace MainFormProject
             invalidPassword.Hide();
             invalidAddress.Hide();
             invalidPhone.Hide();
-
+            
+            // Check if entered text is not empty
             if (!Validations.ValidateString(firstName))
             {
                 invalidFirst.Show();
@@ -70,7 +60,7 @@ namespace MainFormProject
             if (Validations.ValidateString(email))
             {
 
-                // Validate the email
+                // Check the email format
                 if (Validations.ValidateEmail(email))
                 {
                     // Check if email is already present in database; emails should be unique
@@ -95,7 +85,8 @@ namespace MainFormProject
                 invalidEmail.Show();
 
             }
-
+            
+            // Check password strength
             if (Validations.ValidateString(password))
             {
                 if (!Validations.ValidatePassword(password))
@@ -176,12 +167,12 @@ namespace MainFormProject
 
         public static bool CheckEmailExistence(string email)
         {
-            // Connect with Database
             var success = false;
             try
             {
                 using (var context = new DrivingLessonBookingSystemContext())
                 {
+                    // Check email uniqueness
                     success = context.Students.Any(s => s.Email == email);
                 }
             }

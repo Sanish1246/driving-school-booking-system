@@ -12,7 +12,8 @@ namespace MainFormProject
             AdminLogin loginForm = new AdminLogin("admin");
 
             this.Close();
-
+            
+            // Display login to log as admin/student/instructor
             loginForm.Show();
 
         }
@@ -22,7 +23,8 @@ namespace MainFormProject
             AdminLogin loginForm = new AdminLogin("student");
 
             this.Close();
-
+            
+            // Display student menu
             loginForm.Show();
         }
 
@@ -31,7 +33,8 @@ namespace MainFormProject
             AdminLogin loginForm = new AdminLogin("instructor");
 
             this.Close();
-
+            
+            // Display instructor menu
             loginForm.Show();
         }
 

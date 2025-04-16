@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace MainFormProject
+﻿namespace MainFormProject
 {
     public partial class CarHandler : Form
     {
@@ -36,7 +26,8 @@ namespace MainFormProject
             AdminAddCar addCar = new AdminAddCar();
 
             this.Close();
-
+            
+            // Add car menu
             addCar.Show();
         }
 
@@ -45,7 +36,8 @@ namespace MainFormProject
             AdminDeleteCar deleteCar = new AdminDeleteCar();
 
             this.Close();
-
+            
+            // Delete car menu
             deleteCar.Show();
         }
 
@@ -54,7 +46,8 @@ namespace MainFormProject
             AdminUpdateCar updateCar = new AdminUpdateCar();
 
             this.Close();
-
+            
+            // Update car menu
             updateCar.Show();
         }
 
@@ -72,7 +65,8 @@ namespace MainFormProject
             AdminListCar listCar = new AdminListCar();
 
             this.Close();
-
+            
+            // Display all cars
             listCar.Show();
         }
     }

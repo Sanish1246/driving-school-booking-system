@@ -3,9 +3,7 @@ using MainFormProject.Models;
 using MainFormProject.CSVHeaders;
 using CsvHelper.Configuration;
 using CsvHelper;
-using System.Formats.Asn1;
 using System.Globalization;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace MainFormProject
@@ -24,6 +22,7 @@ namespace MainFormProject
 
             switch(option)
             {
+                // File upload for student/car/instructor/lessons
                 case "Lesson":
                     UploadLessonData();
                     break;

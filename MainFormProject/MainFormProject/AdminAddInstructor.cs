@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Globalization;
 using MainFormProject.Context;
 using MainFormProject.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace MainFormProject
 {
@@ -94,9 +84,10 @@ namespace MainFormProject
                 invalidEmail.Show();
 
             }
-
+            
             if (Validations.ValidateString(password))
             {
+                // Check password strength
                 if (!Validations.ValidatePassword(password))
                 {
                     invalidPassword.Show();
@@ -172,12 +163,12 @@ namespace MainFormProject
 
         public static bool CheckEmailExistence(string email)
         {
-            // Connect with Database
             var success = false;
             try
             {
                 using (var context = new DrivingLessonBookingSystemContext())
                 {
+                    // Check if instructor mail is unique
                     success = context.Instructors.Any(i => i.Email == email);
                 }
             }
