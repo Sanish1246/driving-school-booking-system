@@ -155,6 +155,8 @@ Students are the primary users of the system who want to learn driving. After lo
 - **View** upcoming scheduled lessons
 - **Update** their profile information if needed
 
+![Image](https://github.com/user-attachments/assets/2b5c3f59-15c6-44f8-8b0a-54fe07c34777)
+
 The booking system ensures:
 - The selected instructor and car are not double-booked.
 - The date is valid and in the future.
