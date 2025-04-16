@@ -131,7 +131,7 @@ dotnet ef database update -p MainProject
 
 ## 🧪 Using the Program
 
-Once the program is started, users can log in as one of the following roles:
+Once the program is started, users can choose from a dropdown menu, one of the following roles:
 
 1. **Student** – Can book lessons and view their upcoming sessions.  
 2. **Instructor** – Can view lessons assigned to them.  
@@ -179,11 +179,12 @@ This system ensures smooth coordination between students, instructors, and the d
 
 Admins have full control over the management of students, instructors, vehicles, and lessons.
 
-![Image](https://github.com/user-attachments/assets/7bf58fcc-1b94-4692-a458-fd34fa7e4681)
 
 #### Add Student Form
 
 One key feature is the **Add Student** interface, which allows Admins to register new students into the system.
+
+![Image](https://github.com/user-attachments/assets/7bf58fcc-1b94-4692-a458-fd34fa7e4681)
 
 
 ### Input Validation
