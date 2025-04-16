@@ -95,6 +95,10 @@ dotnet ef database update -p MainProject
 **5. Uncomment the code in step 3 (don't forget to remove the semi-colon added or you can just undo everythings in that file)**
 
 
+##Using the Program
+
+
+
 
 
 
