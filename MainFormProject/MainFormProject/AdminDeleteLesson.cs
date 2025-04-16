@@ -164,7 +164,7 @@ namespace MainFormProject
                             // Select particular student by email
                             studentId = s.StudentId,
                             email = s.Email
-                        }).First(s => s.email == studentEmail);
+                        }).FirstOrDefault(s => s.email == studentEmail);
                         studentId = student.studentId;
 
                         var instructor = context.Instructors.Select(i => new
@@ -172,7 +172,7 @@ namespace MainFormProject
                             // Select particular instructor by email
                             instructorId = i.InstructorId,
                             email = i.Email
-                        }).First(i => i.email == instructorEmail);
+                        }).FirstOrDefault(i => i.email == instructorEmail);
                         instructorId = instructor.instructorId;
 
                         var car = context.Cars.Select(c => new
@@ -180,7 +180,7 @@ namespace MainFormProject
                             // Select particular car by car registration number
                             CarID = c.CarId,
                             regNumber = c.RegistrationNumber
-                        }).First(c => c.regNumber == regNo);
+                        }).FirstOrDefault(c => c.regNumber == regNo);
                         carId = car.CarID;
 
                         var lesson = new Lesson()
