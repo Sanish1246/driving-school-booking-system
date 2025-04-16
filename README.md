@@ -17,7 +17,10 @@ Includes support for students, instructors, and admins with full CRUD operations
   - [1. Clone the Repo](#1-clone-the-repo)
   - [2. Installation](#2-installation)
 - [🧪 Using the Program](#-using-the-program)
-  - [3. Admin Features](#-admin-features)
+- [Users and their roles](#-users-and-their-roles)
+ - [👨‍🎓 Students](#-students)
+ - [👨‍🎓 Instructors](#-instructors)
+ - [👩🏽‍💻Admin](#-admin) 
 - [📁 Project Structure Note](#-project-structure-note)
 
 ---
@@ -172,7 +175,7 @@ Instructors do not book or modify lessons themselves. They only have access to t
 
 This system ensures smooth coordination between students, instructors, and the driving school’s fleet of cars — providing a structured and efficient learning experience.
 
-### Admin Features
+### 👩🏽‍💻Admin 
 
 Admins have full control over the management of students, instructors, vehicles, and lessons.
 
@@ -180,7 +183,6 @@ Admins have full control over the management of students, instructors, vehicles,
 
 One key feature is the **Add Student** interface, which allows Admins to register new students into the system.
 
-![Add Student Screenshot](./screenshots/add-student.jpeg) 
 
 ### Input Validation
 
