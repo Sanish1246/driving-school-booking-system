@@ -151,6 +151,10 @@ When the application starts, the user is first prompted with a screen to **uploa
 - **Car**
 - **Lesson**
 
+
+  ![Image](https://github.com/user-attachments/assets/33a00d17-bd34-441d-ba78-24ae40fbab9a)
+  
+
 A dropdown menu is provided to select the specific table to update, followed by a field to enter the file name (expected to be in `.csv` format).
 
 - If the user **submits a file**, the data is loaded from the provided CSV file and used in the system.
