@@ -17,6 +17,7 @@ Includes support for students, instructors, and admins with full CRUD operations
   - [1. Clone the Repo](#1-clone-the-repo)
   - [2. Installation](#2-installation)
 - [🧪 Using the Program](#-using-the-program)
+  - [3. Admin Features](#-admin-features)
 - [📁 Project Structure Note](#-project-structure-note)
 
 ---
@@ -134,6 +135,48 @@ Once the program is started, users can log in as one of the following roles:
 3. **Admin** – Has full control (CRUD operations) over students, instructors, cars, and lessons.
 
 ---
+
+### Admin Features
+
+Admins have full control over the management of students, instructors, vehicles, and lessons.
+
+### Add Student Form
+
+One key feature is the **Add Student** interface, which allows Admins to register new students into the system.
+
+![Add Student Screenshot](./screenshots/add-student.jpeg) <!-- Update path if needed -->
+
+#### Input Validation
+
+When adding a student, the system performs real-time validation on all fields to ensure data integrity:
+
+- **First Name / Last Name**  
+  Must not be empty and should not contain invalid characters.
+
+- **Email**  
+  Must be a valid email address format.
+
+- **Password**  
+  Must be at least **12 characters** and include:  
+  - At least **one uppercase** letter  
+  - At least **one lowercase** letter  
+  - At least **one digit**  
+  - At least **one special character**
+
+- **Phone Number**  
+  Must be a valid phone number (digits only and correct length).
+
+- **Date of Birth (DOB)**  
+  Must be selected using the date picker control.
+
+- **Address**  
+  This is a required field and must not be empty.
+
+If any of the fields are invalid, an appropriate error message is shown in red underneath the corresponding field, guiding the admin to correct it before submitting.
+
+---
+
+This form is part of the Windows Forms (WinForms) application included in the `MainProject` folder.
 
 ## 📁 Project Structure Note
 
