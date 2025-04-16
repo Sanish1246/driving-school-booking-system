@@ -177,6 +177,20 @@ If the **wrong file** is uploaded (e.g., a `students.csv` file is selected while
 - **No data** will be inserted or modified in the database in this case.
 - The user can **retry** by entering the correct file name or choose to **skip** and continue using the default values from the database.
 
+**NOTE: If ever a user want to clear his database, the following commands can be used:**
+
+```SQL
+DELETE FROM Students;
+DELETE FROM Instructors;
+DELETE FROM Cars;
+DELETE FROM Lessons;
+
+DBCC CHECKIDENT('Students', RESEED, 0);
+DBCC CHECKIDENT('Instructors', RESEED, 0);
+DBCC CHECKIDENT('Cars', RESEED, 0);
+DBCC CHECKIDENT('Lessons', RESEED, 0);
+```
+
 ---
 
 
