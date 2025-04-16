@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
+﻿using System.Globalization;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using MainFormProject.Context;
 using MainFormProject.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace MainFormProject
 {
@@ -55,7 +43,7 @@ namespace MainFormProject
             invalidRegNo.Hide();
             if (Validations.ValidateString(studentEmail))
             {
-                // Validate the email
+                // Check if email is in correct format
                 if (Validations.ValidateEmail(studentEmail))
                 {
                     // Check if email is already present in database; 
@@ -65,6 +53,7 @@ namespace MainFormProject
                         {
                             using (var context = new DrivingLessonBookingSystemContext())
                             {
+                                // Add student
                                 var student = context.Students.Select(s => new
                                 {
                                     studentId = s.StudentId,
@@ -102,7 +91,7 @@ namespace MainFormProject
             if (Validations.ValidateString(instructorEmail))
             {
 
-                // Validate the email
+                // Check email format
                 if (Validations.ValidateEmail(instructorEmail))
                 {
                     // Check if email is already present in database; 
@@ -112,6 +101,7 @@ namespace MainFormProject
                         {
                             using (var context = new DrivingLessonBookingSystemContext())
                             {
+                                // Add instructor
                                 var instructor = context.Instructors.Select(i => new
                                 {
                                     instructorId = i.InstructorId,
@@ -147,8 +137,10 @@ namespace MainFormProject
 
             if (Validations.ValidateString(regNo))
             {
+                // Verify car registration number format
                 if (CarRegistrationChecker(regNo))
                 {
+                    // Check if car registration number is unique
                     if (!IsUnique(regNo))
                     {
                         try
@@ -157,6 +149,7 @@ namespace MainFormProject
                             {
                                 var car = context.Cars.Select(c => new
                                 {
+                                    // Add car
                                     CarID = c.CarId,
                                     regNumber = c.RegistrationNumber
                                 }).First(c => c.regNumber == regNo);
@@ -198,6 +191,7 @@ namespace MainFormProject
                     {
                         var lesson = new Lesson()
                         {
+                            // Add lesson
                             CarId = carId,
                             StudentId = studentId,
                             InstructorId = instructorId,
@@ -222,12 +216,12 @@ namespace MainFormProject
 
         public static bool CheckStudentEmailExistence(string email)
         {
-            // Connect with Database
             var success = false;
             try
             {
                 using (var context = new DrivingLessonBookingSystemContext())
                 {
+                    // Check if student email is unique
                     success = context.Students.Any(i => i.Email == email);
                 }
             }
@@ -241,12 +235,12 @@ namespace MainFormProject
 
         public static bool CheckInstructorEmailExistence(string email)
         {
-            // Connect with Database
             var success = false;
             try
             {
                 using (var context = new DrivingLessonBookingSystemContext())
                 {
+                    // Check if instructor email is unique
                     success = context.Instructors.Any(i => i.Email == email);
                 }
             }
@@ -260,6 +254,7 @@ namespace MainFormProject
 
         public static bool CarRegistrationChecker(string registrationNumber)
         {
+            // Verify if car registration number is in correct format
             var registrationNumberRegex = new Regex(@"^[a-zA-Z]{2}[\d]{2}[\s]?[a-zA-Z]{3}$");
             var m = registrationNumberRegex.Match(registrationNumber);
             return m.Success;
@@ -272,6 +267,7 @@ namespace MainFormProject
             {
                 using (var context = new DrivingLessonBookingSystemContext())
                 {
+                    // Check if car registration number is unique
                     success = context.Cars.Any(c => c.RegistrationNumber == registrationNumber);
                 }
             }

@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace MainFormProject
+﻿namespace MainFormProject
 {
     public partial class StudentMenu : Form
     {
@@ -29,14 +19,16 @@ namespace MainFormProject
             AdminListLesson listLesson = new AdminListLesson("student", email);
 
             this.Close();
-
+            
+            // Display lessons for particular student
             listLesson.Show();
         }
 
         private void bookLessonButton_Click(object sender, EventArgs e)
         {
             BookInstructor bookInstructor = new BookInstructor(email);
-
+            
+            // Book a lesson
             bookInstructor.Show();
 
             this.Close();

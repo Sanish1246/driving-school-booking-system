@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace MainFormProject
+﻿namespace MainFormProject
 {
     public partial class LessonHandler : Form
     {
@@ -36,7 +26,8 @@ namespace MainFormProject
             AdminAddLesson addLesson = new AdminAddLesson();
 
             this.Close();
-
+            
+            // Add lesson menu
             addLesson.Show();
         }
 
@@ -45,7 +36,8 @@ namespace MainFormProject
             AdminDeleteLesson deleteLesson = new AdminDeleteLesson("delete", "", "", "");
 
             this.Close();
-
+            
+            // Delete lesson
             deleteLesson.Show();
         }
 
@@ -54,7 +46,8 @@ namespace MainFormProject
             AdminSearchLesson searchLesson = new AdminSearchLesson();
 
             this.Close();
-
+            
+            // Search lesson
             searchLesson.Show();
         }
 

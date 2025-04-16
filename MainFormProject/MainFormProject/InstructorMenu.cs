@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace MainFormProject
+﻿namespace MainFormProject
 {
     public partial class InstructorMenu : Form
     {
@@ -38,7 +28,8 @@ namespace MainFormProject
             AdminLogin loginMenu = new AdminLogin("instructor");
 
             this.Close();
-
+            
+            // Display instructor menu
             loginMenu.Show();
         }
     }

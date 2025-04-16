@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace MainFormProject
+﻿namespace MainFormProject
 {
     public partial class InstructorHandler : Form
     {
@@ -54,7 +44,8 @@ namespace MainFormProject
             AdminUpdateInstructor updateInstructor = new AdminUpdateInstructor();
 
             this.Close();
-
+            
+            // Update instructor detail
             updateInstructor.Show();
         }
 
@@ -63,7 +54,8 @@ namespace MainFormProject
             AdminSearchInstructor searchInstructor = new AdminSearchInstructor();
 
             this.Close();
-
+            
+            // Search instructor by email
             searchInstructor.Show();
         }
 
@@ -72,7 +64,8 @@ namespace MainFormProject
             AdminListInstructor listInstructor = new AdminListInstructor();
 
             this.Close();
-
+            
+            // Display all instructors
             listInstructor.Show();
         }
     }

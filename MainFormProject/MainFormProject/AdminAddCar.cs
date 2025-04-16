@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MainFormProject.Context;
+﻿using MainFormProject.Context;
 using MainFormProject.Models;
-using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
 namespace MainFormProject
@@ -26,7 +16,8 @@ namespace MainFormProject
             CarHandler carMenu = new CarHandler();
 
             this.Close();
-
+            
+            // Display car menu for CRUD Operations
             carMenu.Show();
         }
 
@@ -68,11 +59,14 @@ namespace MainFormProject
                 invalidTransmission.Show();
                 valid = false;
             }
-
+            
+            // Check if car registration number isn't empty
             if (Validations.ValidateString(regNo))
             {
+                // Check if car registration number matches required format
                 if (CarRegistrationChecker(regNo))
                 {
+                    // Check if car registration number is unique
                     if (!IsUnique(regNo))
                     {
                         invalidRegNo.Text = "Registration number already taken";
@@ -98,6 +92,7 @@ namespace MainFormProject
             {
                 try
                 {
+                    // Load Hash Table with data
                     var table = new OfflineDatabase();
                     table.LoadTables();
                     using (var context = new DrivingLessonBookingSystemContext())
@@ -129,12 +124,14 @@ namespace MainFormProject
 
         public static bool TransmissionChecker(string transmission)
         {
+            // Check if car is either automatic or manual
             return transmission.Equals("Automatic", StringComparison.InvariantCultureIgnoreCase) ||
                    transmission.Equals("Manual", StringComparison.InvariantCultureIgnoreCase);
         }
 
         public static bool CarRegistrationChecker(string registrationNumber)
         {
+            // Check if car registration number format is valid
             var registrationNumberRegex = new Regex(@"^[a-zA-Z]{2}[\d]{2}[\s]?[a-zA-Z]{3}$");
             var m = registrationNumberRegex.Match(registrationNumber);
             return m.Success;
@@ -147,6 +144,7 @@ namespace MainFormProject
             {
                 using (var context = new DrivingLessonBookingSystemContext())
                 {
+                    // Check if car registration number is unique
                     success = context.Cars.Any(c => c.RegistrationNumber == registrationNumber);
                 }
             }

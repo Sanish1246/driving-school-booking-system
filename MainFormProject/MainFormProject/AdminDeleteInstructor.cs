@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MainFormProject.Context;
+﻿using MainFormProject.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace MainFormProject
@@ -37,11 +28,14 @@ namespace MainFormProject
         {
             string email = Email.Text;
             emailError.Hide();
-
+            
+            // Check if email is empty
             if (Validations.ValidateString(email))
             {
+                // Check if email format is correct
                 if (Validations.ValidateEmail(email))
                 {
+                    // Check if email is unique
                     if (!CheckEmailExistence(email))
                     {
                         emailError.Text = "Email doesn't exist";
@@ -51,6 +45,7 @@ namespace MainFormProject
                     {
                         try
                         {
+                            // Load data from Hash Table
                             var table = new OfflineDatabase();
                             table.LoadTables();
                             using (var context = new DrivingLessonBookingSystemContext())
@@ -84,12 +79,12 @@ namespace MainFormProject
 
         public static bool CheckEmailExistence(string email)
         {
-            // Connect with Database
             var success = false;
             try
             {
                 using (var context = new DrivingLessonBookingSystemContext())
                 {
+                    // Check if email is unique
                     success = context.Instructors.Any(i => i.Email == email);
                 }
             }

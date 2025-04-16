@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Globalization;
 using MainFormProject.Context;
 using MainFormProject.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MainFormProject
 {
@@ -41,7 +31,8 @@ namespace MainFormProject
                 LessonHandler lessonHandlerMenu = new LessonHandler();
 
                 this.Close();
-
+                
+                // Display lesson menu for CRUD Operations
                 lessonHandlerMenu.Show();
             }
             else
@@ -62,6 +53,7 @@ namespace MainFormProject
             {
                 try
                 {
+                    // Load Hash Table
                     var table = new OfflineDatabase();
                     table.LoadTables();
 
@@ -85,6 +77,7 @@ namespace MainFormProject
 
                         if (lessons.Any())
                         {
+                            // Verify if lessons exist for particular data
                             AdminDeleteLessonMenu deleteLessonMenu = new AdminDeleteLessonMenu(newLessonDate, "update");
 
                             this.Close();
@@ -107,6 +100,7 @@ namespace MainFormProject
                 bool hasLessons = false;
                 try
                 {
+                    // Load Hash Table
                     var table = new OfflineDatabase();
                     table.LoadTables();
 
@@ -129,6 +123,7 @@ namespace MainFormProject
                             .ToList();
                         if (lessons.Any())
                         {
+                            // Check if there is any lessons for particular data
                             hasLessons = true;
                         }
 
@@ -159,12 +154,14 @@ namespace MainFormProject
                 int carId = 0;
                 try
                 {
+                    // Load Hash Table
                     var table = new OfflineDatabase();
                     table.LoadTables();
                     using (var context = new DrivingLessonBookingSystemContext())
                     {
                         var student = context.Students.Select(s => new
                         {
+                            // Select particular student by email
                             studentId = s.StudentId,
                             email = s.Email
                         }).First(s => s.email == studentEmail);
@@ -172,6 +169,7 @@ namespace MainFormProject
 
                         var instructor = context.Instructors.Select(i => new
                         {
+                            // Select particular instructor by email
                             instructorId = i.InstructorId,
                             email = i.Email
                         }).First(i => i.email == instructorEmail);
@@ -179,6 +177,7 @@ namespace MainFormProject
 
                         var car = context.Cars.Select(c => new
                         {
+                            // Select particular car by car registration number
                             CarID = c.CarId,
                             regNumber = c.RegistrationNumber
                         }).First(c => c.regNumber == regNo);
@@ -186,6 +185,7 @@ namespace MainFormProject
 
                         var lesson = new Lesson()
                         {
+                            // Add lesson
                             CarId = carId,
                             StudentId = studentId,
                             InstructorId = instructorId,

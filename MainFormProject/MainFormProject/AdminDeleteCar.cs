@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Text.RegularExpressions;
 using MainFormProject.Context;
-using MainFormProject.Models;
 using Microsoft.EntityFrameworkCore;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MainFormProject
 {
@@ -40,14 +29,18 @@ namespace MainFormProject
         {
             string regNo = registrationNo.Text;
             invalidRegNo.Hide();
+            // Check if car registration number is empty
             if (Validations.ValidateString(regNo))
             {
+                // Check if car registration number is in the correct format
                 if (CarRegistrationChecker(regNo))
                 {
+                    // Check if car registration number is unique
                     if (!IsUnique(regNo))
                     {
                         try
                         {
+                            // Load data from hash table
                             var table = new OfflineDatabase();
                             table.LoadTables();
                             using (var context = new DrivingLessonBookingSystemContext())
@@ -84,6 +77,7 @@ namespace MainFormProject
 
         public static bool CarRegistrationChecker(string registrationNumber)
         {
+            // Verify if car registration format is valid
             var registrationNumberRegex = new Regex(@"^[a-zA-Z]{2}[\d]{2}[\s]?[a-zA-Z]{3}$");
             var m = registrationNumberRegex.Match(registrationNumber);
             return m.Success;
@@ -96,6 +90,7 @@ namespace MainFormProject
             {
                 using (var context = new DrivingLessonBookingSystemContext())
                 {
+                    // Check if car registration number is unique
                     success = context.Cars.Any(c => c.RegistrationNumber == registrationNumber);
                 }
             }
