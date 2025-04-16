@@ -17,6 +17,7 @@ Includes support for students, instructors, and admins with full CRUD operations
   - [1. Clone the Repo](#1-clone-the-repo)
   - [2. Installation](#2-installation)
 - [🧪 Using the Program](#-using-the-program)
+- [📄 Initial File Upload](#-initial-file-upload)
 - [Users and their roles](#-users-and-their-roles)
  - [👨‍🎓 Students](#-students)
  - [👨‍🎓 Instructors](#-instructors)
@@ -141,6 +142,22 @@ Once the program is started, users can choose from a dropdown menu, one of the f
    ![Image](https://github.com/user-attachments/assets/cc0cee40-c932-43db-aeb0-3ad5e60fca56)
 
 ---
+
+## 📄 Initial File Upload (Optional)
+
+When the application starts, the user is first prompted with a screen to **upload a file** for one of the data tables:  
+- **Student**
+- **Instructor**
+- **Car**
+- **Lesson**
+
+A dropdown menu is provided to select the specific table to update, followed by a field to enter the file name (expected to be in `.csv` format).
+
+- If the user **submits a file**, the data is loaded from the provided CSV file and used in the system.
+- If the user **skips** this step, the application defaults to using the data stored in the **database**.
+
+
+
 
 ## Users and Their Roles
 
