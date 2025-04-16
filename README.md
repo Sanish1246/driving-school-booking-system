@@ -137,6 +137,9 @@ Once the program is started, users can choose from a dropdown menu, one of the f
 2. **Instructor** – Can view lessons assigned to them.  
 3. **Admin** – Has full control (CRUD operations) over students, instructors, cars, and lessons.
 
+
+   ![Image](https://github.com/user-attachments/assets/cc0cee40-c932-43db-aeb0-3ad5e60fca56)
+
 ---
 
 ## Users and Their Roles
